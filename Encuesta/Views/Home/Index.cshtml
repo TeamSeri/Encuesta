@@ -1,0 +1,37 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron" style="margin-top:2em !important;">
+    <h1 style="font-size:50px;" class="text-center text-capitalize">Bienvenido al sistema de encuestas</h1>
+    <div class="row">
+        <div class="col-md-offset-4 col-md-4">
+            <form action="Persona/Persona" method="post">
+                <label>Nombre: <input type="text" name="nombre" value="" /></label>
+                <br />
+                <label>Apellidos: <input type="text" name="apellido" value="" /></label>
+                <br />
+                <label>Edad: <input type="number" name="edad" value="" /></label>
+                <br />
+                <input type="submit" name="enviar" value="Enviar" />
+            </form>
+        </div>
+    </div>
+</div>
+
+<!--<div class="container">
+    <div class="row text-center">
+        <div class="col-lg-offset-2 col-md-4">
+            <button class="btn btn-white p-2 text-warning">
+                <b style="color:white !important">
+                    @Html.ActionLink("Encuesta", "Index", "Encuesta")
+                </b>
+            </button>
+        </div>
+        <div class="col-md-4">
+            <button class="btn btn-primary p-2">
+                Encuesta 2
+            </button> 
+        </div>
+    </div>
+</div> -->
