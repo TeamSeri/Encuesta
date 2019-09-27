@@ -10,8 +10,8 @@ namespace Encuesta.Models.Utilerias
     {
         static readonly string Server = "Localhost";
         static readonly string Db = "encuesta";
-        static readonly string User = "";
-        static readonly string Pass = "";
+        static readonly string User = "GrupoSeri";
+        static readonly string Pass = "123456";
 
         protected SqlConnection conexion { get; set; }
 
@@ -19,7 +19,7 @@ namespace Encuesta.Models.Utilerias
         {
             try
             {
-                conexion = new SqlConnection("Data Source=" + Server + "; Initial Catalog=" + Db + "; User ID=" + User + ";Password" + Pass + ";Integrated Security=True");
+                conexion = new SqlConnection("Data Source=" + Server + ";Initial Catalog=" + Db + ";User ID=" + User + ";Password=" + Pass + ";Integrated Security=False;");
                 conexion.Open();
                 return conexion;
             }

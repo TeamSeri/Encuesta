@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Encuesta.Models.Beans;
+using Encuesta.Models.Daos;
 
 namespace Encuesta.Controllers
 {
@@ -10,6 +12,8 @@ namespace Encuesta.Controllers
     {
         public ActionResult Index()
         {
+            EmpresasBean empBean = new EmpresasBean();
+            EmpresasDao empDao = new EmpresasDao();
             return View();
         }
 
