@@ -5,13 +5,11 @@ using System.Web;
 
 namespace Encuesta.Models.Beans
 {
-    public class EmpresasBean
+    public class RegistroBean
     {
+        public int iIdRegistro { get; set; }
         public int iIdEmpresa { get; set; }
-        public string sNombre { get; set; }
-        public int iEmpleados { get; set; }
-        public int iAplicacionesReq { get; set; }
-        public int iAplcacionesRestantes { get; set; }
+        public DateTime dFechaRegistro { get; set; }
         public string sMensaje { get; set; }
     }
 }

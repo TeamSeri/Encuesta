@@ -11,34 +11,6 @@ namespace Encuesta.Models.Daos
 {
     public class EmpresasDao : Conexion
     {
-        public EmpresasBean sp_Datos_Empresas_Retrieve_Empresa(int empresa)
-        {
-            EmpresasBean empBe = new EmpresasBean();
-            try
-            {
-                this.Conectar();
-                SqlCommand cmd = new SqlCommand("sp_Datos_Empresas_Retrieve_Empresa", this.conexion)
-                {
-                    CommandType = CommandType.StoredProcedure
-                };
-                cmd.Parameters.Add(new SqlParameter("@iIdEmpresa", empresa));
-                SqlDataReader data = cmd.ExecuteReader();
-                if (data.Read())
-                {
-                    empBe.iIdEmpresa = int.Parse(data["IdEmpresa"].ToString());
-                    empBe.sNombre = data["Nombre"].ToString();
-                }
-                cmd.Dispose();
-                data.Close();
-                conexion.Close();
-            }
-            catch (Exception exc)
-            {
-
-                Console.WriteLine(exc);
-            }
-            return empBe;
-        }
         public List<EmpresasBean> sp_Empresas_Retrieve_Empresas()
         {
             List<EmpresasBean> listEmp = new List<EmpresasBean>();
@@ -69,6 +41,70 @@ namespace Encuesta.Models.Daos
                 Console.WriteLine(exc);
             }
             return listEmp;
+        }
+        public EmpresasBean sp_Datos_Empresas_Retrieve_Empresa(int empresa)
+        {
+            EmpresasBean empBe = new EmpresasBean();
+            try
+            {
+                this.Conectar();
+                SqlCommand cmd = new SqlCommand("sp_Datos_Empresas_Retrieve_Empresa", this.conexion)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+                cmd.Parameters.Add(new SqlParameter("@iIdEmpresa", empresa));
+                SqlDataReader data = cmd.ExecuteReader();
+                if (data.Read())
+                {
+                    empBe.iIdEmpresa = int.Parse(data["IdEmpresa"].ToString());
+                    empBe.sNombre = data["Nombre"].ToString();
+                }
+                cmd.Dispose();
+                data.Close();
+                conexion.Close();
+            }
+            catch (Exception exc)
+            {
+
+                Console.WriteLine(exc);
+            }
+            return empBe;
+        }
+        public EmpresasBean sp_Empresas_Update_Retrieve_Empresa(int empresa, int empleados, int applicaciones, int restantes)
+        {
+            EmpresasBean empBean = new EmpresasBean();
+
+            try
+            {
+                this.Conectar();
+                SqlCommand cmd = new SqlCommand("sp_Empresas_Update_Retrieve_Empresa", this.conexion)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+                cmd.Parameters.Add(new SqlParameter("@IdEmpresa", empresa));
+                cmd.Parameters.Add(new SqlParameter("@CantidadEmpleados", empleados));
+                cmd.Parameters.Add(new SqlParameter("@AplicacionesRequeridas", applicaciones));
+                cmd.Parameters.Add(new SqlParameter("@AplicacionesRestantes", restantes));
+                //SqlDataReader data = cmd.ExecuteReader();
+                if (cmd.ExecuteNonQuery() > 0)
+                {
+                    empBean.sMensaje = "success";
+                }
+                else
+                {
+                    empBean.sMensaje = "error";
+                }
+                cmd.Dispose();
+                cmd.Parameters.Clear();
+                //data.Close();
+                conexion.Close();
+            }
+            catch (Exception exc)
+            {
+                Console.Write(exc);
+                throw;
+            }
+            return empBean;
         }
     }
 }

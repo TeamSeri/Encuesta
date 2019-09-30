@@ -122,11 +122,14 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\EncuestaPController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\RegistroController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Beans\EmpresasBean.cs" />
+    <Compile Include="Models\Beans\RegistroBean.cs" />
     <Compile Include="Models\Daos\EmpresasDao.cs" />
+    <Compile Include="Models\Daos\RegistroDao.cs" />
     <Compile Include="Models\EncuestaP.cs" />
     <Compile Include="Models\Utilerias\Conexion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -144,7 +147,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
-    <Content Include="Scripts\Encuestas\data.js" />
+    <Content Include="Scripts\Encuestas\dataTests.js" />
     <Content Include="Scripts\Encuestas\dataIndex.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -171,6 +174,7 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\EncuestaP\Index.cshtml" />
+    <Content Include="Views\Registro\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
