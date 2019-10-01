@@ -10,22 +10,29 @@
                 <div class="row">
                     <div class="col-md-offset-2 col-md-4">
                         <div class="form-group">
-                            <label>Empresa: </label>
-                            <select class="form-control" id="nom_empresa" name="nom_empresa">
-                                <option selected value="0">Selecciona</option>
+                            <label>Seleccione una opción:</label>
+                            <select id="opcsel" class="form-control">
+                                <option value="none" selected>Selecciona</option>
+                                <option value="new">Nueva empresa</option>
+                                <option value="exi">Empresa existente</option>
                             </select>
                         </div>
-                        <div class="form-group">
-                            <label> Numero de empleados: </label>
-                            <input type="number" id="num_empleados" name="num_empleados" class="form-control" />
+                        <div class="form-group d-none" id="divempresa">
+                            <label>Empresa: </label>
+                            <select class="form-control" id="nom_empresa" name="nom_empresa">
+                            </select>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group d-none" id="divempleados">
+                            <label> Numero de empleados: </label>
+                            <input type="number" id="num_empleados" value="0" name="num_empleados" class="form-control" />
+                        </div>
+                        <div class="form-group d-none" id="divbutton">
                             <button class="btn btn-primary btn-sm" type="submit">
                                 Comprobar y continuar
                             </button>
                         </div>
                     </div>
-                    <div class="col-md-4 text-center">
+                    <div class="col-md-4 text-center d-none" id="divapp">
                         <div class="form-group">
                             <label> Numero de aplicaciones requeridas: </label>
                             <div class="text-center">

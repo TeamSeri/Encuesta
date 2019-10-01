@@ -29,6 +29,14 @@ namespace Encuesta.Models.Daos
                         EmpresasBean empBean = new EmpresasBean();
                         empBean.iIdEmpresa = Convert.ToInt32(data["IdEmpresa"].ToString());
                         empBean.sNombre = data["Nombre"].ToString();
+                        if (data["Empleados"].ToString() == "")
+                        {
+                            empBean.iEmpleados = 0;
+                        }
+                        else
+                        {
+                            empBean.iEmpleados = Convert.ToInt32(data["Empleados"].ToString());
+                        }
                         listEmp.Add(empBean);
                     }
                 }
@@ -58,6 +66,11 @@ namespace Encuesta.Models.Daos
                 {
                     empBe.iIdEmpresa = int.Parse(data["IdEmpresa"].ToString());
                     empBe.sNombre = data["Nombre"].ToString();
+                    empBe.iEmpleados = int.Parse(data["Empleados"].ToString());
+                    empBe.iAplicacionesReq = int.Parse(data["AplicacionesRequeridas"].ToString());
+                    empBe.iAplicacionesRestantes = int.Parse(data["AplicacionesRestantes"].ToString());
+                    empBe.sMensaje = "success";
+
                 }
                 cmd.Dispose();
                 data.Close();
