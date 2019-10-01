@@ -17,6 +17,20 @@ namespace Encuesta.Controllers
             return View();
         }
 
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public JsonResult ValidarLogin(string user, string pass)
+        {
+            LoginBean logBean = new LoginBean();
+            LoginDao logDao = new LoginDao();
+            logBean = logDao.sp_Datos_Usuarios_Retrieve_Usuario(user, pass);
+            return Json(logBean);
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

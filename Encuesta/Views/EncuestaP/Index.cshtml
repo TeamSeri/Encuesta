@@ -3,90 +3,103 @@
 @{
     ViewBag.Title = "Encuesta";
 }
-
-<div class="container" style="margin-top:3em !important;">
-    <div class="row text-center">
-        <div class="col-md-6">
-            <h4>Empresa seleccionada: <b><span id="nombre_empresa"></span></b> </h4>
-        </div>
-        <div class="col-md-6">
-            <h4>Empleados asignados: <b>@Model.iEmpleados</b> </h4>
-        </div>
-    </div>
-    <br />
-    <div class="row">
-        <div class="col-lg-offset-2 col-md-8">
-            <hr />
-            <div class="text-center">
-                <p>Para responder las preguntas siguientes considere las condiciones ambientales de su trabajo</p>
-            </div>
-            <hr />
-            <form action="/" method="post" id="apart1">
-                <div class="form-group">
-                    <b>1.</b> El espacio donde trabajo me permite realizar mis actividades de manera segura e higienica.
-                    <div class="margins-quest">
-                        <input class="form-check-input" type="radio" name="resp" id="radio1" value="option1" />
-                        <label class="form-check-label" for="radio1">Siempre</label>
-                        <input class="margin-radio" type="radio" name="resp" id="radio2" value="option2" />
-                        <label class="form-check-label" for="radio2">Casi siempre</label>
-                        <input class="margin-radio" type="radio" name="resp" id="radio3" value="option3" />
-                        <label class="form-check-label" for="radio3">Algunas veces</label>
-                        <input class="margin-radio" type="radio" name="resp" id="radio4" value="option3" />
-                        <label class="form-check-label" for="radio4">Casi nunca</label>
-                        <input class="margin-radio" type="radio" name="resp" id="radio5" value="option3" />
-                        <label class="form-check-label" for="radio5">Nunca</label>
+    <div class="container" style="margin-top:3em !important;">
+        @{
+            if (Model.sEstado == "success")
+            {
+                <div class="row text-left">
+                    <div class="col-md-3">
+                        <h4>Empresa: <b><span id="nombre_empresa"></span></b> </h4>
                     </div>
-                    <div class="form-group margins-quest">
-                        <b>2.</b> Mi trabajo me exige hacer mucho esfuerzo fisico.
-                        <div class="margins-quest">
-                            <input class="form-check-input" type="radio" name="resp2" id="p2radio1" value="option1" />
-                            <label class="form-check-label" for="p2radio1">Siempre</label>
-                            <input class="margin-radio" type="radio" name="resp2" id="p2radio2" value="option2" />
-                            <label class="form-check-label" for="p2radio2">Casi siempre</label>
-                            <input class="margin-radio" type="radio" name="resp2" id="p2radio3" value="option3" />
-                            <label class="form-check-label" for="p2radio3">Algunas veces</label>
-                            <input class="margin-radio" type="radio" name="resp2" id="p2radio4" value="option3" />
-                            <label class="form-check-label" for="p2radio4">Casi nunca</label>
-                            <input class="margin-radio" type="radio" name="resp2" id="p2radio5" value="option3" />
-                            <label class="form-check-label" for="p2radio5">Nunca</label>
-                        </div>
+                    <div class="col-md-3">
+                        <h4>Empleados asignados: <b>@Model.iEmpleados</b> </h4>
                     </div>
-                    <div class="form-group margins-quest">
-                        <b>3.</b> Mi trabajo me exige hacer mucho esfuerzo fisico.
-                        <div class="margins-quest">
-                            <input class="form-check-input" type="radio" name="resp3" id="p3radio1" value="option1" />
-                            <label class="form-check-label" for="p3radio1">Siempre</label>
-                            <input class="margin-radio" type="radio" name="resp3" id="p3radio2" value="option2" />
-                            <label class="form-check-label" for="p3radio2">Casi siempre</label>
-                            <input class="margin-radio" type="radio" name="resp3" id="p3radio3" value="option3" />
-                            <label class="form-check-label" for="p3radio3">Algunas veces</label>
-                            <input class="margin-radio" type="radio" name="resp3" id="p3radio4" value="option3" />
-                            <label class="form-check-label" for="p3radio4">Casi nunca</label>
-                            <input class="margin-radio" type="radio" name="resp3" id="p3radio5" value="option3" />
-                            <label class="form-check-label" for="p3radio5">Nunca</label>
-                        </div>
+                    <div class="col-md-3">
+                        <h4>Aplicaciones requeridas: <b>@Model.iAplicacionesReq</b> </h4>
+                    </div>
+                    <div class="col-md-3">
+                        <h4>Aplicaciones restantes: <b><span id="app_restantes"></span></b> </h4>
                     </div>
                 </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-<script type="text/javascript">
-    document.addEventListener('DOMContentLoaded', () => {
-        const empresa = @Model.iIdEmpresa;
-        const empleados = @Model.iEmpleados;
-        const nombreEmpresa = document.getElementById('nombre_empresa');
-        $.ajax({
-            type : 'POST',
-            url: '/EncuestaP/DatosEmpresa',
-            data: { empresa: empresa },
-            error: function (err) {
-                console.log(err);
-            },
-            success: function (data) {
-                nombreEmpresa.textContent = data.sNombre;
+                <br />
+                <div class="row">
+                    <div class="col-lg-offset-2 col-md-8">
+                        <hr />
+                        <div class="text-center">
+                            <h3><b id="titulo1"></b></h3>
+                        </div>
+                        <hr />
+                        <form method="post" id="formdata">
+                            <input type="hidden" disabled name="empresa" value="@Model.iIdEmpresa" />
+                            <div id="form_preguntas"></div>
+                            <div class="form-group" id="formbutton">
+                                <div class="col-md-12 text-center">
+                                    <button class="btn btn-primary" type="submit">
+                                        Enviar
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             }
+            else
+            {
+                <h1 class="text-center text-danger" style="margin-top:3em;">
+                    Opss...
+                </h1>
+                <h2 class="text-center text-dagner" style="margin-bottom:3em;">
+                    Ocurrio un error interno, seras redirigido a la pantalla de inicio en <b id="seg"></b> segundos...
+                </h2>
+            }
+        }
+    </div>
+@{ 
+    if (Model.sEstado == "success")
+    {
+        <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', () => {
+            const empresa = @Model.iIdEmpresa;
+            const empleados = @Model.iEmpleados;
+            const nombreEmpresa = document.getElementById('nombre_empresa');
+            const apprestantes = document.getElementById('app_restantes');
+            $.ajax({
+                type : 'POST',
+                url: '/EncuestaP/DatosEmpresa',
+                data: { empresa: empresa },
+                error: function (err) {
+                    console.log(err);
+                },
+                success: function (data) {
+                    if (data.sMensaje != "error") {
+                        nombreEmpresa.textContent = data.sNombre;
+                        apprestantes.textContent = data.iAplicacionesRestantes;
+                    } else {
+
+                        console.log('Ocurrio un error');
+                    }
+                }
+            });
         });
-    });
-</script>
+        </script>
+        <script type="text/javascript" src="~/Scripts/Encuestas/dataTests.js"></script>
+    } else
+    {
+        <script type="text/javascript">
+            document.addEventListener('DOMContentLoaded', () => {
+                let cont = 10;
+                const seg = document.getElementById('seg');
+                window.setInterval(() => {
+                    if (cont == -1) {
+                        seg.textContent = 0;
+                        location.href = "../../";
+                    } else {
+                        seg.textContent = cont;
+                        cont--;
+                    }
+                }, 1000);
+            });
+        </script>
+    }
+}
+
