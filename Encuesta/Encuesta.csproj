@@ -120,6 +120,8 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\DetallesEmpresaController.cs" />
     <Compile Include="Controllers\EncuestaPController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RegistroController.cs" />
@@ -127,10 +129,17 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Beans\EmpresasBean.cs" />
+    <Compile Include="Models\Beans\EncuestasBean.cs" />
     <Compile Include="Models\Beans\LoginBean.cs" />
+    <Compile Include="Models\Beans\MensajesBean.cs" />
+    <Compile Include="Models\Beans\OpcionalDetalles.cs" />
     <Compile Include="Models\Beans\PreguntasBean.cs" />
     <Compile Include="Models\Beans\RegistroBean.cs" />
+    <Compile Include="Models\Beans\RegistroCategoriasBean.cs" />
+    <Compile Include="Models\Beans\RegistroDominioBean.cs" />
     <Compile Include="Models\Daos\EmpresasDao.cs" />
+    <Compile Include="Models\Daos\EncuestasDao.cs" />
+    <Compile Include="Models\Daos\EncuestaOpcDao.cs" />
     <Compile Include="Models\Daos\LoginDao.cs" />
     <Compile Include="Models\Daos\PreguntasDao.cs" />
     <Compile Include="Models\Daos\RegistroDao.cs" />
@@ -139,20 +148,36 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\animate.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\datatables.css" />
     <Content Include="Content\Styles.css" />
+    <Content Include="Content\toast.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\Admin\DatosEmpresa.js" />
+    <Content Include="Scripts\Admin\detallesopcional.js" />
+    <Content Include="Scripts\Admin\Empresas.js" />
+    <Content Include="Scripts\Admin\encuestaopc.js" />
+    <Content Include="Scripts\Admin\graficatest2.js" />
+    <Content Include="Scripts\Admin\graficatest1.js" />
+    <Content Include="Scripts\Admin\index.js" />
+    <Content Include="Scripts\Admin\registrosempresa.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\datatables.js" />
     <Content Include="Scripts\Encuestas\dataTests.js" />
     <Content Include="Scripts\Encuestas\dataIndex.js" />
+    <Content Include="Scripts\Encuestas\Encuesta1.js" />
+    <Content Include="Scripts\Encuestas\Encuesta2.js" />
+    <Content Include="Scripts\Encuestas\EncuestaOpc.js" />
+    <Content Include="Scripts\Encuestas\Index.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
@@ -164,6 +189,8 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\login.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\TestOpc.js" />
+    <Content Include="Scripts\toastr.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -182,9 +209,24 @@
     <Content Include="Views\Registro\Index.cshtml" />
     <Content Include="Views\EncuestaP\GuardarE1.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutIni.cshtml" />
+    <Content Include="Views\Admin\Detalles.cshtml" />
+    <Content Include="Views\EncuestaP\GuardarEncuesta2.cshtml" />
+    <Content Include="Views\Admin\DetallesRegistrosEncuesta.cshtml" />
+    <Content Include="Views\EncuestaP\GuardarEncuesta1.cshtml" />
+    <Content Include="Views\Admin\RegistroEmpresa.cshtml" />
+    <Content Include="Views\Admin\EncuestaEspecial.cshtml" />
+    <Content Include="Views\Home\Encuesta3.cshtml" />
+    <Content Include="Views\EncuestaP\Opcional.cshtml" />
+    <Content Include="Views\EncuestaP\GuardarEncuestaOpc.cshtml" />
+    <Content Include="Views\Shared\_LayoutTests.cshtml" />
+    <Content Include="Views\Admin\DetallesRegistroEncuestaOpc.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Img\" />
+    <Folder Include="Views\DetallesEmpresa\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

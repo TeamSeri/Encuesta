@@ -1,0 +1,152 @@
+﻿
+@{
+    ViewBag.Title = "EncuestaEspecial";
+}
+
+@{
+
+    if (Session["keyAdm"] != null)
+    {
+        <div style="margin-top:2em !important;">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg- col-md-2 col-sm-2" style="margin-top:6.7em !important;">
+                        <a href="/Admin/Index" class="btn btn-primary btn-block">
+                            <i class="fas fa-arrow-left"></i> <span style="margin-left:1em;">Volver</span>
+                        </a>
+                        <a href="#" data-toggle="modal" data-target="#regDatosEmpresa" class="btn btn-primary btn-block" style="margin-top:3em !important;" id="btnnewreg">
+                            <i class="fas fa-plus"></i> <span style="margin-left:0.5em;">Nuevo registro</span>
+                        </a>
+                        <a href="#" data-toggle="modal" data-target="#info" class="btn btn-primary btn-block" style="margin-top:3em !important;" id="btninfo">
+                            <i class="fas fa-info"></i> <span style="margin-left:0.5em;">Ayuda</span>
+                        </a>
+                    </div>
+                    <div class="col-lg-10 col-md-10 col-sm-12">
+                        <h2><b> <i class="fas fa-edit color-primary" style="margin-right:0.5em !important;"></i> Encuestas especiales</b></h2>
+                        <hr />
+                        <div class="row animated fadeInDown delay-1s" style="padding:20px; margin-bottom:5em !important; margin-top:1em !important;">
+                            <div class="table">
+                                <table id="tablaus" class="display">
+                                    <thead>
+                                        <tr>
+                                            <th>Nombre</th>
+                                            <th>Empresa</th>
+                                            <th>Puesto</th>
+                                            <th>Código</th>
+                                            <th>Estado</th>
+                                            <th>Opciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="conttable">
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="regDatosEmpresa" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">
+                            <b>Registrar datos</b>
+                        </h5>
+                        <button id="icoclreg" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label>Empresa:</label>
+                                    <select id="empresasel" name="empresasel" class="form-control">
+                                        <option value="none">Selecciona</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Puesto:</label>
+                                    <input type="text" id="puesto" name="puesto" required class="form-control" />
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label>Nombre completo de empleado:</label>
+                                    <input type="text" id="empleado" required name="empleado" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Codigo de acceso:</label>
+                                    <input type="text" id="codigoasc" name="codigoasc" readonly class="form-control" />
+                                </div>
+                            </div>
+                            <div class="col-lg-12 text-center">
+                                <hr />
+                                <p>
+                                    <i class="fas fa-info color-primary" style="margin-right:0.5em !important"></i>
+                                    <b class="color-primary">Información importante</b>, si tiene duda sobre el registro consulte el apartado de ayuda para más información.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btnclreg">Cerrar</button>
+                        <button type="button" class="btn btn-primary" id="btnsaregopc">Guardar cambios</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="modal fade" id="info" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">
+                            <b>Ayuda</b>
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h4 class="text-center text-primary">
+                                    <b>
+                                        <i class="fas fa-info" style="margin-right:1em !important;"></i>
+                                        Información importante
+                                    </b>
+                                </h4>
+                                <hr />
+                                <ul class="list-group">
+                                    <li class="list-group-item">
+                                        En esta sección se asignan encuestas especiales a empleados ya identificados con algun riesgo psicosocial para su evaluación mediante preguntas especialmente desarrolladas para ellos.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="~/Scripts/Admin/encuestaopc.js" type="text/javascript"></script>
+
+    }
+    else
+    {
+        <script type="text/javascript">
+            document.addEventListener('DOMContentLoaded', () => {
+                location.href = "/Home/Index";
+            });
+        </script>
+    }
+}

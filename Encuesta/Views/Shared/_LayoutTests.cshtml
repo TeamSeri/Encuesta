@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Encuestas.net</title>
+    <link href="../../Content/Styles.css" rel="stylesheet" />
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <link href="~/Content/toast.css" rel="stylesheet" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar bg-primary navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a href="/" style="color:white !important;" class="navbar-brand">
+                    Inicio
+                </a>
+                @*@Html.ActionLink("Iniciar sesion", "Login", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer class="text-center">
+            <p>&copy; @DateTime.Now.Year - Encuestas.net</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <script src="https://kit.fontawesome.com/af5b80622e.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="~/Scripts/toastr.js"></script>
+</body>
+</html>

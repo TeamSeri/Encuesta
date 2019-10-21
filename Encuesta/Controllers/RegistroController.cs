@@ -18,7 +18,7 @@ namespace Encuesta.Controllers
             //Variables del formulario
             int empresa = Convert.ToInt32(Request.Form["empresa"]);
             DateTime fecha = DateTime.Now;
-            regBean = regDao.sp_RegistroEncuestas_Insert_RegistroEncuestas(empresa, fecha);
+            //regBean = regDao.sp_RegistroEncuestas_Insert_RegistroEncuestas(empresa, fecha);
             return View(regBean);
         }
     }

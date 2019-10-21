@@ -1,0 +1,248 @@
+﻿
+@{
+    ViewBag.Title = "DetallesRegistrosEncuesta";
+}
+
+@{
+    if (Session["keyAdm"] != null)
+    {
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+        <div class="container-fluid" id="contnone"></div>
+
+        <div class="container-fluid" style="margin-top:2em !important;" id="contprinc">
+            <div class="row">
+                <div class="col-lg-4">
+                    <h2 class="text-center animated fadeIn"><b> <i class="fas fa-percentage color-primary" style="margin-right:1em !important;"></i> Porcentajes</b></h2>
+                    <hr />
+
+                    <div class="card animated fadeInLeft">
+                        <div class="text-center" style="margin-top:0 !important;">
+                            <a href="/Admin/Detalles?empresa=@Model.iIdEmpresa" class="btn btn-sm btn-primary" style="margin-bottom:0.5em !important; margin-top: 0px !important;"> <i class="fas fa-arrow-left" style="margin-right:0.5em !important;"></i> Volver </a>
+                        </div>
+                        <div class="text-center" style="margin-top:1em !important;" id="divpunt">
+                            <b>Resultado total</b>
+                            <hr />
+                            <h4 id="tpunt"> <span id="txtpunt" style="margin-right:0.5em !important;"></span> <i class="fas fa-circle" id="icodef" style="margin-right:0.5em !important;"></i> <span id="puntaje"></span> </h4>
+                            <hr />
+                        </div>
+                        <ul class="list-group" style="margin-top: 2em !important;">
+                            <li class="list-group-item"> <i class="fas fa-industry text-primary" style="margin-right:0.5em !important;"></i> Empresa: <b><span id="emp"></span></b> </li>
+                            <li class="list-group-item"> <i class="fas fa-users text-primary" style="margin-right:0.5em !important;"></i> Empleados: <b><span id="emple"></span></b> </li>
+                            <li class="list-group-item"><i class="fas fa-file text-primary" style="margin-right:0.5em !important;"></i> Requeridas: <b><span id="req"></span></b> </li>
+                            <li class="list-group-item"> <i class="fas fa-stopwatch text-primary" style="margin-right:0.5em !important;"></i> Restantes: <b><span id="rest"></span></b> </li>
+                            <li class="list-group-item"> <i class="fas fa-check text-primary" style="margin-right:0.5em !important;"></i> Contestadas: <b><span id="cont"></span></b> </li>
+                            <li class="list-group-item"> <i class="fas fa-certificate text-primary" style="margin-right:0.5em !important;"></i> Tipo: <b><span id="tipo"></span></b> </li>
+                            <li class="list-group-item"> <i class="fas fa-calendar text-primary" style="margin-right:0.5em !important;"></i> Año: <b><span id="anio"></span></b> </li>
+                            <li class="list-group-item"> <i class="fas fa-calendar-day text-primary" style="margin-right:0.5em !important;"></i> Mes: <b><span id="mes"></span></b> </li>
+                            <li class="list-group-item"> <i class="fas fa-file-code text-primary" style="margin-right:0.5em !important;"></i> Código: <b><span id="code"></span></b> </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="text-center">
+                        <h2 class="animated fadeIn">
+                            <b> <i class="fas fa-chart-pie color-primary" style="margin-right:1em !important;"></i> Por dominio y categoría</b>
+                        </h2>
+                    </div>
+                    <hr />
+                    <script type="text/javascript" src="~/Scripts/Admin/DatosEmpresa.js"></script>
+                    <script type="text/javascript">
+                document.addEventListener('DOMContentLoaded', () => {
+                    dataemp(@Model.iIdRegistro);
+                });
+                    </script>
+                    @{
+                        if (Model.sTipoEncuesta == "E1")
+                        {
+                            <div class="text-right">
+                                <button class="btn btn-sm btn-primary" id="printchart">
+                                    <i class="fas fa-print" style="margin-right:0.5em !important;"></i> Imprimir
+                                </button>
+                            </div>
+                            <div id="divchart">
+                                <div class="animated fadeInUp" id="piechart" style="width: 800px; height: 500px;"></div>
+                                <hr />
+                                <h3> <i class="fas fa-splotch color-primary" style="margin-right:0.5em !important;"></i> Resultado por categoría:</h3>
+                                <ul class="list-group card" style="margin-top:1em !important;">
+                                    <li class="list-group-item">
+                                        <b>Ambiente de trabajo</b>
+                                        <span class="badge badge-primary" id="rescat"></span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>Factores propios de la actividad</b>
+                                        <span class="badge badge-primary" id="rescat2"></span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>Organización del tiempo de trabajo</b>
+                                        <span class="badge badge-primary" id="rescat3"></span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>Liderazgo y relaciones en el trabajo</b>
+                                        <span class="badge badge-primary" id="rescat4"></span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>Entorno organizacional</b>
+                                        <span class="badge badge-primary" id="rescat5"></span>
+                                    </li>
+                                </ul>
+                                <hr />
+                                <div id="piechart2" style="width: 800px; height: 500px;"></div>
+                                <hr />
+                                <h3> <i class="fas fa-splotch color-primary" style="margin-right:0.5em !important;"></i> Resultado por dominio:</h3>
+                                <ul class="list-group card" style="margin-top:1em !important;">
+                                    <li class="list-group-item">
+                                        <b>Condiciones en el trabajo ambiente de trabajo</b>
+                                        <span class="badge badge-primary" id="resdom1"></span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>Carga de trabajo</b>
+                                        <span class="badge badge-primary" id="resdom2"></span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>Falta de control sobre el trabajo</b>
+                                        <span class="badge badge-primary" id="resdom3"></span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>Jornada de trabajo</b>
+                                        <span class="badge badge-primary" id="resdom4"></span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>Interferencia en la relación trabajo-familia</b>
+                                        <span class="badge badge-primary" id="resdom5"></span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>Liderazgo</b>
+                                        <span class="badge badge-primary" id="resdom6"></span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>Relaciones en el trabajo</b>
+                                        <span class="badge badge-primary" id="resdom7"></span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>Violencia</b>
+                                        <span class="badge badge-primary" id="resdom8"></span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>Reconocimiento del desempeño</b>
+                                        <span class="badge badge-primary" id="resdom9"></span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>Insuficiente sentido de pertenencia e inestabilidad</b>
+                                        <span class="badge badge-primary" id="resdom10"></span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <script type="text/javascript" src="~/Scripts/Admin/graficatest1.js"></script>
+                            <script type="text/javascript">
+                        document.addEventListener('DOMContentLoaded', () => {
+                            datachartgen(@Model.iIdRegistro, '@Model.sTipoEncuesta');
+                            datachart(@Model.iIdRegistro);
+                        });
+                            </script>
+
+                        }
+                        else if (Model.sTipoEncuesta == "E2")
+                        {
+                            <div class="text-right">
+                                <button class="btn btn-sm btn-primary" id="printchart">
+                                    <i class="fas fa-print" style="margin-right:0.5em !important;"></i> Imprimir
+                                </button>
+                            </div>
+                            <div class="divchart">
+                                <div id="chart1div">
+                                    <div class="animated fadeInUp" id="piechart" style="width: 800px; height: 500px;"></div>
+                                    <hr />
+                                    <h3 id="tit1"> <i class="fas fa-splotch color-primary" style="margin-right:0.5em !important;"></i> Resultado por categoría:</h3>
+                                    <ul class="list-group card" id="listg" style="margin-top:1em !important;">
+                                        <li class="list-group-item" id="li1">
+                                            <b>Ambiente de trabajo</b>
+                                            <span class="badge badge-primary" id="rescat"></span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <b>Factores propios de la actividad</b>
+                                            <span class="badge badge-primary" id="rescat2"></span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <b>Organización del tiempo de trabajo</b>
+                                            <span class="badge badge-primary" id="rescat3"></span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <b>Liderazgo y relaciones en el trabajo</b>
+                                            <span class="badge badge-primary" id="rescat4"></span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <hr />
+                                <div id="piechart2" style="width: 800px; height: 500px;"></div>
+                                <hr />
+                                <h3> <i class="fas fa-splotch color-primary" style="margin-right:0.5em !important;"></i> Resultado por dominio:</h3>
+                                <ul class="list-group card" style="margin-top:1em !important;">
+                                    <li class="list-group-item">
+                                        <b>Condiciones en el trabajo ambiente de trabajo</b>
+                                        <span class="badge badge-primary" id="resdom1"></span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>Carga de trabajo</b>
+                                        <span class="badge badge-primary" id="resdom2"></span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>Falta de control sobre el trabajo</b>
+                                        <span class="badge badge-primary" id="resdom3"></span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>Jornada de trabajo</b>
+                                        <span class="badge badge-primary" id="resdom4"></span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>Interferencia en la relación trabajo-familia</b>
+                                        <span class="badge badge-primary" id="resdom5"></span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>Liderazgo</b>
+                                        <span class="badge badge-primary" id="resdom6"></span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>Relaciones en el trabajo</b>
+                                        <span class="badge badge-primary" id="resdom7"></span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>Violencia</b>
+                                        <span class="badge badge-primary" id="resdom8"></span>
+                                    </li>
+                                </ul>
+                                <hr />
+                            </div>
+
+                            <script type="text/javascript" src="~/Scripts/Admin/graficatest2.js"></script>
+                            <script type="text/javascript">
+                        document.addEventListener('DOMContentLoaded', () => {
+                            datachartgen(@Model.iIdRegistro, '@Model.sTipoEncuesta');
+                            datachart(@Model.iIdRegistro);
+                        });
+                            </script>
+
+
+                        }
+                        else
+                        {
+                            <script type="text/javascript">
+                                location.href = "/Home/Logout";
+                            </script>
+                        }
+                    }
+
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <script type="text/javascript">
+            document.addEventListener('DOMContentLoaded', () => {
+                location.href = "/Home/Index";
+            });
+        </script>
+    }
+}

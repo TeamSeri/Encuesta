@@ -1,13 +1,27 @@
 ﻿
 @{
     ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LayoutIni.cshtml";
 }
 
     <div class="container" style="margin-top:3em !important; margin-bottom: 6em !important;">
         <div class="row">
             <div class="col-lg-offset-4 col-lg-4">
-                <h3 class="text-center">Inicio de sesión</h3>
-                <div class="card shadow p-3" style="margin-top:3em !important; margin-bottom: 6em !important;">
+                <div class="row">
+                    <div class="col-lg-6 text-center">
+                        <a class="btn btn-primary" href="/Home/Index" style="color: white !important; outline: none !important; text-decoration-line:none !important;">
+                            <i class="fas fa-home"></i>
+                            <b style="margin-left:5px !important;">Inicio</b>
+                        </a>
+                    </div>
+                    <div class="col-lg-6">
+                        <a href="#" class="btn btn-link" style="outline: none !important; text-decoration-line:none !important;">
+                            <i class="fas fa-door-closed"></i>
+                            <b style="margin-left:5px !important;">Login</b>
+                        </a>
+                    </div>
+                </div>
+                <div class="card shadow p-3" style="margin-top:3em !important; margin-bottom: 4em !important;">
                     <form id="formLogin">
                         <div class="form-group">
                             <label for="user">Nombre de usuario</label>

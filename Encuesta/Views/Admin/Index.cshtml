@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Encuesta.Models.Beans.EmpresasBean>
+@{
+    ViewBag.Title = "Index";
+}
+
+@{ 
+    if (Session["keyAdm"] != null)
+    {
+        <h2 class="text-center" style="margin-top:2em !important;">
+            <b>Empresas en el sistema</b>
+        </h2>
+        <hr />
+        <div class="container-fluid mt-p">
+            <div class="row animated fadeInDown delay-1s" id="contempresas" style="margin-bottom: 3em !important;">
+                <div class="col-lg-12">
+                    <div class="table">
+                        <table id="tablaem" class="display">
+                            <thead>
+                                <tr>
+                                    <th>Empresa</th>
+                                    <th>Opcion</th>
+                                </tr>
+                            </thead>
+                            <tbody id="cont">
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            <i class="fas fa-industry fa-lg"></i> <span style="margin-left:1em !important;"><b>@Html.DisplayFor(modelItem => item.sNombre)</b></span>
+                                        </td>
+                                        <td>
+                                            <b>
+                                                <i class="fas fa-external-link-alt" style="margin-right:1em;"></i>
+                                                @Html.ActionLink("Ver Detalles", "Detalles", new { empresa = item.iIdEmpresa })
+                                            </b>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            document.addEventListener('DOMContentLoaded', () => {
+                $("#tablaem").DataTable({
+                    "language": {
+                        "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+                    }
+                });
+            });
+        </script>
+
+        @*<script type="text/javascript" src="~/Scripts/Admin/Empresas.js"></script>*@
+
+    } else
+    {
+        <script type="text/javascript">
+            document.addEventListener('DOMContentLoaded', () => {
+                location.href = "/Home/Index";
+            });
+        </script>
+    }
+}

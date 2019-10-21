@@ -2,49 +2,476 @@
 
 @{
     ViewBag.Title = "Encuesta";
+    Layout = "~/Views/Shared/_LayoutTests.cshtml";
 }
     <div class="container" style="margin-top:3em !important;">
         @{
             if (Model.sEstado == "success")
             {
-                <div class="row text-left">
-                    <div class="col-md-3">
-                        <h4>Empresa: <b><span id="nombre_empresa"></span></b> </h4>
-                    </div>
-                    <div class="col-md-3">
-                        <h4>Empleados asignados: <b>@Model.iEmpleados</b> </h4>
-                    </div>
-                    <div class="col-md-3">
-                        <h4>Aplicaciones requeridas: <b>@Model.iAplicacionesReq</b> </h4>
-                    </div>
-                    <div class="col-md-3">
-                        <h4>Aplicaciones restantes: <b><span id="app_restantes"></span></b> </h4>
-                    </div>
-                </div>
-                <br />
-                <div class="row">
-                    <div class="col-lg-offset-2 col-md-8">
-                        <hr />
-                        <div class="text-center">
-                            <h3><b id="titulo1"></b></h3>
-                        </div>
-                        <hr />
-                        <form method="post" id="formdata">
-                            <input type="hidden" disabled name="empresa" value="@Model.iIdEmpresa" />
-                            <div id="form_preguntas"></div>
-                            <div class="form-group" id="formbutton">
-                                <div class="col-md-12 text-center">
-                                    <button class="btn btn-primary" type="submit">
-                                        Enviar
-                                    </button>
+                if (Model.sTipoEncuesta == "E1")
+                {
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="card">
+                                    <h4 class="text-center">Encuesta 1</h4>
+                                    <hr />
+                                    <p class="text-center">
+                                        <b>Leé cuidadosamente y responde cada pregunta de acuerdo a las indicaciones.</b>
+                                    </p>
+                                    <hr />
+                                    <ul class="list-group">
+                                        <li class="list-group-item" style="margin-top:2em !important;">
+                                            Apartado 1
+                                            <span class="badge bg-danger" id="span1">
+                                                <i class="fas fa-times" id="ico1"></i>
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item" style="margin-top:2em !important;">
+                                            Apartado 2
+                                            <span class="badge bg-danger" id="span2">
+                                                <i class="fas fa-times" id="ico2"></i>
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item" style="margin-top:2em !important;">
+                                            Apartado 3
+                                            <span class="badge bg-danger" id="span3">
+                                                <i class="fas fa-times" id="ico3"></i>
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item" style="margin-top:2em !important;">
+                                            Apartado 4
+                                            <span class="badge bg-danger" id="span4">
+                                                <i class="fas fa-times" id="ico4"></i>
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item" style="margin-top:2em !important;">
+                                            Apartado 5
+                                            <span class="badge bg-danger" id="span5">
+                                                <i class="fas fa-times" id="ico5"></i>
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item" style="margin-top:2em !important;">
+                                            Apartado 6
+                                            <span class="badge bg-danger" id="span6">
+                                                <i class="fas fa-times" id="ico6"></i>
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item" style="margin-top:2em !important;">
+                                            Apartado 7
+                                            <span class="badge bg-danger" id="span7">
+                                                <i class="fas fa-times" id="ico7"></i>
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item" style="margin-top:2em !important;">
+                                            Apartado 8
+                                            <span class="badge bg-danger" id="span8">
+                                                <i class="fas fa-times" id="ico8"></i>
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item" style="margin-top:2em !important;">
+                                            Apartado 9
+                                            <span class="badge bg-danger" id="span9">
+                                                <i class="fas fa-times" id="ico9"></i>
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item" style="margin-top:2em !important;">
+                                            Apartado 10
+                                            <span class="badge bg-danger" id="span10">
+                                                <i class="fas fa-times" id="ico10"></i>
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item" style="margin-top:2em !important;">
+                                            Apartado 11
+                                            <span class="badge bg-danger" id="span11">
+                                                <i class="fas fa-times" id="ico11"></i>
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item" style="margin-top:2em !important;">
+                                            Apartado 12
+                                            <span class="badge bg-danger" id="span11">
+                                                <i class="fas fa-times" id="ico11"></i>
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item" style="margin-top:2em !important;">
+                                            Apartado 13
+                                            <span class="badge bg-danger" id="span11">
+                                                <i class="fas fa-times" id="ico11"></i>
+                                            </span>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
-                        </form>
+                            <div class="col-lg-8">
+                                <h4 class="text-center">
+                                    <i class="fas fa-edit fa-lg"></i>
+                                    CUESTIONARIO PARA IDENTIFICAR LOS FACTORES DE RIESGO PSICOSOCIAL Y EVALUACIÓN DEL ENTORNO ORGANIZACIONAL EN LOS CENTRO DE TRABAJO
+                                </h4>
+                                <form action="../EncuestaP/GuardarEncuesta1" method="POST" id="formEnc1" style="margin-bottom:2em !important;">
+                                    <input type="hidden" name="empresa" value="@Model.iIdEmpresa" />
+                                    <input type="hidden" name="tipo" value="@Model.sTipoEncuesta" />
+                                    <input type="hidden" name="codigo" value="@Model.sCodigoEmpresa" />
+                                    <input type="hidden" name="registro" value="@Model.iIdRegistroEmpresas" />
+                                    <div class="row">
+                                        <div class="col-lg-offset-1 col-lg-10">
+                                            <div id="encuesta1p1">
+                                                <h4 class="text-center bg-primary tit-enc" id="title1" style="margin-top:2em  !important;"></h4>
+                                                <hr />
+                                                <div id="preguntasdiv1"></div>
+                                                <div class="text-right" style="margin-top:4em !important;" id="divcont1">
+                                                    <button id="btncon1" type="button" class="btn btn-primary">
+                                                        <i class="fas fa-check" style="margin-right:0.5em !important;"></i>                              Continuar
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div id="encuesta1p2">
+                                                <h4 class="text-center bg-primary tit-enc" id="title2" style="margin-top: 2em !important;"></h4>
+                                                <hr />
+                                                <div id="preguntasdiv2"></div>
+                                                <div class="text-right" style="margin-top:4em !important;" id="divcont2">
+                                                    <button id="btncon2" type="button" class="btn btn-primary">
+                                                        <i class="fas fa-check" style="margin-right:0.5em !important;"></i>                              Continuar
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div id="encuesta1p3">
+                                                <h4 class="text-center bg-primary tit-enc" id="title3" style="margin-top: 2em !important;"></h4>
+                                                <hr />
+                                                <div id="preguntasdiv3"></div>
+                                                <div class="text-right" style="margin-top:4em !important;" id="divcont3">
+                                                    <button id="btncon3" type="button" class="btn btn-primary">
+                                                        <i class="fas fa-check" style="margin-right:0.5em !important;"></i>                              Continuar
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div id="encuesta1p4">
+                                                <h4 class="text-center bg-primary tit-enc" id="title4" style="margin-top: 2em !important;"></h4>
+                                                <hr />
+                                                <div id="preguntasdiv4"></div>
+                                                <div class="text-right" style="margin-top:4em !important;" id="divcont4">
+                                                    <button id="btncon4" type="button" class="btn btn-primary">
+                                                        <i class="fas fa-check" style="margin-right:0.5em !important;"></i>                              Continuar
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div id="encuesta1p5">
+                                                <h4 class="text-center bg-primary tit-enc" id="title5" style="margin-top: 2em !important;"></h4>
+                                                <hr />
+                                                <div id="preguntasdiv5"></div>
+                                                <div class="text-right" style="margin-top:4em !important;" id="divcont5">
+                                                    <button id="btncon5" type="button" class="btn btn-primary">
+                                                        <i class="fas fa-check" style="margin-right:0.5em !important;"></i>                              Continuar
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div id="encuesta1p6">
+                                                <h4 class="text-center bg-primary tit-enc" id="title6" style="margin-top: 2em !important;"></h4>
+                                                <hr />
+                                                <div id="preguntasdiv6"></div>
+                                                <div class="text-right" style="margin-top:4em !important;" id="divcont6">
+                                                    <button id="btncon6" type="button" class="btn btn-primary">
+                                                        <i class="fas fa-check" style="margin-right:0.5em !important;"></i>                              Continuar
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div id="encuesta1p7">
+                                                <h4 class="text-center bg-primary tit-enc" id="title7" style="margin-top: 2em !important;"></h4>
+                                                <hr />
+                                                <div id="preguntasdiv7"></div>
+                                                <div class="text-right" style="margin-top:4em !important;" id="divcont7">
+                                                    <button id="btncon7" type="button" class="btn btn-primary">
+                                                        <i class="fas fa-check" style="margin-right:0.5em !important;"></i>                              Continuar
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div id="encuesta1p8">
+                                                <h4 class="text-center bg-primary tit-enc" id="title8" style="margin-top: 2em !important;"></h4>
+                                                <hr />
+                                                <div id="preguntasdiv8"></div>
+                                                <div class="text-right" style="margin-top:4em !important;" id="divcont8">
+                                                    <button id="btncon8" type="button" class="btn btn-primary">
+                                                        <i class="fas fa-check" style="margin-right:0.5em !important;"></i>                              Continuar
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div id="encuesta1p9">
+                                                <h4 class="text-center bg-primary tit-enc" id="title9" style="margin-top: 2em !important;"></h4>
+                                                <hr />
+                                                <div id="preguntasdiv9"></div>
+                                                <div class="text-right" style="margin-top:4em !important;" id="divcont9">
+                                                    <button id="btncon9" type="button" class="btn btn-primary">
+                                                        <i class="fas fa-check" style="margin-right:0.5em !important;"></i>                              Continuar
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div id="encuesta1p10">
+                                                <h4 class="text-center bg-primary tit-enc" id="title10" style="margin-top: 2em !important;"></h4>
+                                                <hr />
+                                                <div id="preguntasdiv10"></div>
+                                                <div class="text-right" style="margin-top:4em !important;" id="divcont10">
+                                                    <button id="btncon10" type="button" class="btn btn-primary">
+                                                        <i class="fas fa-check" style="margin-right:0.5em !important;"></i>                              Continuar
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div id="encuesta1p11">
+                                                <h4 class="text-center bg-primary tit-enc" id="title11" style="margin-top: 2em !important;"></h4>
+                                                <hr />
+                                                <div id="preguntasdiv11"></div>
+                                                <div class="text-right" style="margin-top:4em !important;" id="divcont11">
+                                                    <button id="btncon11" type="button" class="btn btn-primary">
+                                                        <i class="fas fa-check" style="margin-right:0.5em !important;"></i>                              Continuar
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div id="encuesta1p12" style="margin-top:3em !important;">
+                                                <div class="form-group">
+                                                    <label class="form-check-label">En mi trabajo debo brindar servicio a clientes o usuarios:</label>
+                                                    <input class="margin-radio" id="opcval1" name="opc1" type="radio" value="1" />
+                                                    <label>Si</label>
+                                                    <input class="margin-radio" id="opcval2" name="opc1" type="radio" value="0" />
+                                                    <label>No</label>
+                                                </div>
+                                                <div class="" id="complement1">
+                                                    <h4 class="text-center bg-primary tit-enc" id="title12" style="margin-top: 2em !important;">
+                                                    </h4>
+                                                    <hr />
+                                                    <div id="preguntasdiv12"></div>
+                                                    <div class="text-right" style="margin-top:4em !important;" id="divcont12">
+                                                        <button id="btncon12" type="button" class="btn btn-primary">
+                                                            <i class="fas fa-check" style="margin-right:0.5em !important;"></i>                              Continuar
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="encuesta1p13" style="margin-top:3em !important;">
+                                                <div class="form-group">
+                                                    <label class="form-check-label">Soy jefe de otros trabajadores:</label>
+                                                    <input class="margin-radio" id="opcval3" name="opc2" type="radio" value="1" />
+                                                    <label>Si</label>
+                                                    <input class="margin-radio" id="opcval4" name="opc2" type="radio" value="0" />
+                                                    <label>No</label>
+                                                </div>
+                                                <div id="complement2">
+                                                    <h4 class="text-center bg-primary tit-enc" id="title13" style="margin-top: 2em !important;">
+                                                    </h4>
+                                                    <hr />
+                                                    <div id="preguntasdiv13"></div>
+                                                    <div class="text-right" style="margin-top:4em !important;" id="divcont13">
+                                                        <button id="btncon13" type="button" class="btn btn-primary">
+                                                            <i class="fas fa-check" style="margin-right:0.5em !important;"></i>                              Continuar
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group text-right" id="divbutton" style="margin-top:3em !important;">
+                                                <button class="btn btn-primary" type="button" id="btnenviar">
+                                                    Enviar <i class="fas fa-arrow-right"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                    <script type="text/javascript" src="~/Scripts/Encuestas/Encuesta1.js"></script>
+                }
+                else if (Model.sTipoEncuesta == "E2")
+                {
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="card">
+                                    <h4 class="text-center">Encuesta2</h4>
+                                    <hr />
+                                    <p class="text-center">
+                                        <b>Leé cuidadosamente y responde cada pregunta de acuerdo a las indicaciones.</b>
+                                    </p>
+                                    <hr />
+                                    <ul class="list-group">
+                                        <li class="list-group-item" style="margin-top:2em !important;">
+                                            Apartado 1
+                                            <span class="badge bg-danger" id="span1">
+                                                <i class="fas fa-times" id="ico1"></i>
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item" style="margin-top:2em !important;">
+                                            Apartado 2
+                                            <span class="badge bg-danger" id="span2">
+                                                <i class="fas fa-times" id="ico2"></i>
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item" style="margin-top:2em !important;">
+                                            Apartado 3
+                                            <span class="badge bg-danger" id="span3">
+                                                <i class="fas fa-times" id="ico3"></i>
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item" style="margin-top:2em !important;">
+                                            Apartado 4
+                                            <span class="badge bg-danger" id="span4">
+                                                <i class="fas fa-times" id="ico4"></i>
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item" style="margin-top:2em !important;">
+                                            Apartado 5
+                                            <span class="badge bg-danger" id="span5">
+                                                <i class="fas fa-times" id="ico5"></i>
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item" style="margin-top:2em !important;">
+                                            Apartado 6
+                                            <span class="badge bg-danger" id="span6">
+                                                <i class="fas fa-times" id="ico6"></i>
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item" style="margin-top:2em !important;">
+                                            Apartado 7
+                                            <span class="badge bg-danger" id="span7">
+                                                <i class="fas fa-times" id="ico7"></i>
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item" style="margin-top:2em !important;">
+                                            Apartado 8
+                                            <span class="badge bg-danger" id="span8">
+                                                <i class="fas fa-times" id="ico8"></i>
+                                            </span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-lg-8">
+                                <h4 class="text-center">
+                                    <i class="fas fa-edit fa-lg"></i>
+                                    CUESTIONARIO PARA INDENTIFICAR LOS FACTORES DE RIESGO PSICOSOCIAL EN LOS CENTROS DE TRABAJO.
+                                </h4>
+                                <form action="../EncuestaP/GuardarEncuesta2" method="POST" id="formEnc" style="margin-bottom:2em !important;">
+                                    <input type="hidden" name="empresa" value="@Model.iIdEmpresa" />
+                                    <input type="hidden" name="tipo" value="@Model.sTipoEncuesta" />
+                                    <input type="hidden" name="codigo" value="@Model.sCodigoEmpresa" />
+                                    <input type="hidden" name="registro" value="@Model.iIdRegistroEmpresas" />
+                                    <div class="row">
+                                        <div class="col-lg-offset-1 col-lg-10">
+                                            <div id="encuesta2p1">
+                                                <h5 class="text-center bg-primary tit-enc" id="title1" style="margin-top:2em  !important;"></h5>
+                                                <hr />
+                                                <div id="preguntasdiv1"></div>
+                                                <div class="text-right" style="margin-top:4em !important;" id="divcont1">
+                                                    <button id="btncon1" type="button" class="btn btn-primary">
+                                                        <i class="fas fa-check" style="margin-right:0.5em !important;"></i> Continuar
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div id="encuesta2p2">
+                                                <h5 class="text-center bg-primary tit-enc" id="title2" style="margin-top: 2em !important;"></h5>
+                                                <hr />
+                                                <div id="preguntasdiv2"></div>
+                                                <div class="text-right" style="margin-top:4em !important;" id="divcont2">
+                                                    <button id="btncon2" type="button" class="btn btn-primary">
+                                                        <i class="fas fa-check" style="margin-right:0.5em !important;"></i> Continuar
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div id="encuesta3p2">
+                                                <h5 class="text-center bg-primary tit-enc" id="title3" style="margin-top: 2em !important;"></h5>
+                                                <hr />
+                                                <div id="preguntasdiv3"></div>
+                                                <div class="text-right" style="margin-top:4em !important;" id="divcont3">
+                                                    <button id="btncon3" type="button" class="btn btn-primary">
+                                                        <i class="fas fa-check" style="margin-right:0.5em !important;"></i> Continuar
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div id="encuesta4p2">
+                                                <h5 class="text-center bg-primary tit-enc" id="title4" style="margin-top: 2em !important;"></h5>
+                                                <hr />
+                                                <div id="preguntasdiv4"></div>
+                                                <div class="text-right" style="margin-top:4em !important;" id="divcont4">
+                                                    <button id="btncon4" type="button" class="btn btn-primary">
+                                                        <i class="fas fa-check" style="margin-right:0.5em !important;"></i> Continuar
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div id="encuesta5p2">
+                                                <h5 class="text-center bg-primary tit-enc" id="title5" style="margin-top: 2em !important;"></h5>
+                                                <hr />
+                                                <div id="preguntasdiv5"></div>
+                                                <div class="text-right" style="margin-top:4em !important;" id="divcont5">
+                                                    <button id="btncon5" type="button" class="btn btn-primary">
+                                                        <i class="fas fa-check" style="margin-right:0.5em !important;"></i> Continuar
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div id="encuesta6p2">
+                                                <h5 class="text-center bg-primary tit-enc" id="title6" style="margin-top: 2em !important;"></h5>
+                                                <hr />
+                                                <div id="preguntasdiv6"></div>
+                                                <div class="text-right" style="margin-top:4em !important;" id="divcont6">
+                                                    <button id="btncon6" type="button" class="btn btn-primary">
+                                                        <i class="fas fa-check" style="margin-right:0.5em !important;"></i> Continuar
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div id="encuesta7p2" style="margin-top:3em !important;">
+                                                <div class="form-group">
+                                                    <label class="form-check-label">En mi trabajo debo brindar servicio a clientes o usuarios:</label>
+                                                    <input class="margin-radio" id="opcval1" name="opc1" type="radio" value="1" />
+                                                    <label>Si</label>
+                                                    <input class="margin-radio" id="opcval2" name="opc1" type="radio" value="0" />
+                                                    <label>No</label>
+                                                </div>
+                                                <div id="complement1">
+                                                    <h5 class="text-center bg-primary tit-enc" id="title7" style="margin-top: 2em !important;">
+                                                    </h5>
+                                                    <hr />
+                                                    <div id="preguntasdiv7"></div>
+                                                    <div class="text-right" style="margin-top:4em !important;" id="divcont7">
+                                                        <button id="btncon7" type="button" class="btn btn-primary">
+                                                            <i class="fas fa-check" style="margin-right:0.5em !important;"></i> Continuar
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="encuesta8p2" style="margin-top:3em !important;">
+                                                <div class="form-group">
+                                                    <label class="form-check-label">Soy jefe de otros trabajadores:</label>
+                                                    <input class="margin-radio" id="opcval3" name="opc2" type="radio" value="1" />
+                                                    <label>Si</label>
+                                                    <input class="margin-radio" id="opcval4" name="opc2" type="radio" value="0" />
+                                                    <label>No</label>
+                                                </div>
+                                                <div id="complement2">
+                                                    <h5 class="text-center bg-primary tit-enc" id="title8" style="margin-top: 2em !important;">
+                                                    </h5>
+                                                    <hr />
+                                                    <div id="preguntasdiv8"></div>
+                                                    <div class="text-right" style="margin-top:4em !important;" id="divcont8">
+                                                        <button id="btncon8" type="button" class="btn btn-primary">
+                                                            <i class="fas fa-check" style="margin-right:0.5em !important;"></i> Continuar
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr />
+                                            <div class="form-group text-right" id="divbutton" style="margin-top:3em !important;">
+                                                <button class="btn btn-primary" type="button" id="btnenviar">
+                                                    Enviar <i class="fas fa-arrow-right"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <script type="text/javascript" src="~/Scripts/Encuestas/Encuesta2.js"></script>
+                }
+
             }
             else
             {
+                @Model.sEstado
                 <h1 class="text-center text-danger" style="margin-top:3em;">
                     Opss...
                 </h1>
@@ -57,7 +484,7 @@
 @{ 
     if (Model.sEstado == "success")
     {
-        <script type="text/javascript">
+        @*<script type="text/javascript">
         document.addEventListener('DOMContentLoaded', () => {
             const empresa = @Model.iIdEmpresa;
             const empleados = @Model.iEmpleados;
@@ -82,7 +509,7 @@
             });
         });
         </script>
-        <script type="text/javascript" src="~/Scripts/Encuestas/dataTests.js"></script>
+        <script type="text/javascript" src="~/Scripts/Encuestas/dataTests.js"></script>*@
     } else
     {
         <script type="text/javascript">

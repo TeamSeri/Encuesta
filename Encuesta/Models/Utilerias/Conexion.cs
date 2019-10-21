@@ -8,9 +8,9 @@ namespace Encuesta.Models.Utilerias
 {
     public class Conexion
     {
-        static readonly string Server = "Localhost";
+        static readonly string Server = "MCarranza";
         static readonly string Db = "encuesta";
-        static readonly string User = "GrupoSeri";
+        static readonly string User = "sa";
         static readonly string Pass = "123456";
 
         protected SqlConnection conexion { get; set; }

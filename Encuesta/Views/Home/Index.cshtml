@@ -1,50 +1,46 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Inicio";
+    Layout = "~/Views/Shared/_LayoutIni.cshtml";
 }
 
-<div class="jumbotron" style="margin-top:2em !important;">
-    <h1 style="font-size:50px;" class="text-center text-capitalize">Bienvenido al sistema de encuestas</h1>
-    <div class="row">
-        <div class="col-lg-12" style="margin-top:1.5em;">
-            <form action="../EncuestaP/Index" method="POST" id="form_data" class="card shadow p-3">
-                <div class="row">
-                    <div class="col-md-offset-2 col-md-4">
-                        <div class="form-group">
-                            <label>Seleccione una opción:</label>
-                            <select id="opcsel" class="form-control">
-                                <option value="none" selected>Selecciona</option>
-                                <option value="new">Nueva empresa</option>
-                                <option value="exi">Empresa existente</option>
-                            </select>
-                        </div>
-                        <div class="form-group d-none" id="divempresa">
-                            <label>Empresa: </label>
-                            <select class="form-control" id="nom_empresa" name="nom_empresa">
-                            </select>
-                        </div>
-                        <div class="form-group d-none" id="divempleados">
-                            <label> Numero de empleados: </label>
-                            <input type="number" id="num_empleados" value="0" name="num_empleados" class="form-control" />
-                        </div>
-                        <div class="form-group d-none" id="divbutton">
-                            <button class="btn btn-primary btn-sm" type="submit">
-                                Comprobar y continuar
-                            </button>
-                        </div>
-                    </div>
-                    <div class="col-md-4 text-center d-none" id="divapp">
-                        <div class="form-group">
-                            <label> Numero de aplicaciones requeridas: </label>
-                            <div class="text-center">
-                                <h1><b id="num_app">0</b></h1>
-                            </div>
-                            <input type="hidden" readonly id="num_aplicaciones" name="num_aplicaciones" class="form-control" />
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
+    <div class="container-fluid">
 
-<script type="text/javascript" src="~/Scripts/Encuestas/dataIndex.js"></script>
+        <div class="jumbotron" style="margin-top:2em !important;">
+            <h1 style="font-size:50px; margin-bottom:0.3em !important;" class="text-center text-capitalize">Sistema de encuestas</h1>
+            <div class="row">
+                <div class="col-lg-12" style="margin-top:1.5em;">
+                    <form action="../EncuestaP/Index" method="POST" id="form_data" class="p-3">
+                        <div class="row">
+                            <div class="col-lg-offset-4 col-lg-4">
+                                <div class="form-group" id="divempresa">
+                                    <label>Empresa: </label>
+                                    <select class="form-control" id="nom_empresa" name="nom_empresa">
+                                        <option value="0" selected>Selecciona</option>
+                                    </select>
+                                </div>
+                                <div class="form-group" id="divcodigo">
+                                    <label>Codigo de empresa:</label>
+                                    <input type="text" name="codigo" id="codigo" class="form-control" />
+                                </div>
+                                <div class="form-group text-center d-none" id="divloader">
+                                    <div class="spinner">
+                                        <div class="double-bounce1"></div>
+                                        <div class="double-bounce2"></div>
+                                    </div>
+                                    <b>Procesando...</b>
+                                </div>
+                                <div class="form-group" id="divbutton">
+                                    <button class="btn btn-primary btn-sm" type="submit">
+                                        Comprobar y continuar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+    <script type="text/javascript" src="~/Scripts/Encuestas/Index.js"></script>

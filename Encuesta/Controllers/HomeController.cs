@@ -28,7 +28,19 @@ namespace Encuesta.Controllers
             LoginBean logBean = new LoginBean();
             LoginDao logDao = new LoginDao();
             logBean = logDao.sp_Datos_Usuarios_Retrieve_Usuario(user, pass);
+            Session["keyAdm"] = logBean.iIdUsuario;
             return Json(logBean);
+        }
+
+        public ActionResult Logout()
+        {
+            Session.Remove("keyAdm");
+            return Redirect("/Home/Index");
+        }
+
+        public ActionResult Encuesta3()
+        {
+            return View();
         }
 
         public ActionResult About()

@@ -10,6 +10,9 @@ namespace Encuesta.Models.Beans
         public int iIdRegistro { get; set; }
         public int iIdEmpresa { get; set; }
         public DateTime dFechaRegistro { get; set; }
+        public int iResultado { get; set; }
+        public string sTipoEncuesta { get; set; }
         public string sMensaje { get; set; }
+        public string sEstado { get; set; }
     }
 }

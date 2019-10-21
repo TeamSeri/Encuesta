@@ -5,8 +5,6 @@
     formData.addEventListener('submit', (e) => {
         const user = document.getElementById('user');
         const pass = document.getElementById('pass');
-        console.log(user.value);
-        console.log(pass.value);
         if (user.value != "") {
             if (pass.value != "") {
                 $.ajax({
@@ -15,6 +13,23 @@
                     data: { user: user.value, pass: pass.value },
                     success: function (data) {
                         console.log(data.sMensaje);
+                        if (data.sMensaje == 'success') {
+                            swal({
+                                title: "Datos correctos",
+                                text: "Redirigiendo...",
+                                icon: "success",
+                                closeOnClickOutside: false,
+                                closeOnEsc: false,
+                                buttons: false
+                            });
+                            setTimeout(() => {
+                                location.href = '../../Admin/Index';
+                            }, 2000);
+                        } else {
+                            swal("Los datos ingresados son incorrectos");
+                            user.value = "";
+                            pass.value = "";
+                        }
                     },
                     error: function (xhr, status) {
                         console.log(xhr.message);

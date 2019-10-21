@@ -1,0 +1,120 @@
+﻿
+@{
+    ViewBag.Title = "Opcional";
+    Layout = "~/Views/Shared/_LayoutTests.cshtml";
+}
+
+@{
+
+    if (Model.sMensaje == "success")
+    {
+
+        <div class="container-fluid" style="margin-top:3em !important;">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="card">
+                        <h4 class="text-center">Encuesta</h4>
+                        <hr />
+                        <p class="text-center">
+                            <b>Leé cuidadosamente y responde cada pregunta de acuerdo a las indicaciones.</b>
+                        </p>
+                        <hr />
+                        <ul class="list-group">
+                            <li class="list-group-item" style="margin-top:2em !important;">
+                                Apartado 1
+                                <span class="badge bg-danger" id="span1">
+                                    <i class="fas fa-times" id="ico1"></i>
+                                </span>
+                            </li>
+                            <li class="list-group-item" style="margin-top:2em !important;" id="apart2">
+                                Apartado 2
+                                <span class="badge bg-danger" id="span2">
+                                    <i class="fas fa-times" id="ico2"></i>
+                                </span>
+                            </li>
+                            <li class="list-group-item" style="margin-top:2em !important;" id="apart3">
+                                Apartado 3
+                                <span class="badge bg-danger" id="span3">
+                                    <i class="fas fa-times" id="ico3"></i>
+                                </span>
+                            </li>
+                            <li class="list-group-item" style="margin-top:2em !important;" id="apart4">
+                                Apartado 4
+                                <span class="badge bg-danger" id="span4">
+                                    <i class="fas fa-times" id="ico4"></i>
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <h4 class="text-center">
+                        <i class="fas fa-edit fa-lg"></i>
+                        Cuestionario para identificar a los trabajadores que han sido sujetos a acontecimientos traumáticos severos.
+                    </h4>
+                    <hr />
+                    <form action="../EncuestaP/GuardarEncuestaOpc" method="POST" id="formEnc1" style="margin-bottom:2em !important;">
+                        <input value="@Model.iIdRegistroOpc" name="registro" type="hidden"/>
+                        <input value="@Model.iIdEmpresaOpc" name="empresa" type="hidden" />
+                        <input value="@Model.sPuestoEmOpc" name="puesto" type="hidden" />
+                        <input value="@Model.sCodigoAcOpc" name="codigo" type="hidden" />
+                        <div id="encuestaopc1">
+                            <h3 class="text-center" id="title1"></h3>
+                            <h4 id="1title2" style="margin-top:2em !important;"></h4>
+                            <hr />
+                            <div id="preguntasdiv1"></div>
+                            <div class="text-right" style="margin-top:4em !important;" id="divcont1">
+                                <button id="btncon1" type="button" class="btn btn-primary">
+                                    <i class="fas fa-check" style="margin-right:0.5em !important;"></i>                              Continuar
+                                </button>
+                            </div>
+                        </div>
+                        <div id="encuestaopc2">
+                            <h3 class="text-center" id="title2" style="margin-top:2em !important;"></h3>
+                            <hr />
+                            <div id="preguntasdiv2"></div>
+                            <div class="text-right" style="margin-top:4em !important;" id="divcont2">
+                                <button id="btncon2" type="button" class="btn btn-primary">
+                                    <i class="fas fa-check" style="margin-right:0.5em !important;"></i>                              Continuar
+                                </button>
+                            </div>
+                        </div>
+                        <div id="encuestaopc3">
+                            <h3 class="text-center" id="title3" style="margin-top:2em !important;"></h3>
+                            <hr />
+                            <div id="preguntasdiv3"></div>
+                            <div class="text-right" style="margin-top:4em !important;" id="divcont3">
+                                <button id="btncon3" type="button" class="btn btn-primary">
+                                    <i class="fas fa-check" style="margin-right:0.5em !important;"></i>                              Continuar
+                                </button>
+                            </div>
+                        </div>
+                        <div id="encuestaopc4">
+                            <h3 class="text-center" id="title4" style="margin-top:2em !important;"></h3>
+                            <hr />
+                            <div id="preguntasdiv4"></div>
+                            <div class="text-right" style="margin-top:4em !important;" id="divcont4">
+                                <button id="btncon4" type="button" class="btn btn-primary">
+                                    <i class="fas fa-check" style="margin-right:0.5em !important;"></i>                              Continuar
+                                </button>
+                            </div>
+                        </div>
+                        <div class="form-group text-right" id="divbutton" style="margin-top:3em !important;">
+                            <button class="btn btn-primary" type="button" id="btnenviar">
+                                Enviar <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript" src="~/Scripts/Encuestas/EncuestaOpc.js"></script>
+
+    }
+    else
+    {
+        <h1>Error</h1>
+    }
+
+}
