@@ -17,9 +17,14 @@
                 data: {},
                 success: function (data) {
                     lengt = data.length;
-                    let estado = '';
+                    let estado = '', resatencion = '';
                     for (var i = 0; i < data.length; i++) {
                         arrusers.push(data);
+                        if (data[i].sDiagnosticoOpcDetalle != "") {
+                            resatencion = data[i].sDiagnosticoOpcDetalle;
+                        } else {
+                            resatencion = "Sin resultado";
+                        }
                         if (data[i].iEstadoEncOpc == 1) {
                             estado = "Contestada";
                         } else {
@@ -37,6 +42,7 @@
                                 <td> ${data[i].sPuestoEmOpc} </td>
                                 <td> ${data[i].sCodigoAcOpc} </td>
                                 <td> ${estado} </td>
+                                <td> ${resatencion} </td>
                                 <td> 
                                     <i class="fas fa-external-link-alt color-primary" style="margin-right:0.5em;"></i>
                                      <a href="/Admin/DetallesRegistroEncuestaOpc?registro=${data[i].iIdRegistroOpc}">
@@ -91,12 +97,14 @@
 
     function drawChart() {
         var data = google.visualization.arrayToDataTable([
-            ['Resultado', 'Personas'],
-            ['Si requieren atención clinica', parseInt(satencion)],
-            ['No requieren atención clinica', parseInt(natencion)]
+            ['Resultado', 'Personas', { role: 'style' }],
+            ['Si requieren atención clinica', parseInt(satencion), 'stroke-color: #000000; stroke-width: 1; fill-color: #000000'],
+            ['No requieren atención clinica', parseInt(natencion), 'stroke-color: #703593; stroke-width: 4; fill-color: #C5A5CF']
         ]);
 
         var options = {
+            is3D: true,
+            width: 550,
             chart: {
                 title: 'Grafica',
                 subtitle: ' !Importante¡ Solo toma los valores de los usuarios que han contestado las encuestas',
@@ -110,20 +118,31 @@
     }
 
     ffilas = () => {
-        let filas = '', estado = '';
+        let filas = '', estado = '', resatencion = '', colres = '';
         for (var i = 0; i < arrusers.length; i++) {
+            if (arrusers[i][i].sDiagnosticoOpcDetalle != "") {
+                resatencion = arrusers[i][i].sDiagnosticoOpcDetalle;
+            } else {
+                resatencion = "Sin resultado";
+            }
+            if (resatencion == "Requiere atención clínica") {
+                colres = 'red !important';
+            } else if (resatencion == "No requiere valoración clínica") {
+                colres = 'rgb(51, 162, 255) !important';
+            } else { colres = '#000'; }
             if (arrusers[i][i].iEstadoEncOpc == 1) {
                 estado = 'Contestada';
             } else {
                 estado = 'Sin contestar';
             }
             filas += `
-                <tr style="font-size:13px !important;">
-                    <td> ${arrusers[i][i].sNombreEmpleadoOpc} </td> 
-                    <td> ${arrusers[i][i].sEmpresa} </td>
-                    <td> ${arrusers[i][i].sPuestoEmOpc} </td>
+                <tr style="font-size:12px !important;">
+                    <td> ${arrusers[i][i].sNombreEmpleadoOpc}. </td> 
+                    <td> ${arrusers[i][i].sEmpresa}. </td>
+                    <td> ${arrusers[i][i].sPuestoEmOpc}. </td>
                     <td> ${arrusers[i][i].sFechaEncOpc} </td>
-                    <td> ${estado} </td>
+                    <td> <span style="color:${colres};">${resatencion}.</span> </td>
+                    <td> ${estado}. </td>
                 </tr>
             `;
         }
@@ -131,6 +150,7 @@
     }
 
     fimprimirtab = () => {
+        const chart = document.getElementById('piechart');
         var ventana = window.open('', '_blank');
         ventana.document.head.innerHTML = (`<style> 
             body { font-family: sans-serif !important; }
@@ -143,17 +163,19 @@
         ventana.document.body.innerHTML += `
             <br/>
             <br/>
-            <h3 style="text-align:center;">Usuarios del cuestionario acontecimientos traumáticos severos.</h3>
+            <h3 style="text-align:center;">Cuestionario acontecimientos traumáticos severos.</h3>
             <hr style="height:2px !important;" /><br/>
             `;
+        ventana.document.body.innerHTML += '<div style="margin-left:6em !important;">' + chart.innerHTML +'</div>';
         ventana.document.body.innerHTML += `
             <table width="100%" border="1" style="margin-top:40px;">
-                <thead style="padding:40px; text-align:left;">
+                <thead style="padding:40px; text-align:left; font-size:14px;">
                     <tr>
                         <th style="padding:7px;"> Nombre </th>
                         <th style="padding:7px;"> Empresa </th>
                         <th style="padding:7px;"> Puesto </th>
                         <th style="padding:7px;"> Asignación </th>
+                        <th style="padding:7px;"> Diagnostico </th>
                         <th style="padding:7px;"> Estado </th>
                     </tr>
                 </thead>  
