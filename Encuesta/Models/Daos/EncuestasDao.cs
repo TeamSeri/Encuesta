@@ -200,5 +200,39 @@ namespace Encuesta.Models.Daos
 
         }
 
+        public EncuestasBean sp_Datos_EncuestaOpcional_Grafica(int tipo)
+        {
+            EncuestasBean encBean = new EncuestasBean();
+
+            try
+            {
+                this.Conectar();
+                SqlCommand cmd = new SqlCommand("sp_Datos_EncuestaOpcional_Grafica", this.conexion)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+                cmd.Parameters.Add(new SqlParameter("@Tipo", tipo));
+                SqlDataReader data = cmd.ExecuteReader();
+                if (data.Read())
+                {
+                    encBean.iTotalTipoOpc = Convert.ToInt32(data["Cantidad"].ToString());
+                    encBean.sMensaje = "success";
+                } 
+                else
+                {
+                    encBean.sMensaje = "error";
+                }
+                cmd.Dispose();
+                data.Close();
+                conexion.Close();
+            }
+            catch (Exception exc)
+            {
+                Console.Write(exc);
+            }
+
+            return encBean;
+        }
+
     }
 }

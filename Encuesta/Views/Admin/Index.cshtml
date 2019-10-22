@@ -6,6 +6,17 @@
 @{ 
     if (Session["keyAdm"] != null)
     {
+
+        <style type="text/css">
+            th {
+                font-size: 13px;     font-weight: normal;     padding: 8px;     background: #337ab7; color:white !important;
+                border-top: 4px solid #aabcfe;    border-bottom: 1px solid #fff; color: #039; 
+            }
+            td {    padding: 8px;     background: #e8edff;     border-bottom: 1px solid #fff;
+                    color: #669;    border-top: 1px solid transparent; }
+            tr:hover td { background: #d0dafd; color: #339; }
+        </style>
+
         <h2 class="text-center" style="margin-top:2em !important;">
             <b>Empresas en el sistema</b>
         </h2>
@@ -17,8 +28,8 @@
                         <table id="tablaem" class="display">
                             <thead>
                                 <tr>
-                                    <th>Empresa</th>
-                                    <th>Opcion</th>
+                                    <th>Empresa <i title="Presiona este icono para ordenar alfabeticamente" class="fas fa-sort" style="margin-left:0.5em !important;"></i> </th>
+                                    <th>Opción <i title="Presiona este icono para ordenar alfabeticamente" class="fas fa-sort" style="margin-left:0.5em !important;"></i> </th>
                                 </tr>
                             </thead>
                             <tbody id="cont">
@@ -26,7 +37,7 @@
                                 {
                                     <tr>
                                         <td>
-                                            <i class="fas fa-industry fa-lg"></i> <span style="margin-left:1em !important;"><b>@Html.DisplayFor(modelItem => item.sNombre)</b></span>
+                                            <i class="fas fa-university fa-lg"></i> <span style="margin-left:1em !important;"><b>@Html.DisplayFor(modelItem => item.sNombre)</b></span>
                                         </td>
                                         <td>
                                             <b>

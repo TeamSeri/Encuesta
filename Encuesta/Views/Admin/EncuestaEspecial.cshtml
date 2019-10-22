@@ -7,6 +7,32 @@
 
     if (Session["keyAdm"] != null)
     {
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <style type="text/css">
+            th {
+                font-size: 13px;
+                font-weight: normal;
+                padding: 8px;
+                background: #337ab7;
+                color: white !important;
+                border-top: 4px solid #aabcfe;
+                border-bottom: 1px solid #fff;
+                color: #039;
+            }
+
+            td {
+                padding: 8px;
+                background: #e8edff;
+                border-bottom: 1px solid #fff;
+                color: #669;
+                border-top: 1px solid transparent;
+            }
+
+            tr:hover td {
+                background: #d0dafd;
+                color: #339;
+            }
+        </style>
         <div style="margin-top:2em !important;">
             <div class="container-fluid">
                 <div class="row">
@@ -17,28 +43,36 @@
                         <a href="#" data-toggle="modal" data-target="#regDatosEmpresa" class="btn btn-primary btn-block" style="margin-top:3em !important;" id="btnnewreg">
                             <i class="fas fa-plus"></i> <span style="margin-left:0.5em;">Nuevo registro</span>
                         </a>
+                        <button type="button" class="btn btn-primary btn-block" style="margin-top:3em !important;" id="btnprint">
+                            <i class="fas fa-print"></i> <span style="margin-left:0.5em;">Imprimir</span>
+                        </button>
+                        @*<button type="button" class="btn btn-primary btn-block" style="margin-top:3em !important;" id="btnmostgraph">
+                                <i class="fas fa-chart-pie"></i> <span style="margin-left:0.5em;">Grafica</span>
+                            </button>*@
                         <a href="#" data-toggle="modal" data-target="#info" class="btn btn-primary btn-block" style="margin-top:3em !important;" id="btninfo">
                             <i class="fas fa-info"></i> <span style="margin-left:0.5em;">Ayuda</span>
                         </a>
                     </div>
-                    <div class="col-lg-10 col-md-10 col-sm-12">
+                    <div class="col-lg-10 col-md-10 col-sm-12" id="divtabla">
                         <h2><b> <i class="fas fa-edit color-primary" style="margin-right:0.5em !important;"></i> Encuestas especiales</b></h2>
                         <hr />
                         <div class="row animated fadeInDown delay-1s" style="padding:20px; margin-bottom:5em !important; margin-top:1em !important;">
+                            <div class="text-center" style="margin-left:8em !important; margin-bottom:5em !important;">
+                                <div id="piechart" style="width: 800px; height: 500px;"></div>
+                            </div>
                             <div class="table">
                                 <table id="tablaus" class="display">
                                     <thead>
                                         <tr>
-                                            <th>Nombre</th>
-                                            <th>Empresa</th>
-                                            <th>Puesto</th>
-                                            <th>Código</th>
-                                            <th>Estado</th>
-                                            <th>Opciones</th>
+                                            <th>Nombre <i title="Presiona este icono para ordenar alfabeticamente" class="fas fa-sort" style="margin-left:0.5em !important;"></i></th>
+                                            <th>Empresa <i title="Presiona este icono para ordenar alfabeticamente" class="fas fa-sort" style="margin-left:0.5em !important;"></i></th>
+                                            <th>Puesto <i title="Presiona este icono para ordenar alfabeticamente" class="fas fa-sort" style="margin-left:0.5em !important;"></i></th>
+                                            <th>Código <i title="Presiona este icono para ordenar alfabeticamente" class="fas fa-sort" style="margin-left:0.5em !important;"></i></th>
+                                            <th>Estado <i title="Presiona este icono para ordenar alfabeticamente" class="fas fa-sort" style="margin-left:0.5em !important;"></i></th>
+                                            <th>Opciones <i title="Presiona este icono para ordenar alfabeticamente" class="fas fa-sort" style="margin-left:0.5em !important;"></i></th>
                                         </tr>
                                     </thead>
                                     <tbody id="conttable">
-
                                     </tbody>
                                 </table>
                             </div>

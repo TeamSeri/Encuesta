@@ -48,9 +48,9 @@
                     <hr />
                     <script type="text/javascript" src="~/Scripts/Admin/DatosEmpresa.js"></script>
                     <script type="text/javascript">
-                document.addEventListener('DOMContentLoaded', () => {
-                    dataemp(@Model.iIdRegistro);
-                });
+                        document.addEventListener('DOMContentLoaded', () => {
+                            dataemp(@Model.iIdRegistro);
+                        });
                     </script>
                     @{
                         if (Model.sTipoEncuesta == "E1")
@@ -136,10 +136,10 @@
 
                             <script type="text/javascript" src="~/Scripts/Admin/graficatest1.js"></script>
                             <script type="text/javascript">
-                        document.addEventListener('DOMContentLoaded', () => {
-                            datachartgen(@Model.iIdRegistro, '@Model.sTipoEncuesta');
-                            datachart(@Model.iIdRegistro);
-                        });
+                                document.addEventListener('DOMContentLoaded', () => {
+                                    datachartgen(@Model.iIdRegistro, '@Model.sTipoEncuesta');
+                                    datachart(@Model.iIdRegistro);
+                                });
                             </script>
 
                         }
@@ -217,10 +217,10 @@
 
                             <script type="text/javascript" src="~/Scripts/Admin/graficatest2.js"></script>
                             <script type="text/javascript">
-                        document.addEventListener('DOMContentLoaded', () => {
-                            datachartgen(@Model.iIdRegistro, '@Model.sTipoEncuesta');
-                            datachart(@Model.iIdRegistro);
-                        });
+                                document.addEventListener('DOMContentLoaded', () => {
+                                    datachartgen(@Model.iIdRegistro, '@Model.sTipoEncuesta');
+                                    datachart(@Model.iIdRegistro);
+                                });
                             </script>
 
 

@@ -7,6 +7,8 @@
     const puesto = document.getElementById('puesto');
     const codigoasc = document.getElementById('codigoasc');
 
+    let arrusers = [], satencion = 0, natencion = 0;
+
     loaddataencopc = () => {
         try {
             $.ajax({
@@ -17,21 +19,30 @@
                     lengt = data.length;
                     let estado = '';
                     for (var i = 0; i < data.length; i++) {
+                        arrusers.push(data);
                         if (data[i].iEstadoEncOpc == 1) {
                             estado = "Contestada";
                         } else {
                             estado = "Sin contestar";
                         }
-                        console.log(data[i]);
                         conttable.innerHTML += `
                             <tr>
                                 <td> <i class="fas fa-user"></i> ${data[i].sNombreEmpleadoOpc} </td>
-                                <td> ${data[i].sEmpresa} </td>
+                                <td>
+                                    <a href="/Admin/Detalles?empresa=${data[i].iIdEmpresaOpc}"> 
+                                        <i class="fas fa-external-link-alt" style="margin-right:0.5em !important;"></i>
+                                        ${data[i].sEmpresa} 
+                                    </a>
+                                </td>
                                 <td> ${data[i].sPuestoEmOpc} </td>
                                 <td> ${data[i].sCodigoAcOpc} </td>
                                 <td> ${estado} </td>
-                                <td> <i class="fas fa-external-link-alt color-primary" style="margin-right:0.5em;"></i>
-                                     <a href="/Admin/DetallesRegistroEncuestaOpc?registro=${data[i].iIdRegistroOpc}">Detalles registro</a> </td>
+                                <td> 
+                                    <i class="fas fa-external-link-alt color-primary" style="margin-right:0.5em;"></i>
+                                     <a href="/Admin/DetallesRegistroEncuestaOpc?registro=${data[i].iIdRegistroOpc}">
+                                        Detalles
+                                    </a>
+                                </td>
                             </tr>
                          `;
                     }
@@ -51,6 +62,118 @@
             }
         });
     }, 100);
+
+    loaddatachart = () => {
+        try {
+            $.ajax({
+                url: "../Admin/GraficaEncuestaOpcional",
+                type: "POST",
+                data: {},
+                success: function (data) {
+                    if (data.estado == "success") {
+                        satencion = data.siatencion;
+                        natencion = data.noatencion;
+                    }
+                }, 
+                error: function (err) {
+                    console.error(err);
+                }
+            });
+        } catch (err) {
+            console.error(err);
+        }
+    }
+
+    loaddatachart();
+
+    google.charts.load('current', { 'packages': ['bar'] });
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['Resultado', 'Personas'],
+            ['Si requieren atención clinica', parseInt(satencion)],
+            ['No requieren atención clinica', parseInt(natencion)]
+        ]);
+
+        var options = {
+            chart: {
+                title: 'Grafica',
+                subtitle: ' !Importante¡ Solo toma los valores de los usuarios que han contestado las encuestas',
+            },
+            bars: 'vertical'
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('piechart'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+    }
+
+    ffilas = () => {
+        let filas = '', estado = '';
+        for (var i = 0; i < arrusers.length; i++) {
+            if (arrusers[i][i].iEstadoEncOpc == 1) {
+                estado = 'Contestada';
+            } else {
+                estado = 'Sin contestar';
+            }
+            filas += `
+                <tr style="font-size:13px !important;">
+                    <td> ${arrusers[i][i].sNombreEmpleadoOpc} </td> 
+                    <td> ${arrusers[i][i].sEmpresa} </td>
+                    <td> ${arrusers[i][i].sPuestoEmOpc} </td>
+                    <td> ${arrusers[i][i].sFechaEncOpc} </td>
+                    <td> ${estado} </td>
+                </tr>
+            `;
+        }
+        return filas;
+    }
+
+    fimprimirtab = () => {
+        var ventana = window.open('', '_blank');
+        ventana.document.head.innerHTML = (`<style> 
+            body { font-family: sans-serif !important; }
+            .list-n { list-style: none !important; }
+            .mli { margin-left:20px !important; color:red !important; }
+            .mti { margin-top:10px !important; }
+            table { border-collapse:collapse; border-radius:40%; }
+
+        </style>`);
+        ventana.document.body.innerHTML += `
+            <br/>
+            <br/>
+            <h3 style="text-align:center;">Usuarios del cuestionario acontecimientos traumáticos severos.</h3>
+            <hr style="height:2px !important;" /><br/>
+            `;
+        ventana.document.body.innerHTML += `
+            <table width="100%" border="1" style="margin-top:40px;">
+                <thead style="padding:40px; text-align:left;">
+                    <tr>
+                        <th style="padding:7px;"> Nombre </th>
+                        <th style="padding:7px;"> Empresa </th>
+                        <th style="padding:7px;"> Puesto </th>
+                        <th style="padding:7px;"> Asignación </th>
+                        <th style="padding:7px;"> Estado </th>
+                    </tr>
+                </thead>  
+                <tbody style="padding:30px !important;">
+                    ${ffilas()}
+                </tbody>
+            </table>
+        `;
+        ventana.document.title = '';
+        ventana.print();
+        ventana.close();
+    }
+
+    document.getElementById('btnprint').addEventListener('click', () => {
+        fimprimirtab();
+    });
+
+    //document.getElementById('btnmostgraph').addEventListener('click', () => {
+    //    $("#divtabla").hide(1000);
+    //});
 
     try {
         $.ajax({
@@ -81,6 +204,9 @@
     const code = Math.round(Math.random() * (99999 - 2) + 1);
 
     puesto.addEventListener('keyup', () => {
+        if (puesto.value == '') {
+            codigoasc.value = "";
+        }
         if (empresa.value != "none") {
             if (empleado.value != "") {
                 txtempresa = $('select[name="empresasel"] option:selected').text();

@@ -270,5 +270,30 @@ namespace Encuesta.Controllers
             return View();
         }
 
+        [HttpPost]
+        public JsonResult GraficaEncuestaOpcional()
+        {
+            EncuestasBean encBean = new EncuestasBean();
+            EncuestasDao encDao = new EncuestasDao();
+            int satencion = 1, natencion = 0, rsiatencion = 0, rnoatencion = 0;
+            encBean = encDao.sp_Datos_EncuestaOpcional_Grafica(satencion);
+            string resultado = "";
+            if (encBean.sMensaje == "success") {
+                resultado = "success";
+                rsiatencion = encBean.iTotalTipoOpc;
+                encBean = encDao.sp_Datos_EncuestaOpcional_Grafica(natencion);
+                if (encBean.sMensaje == "success") {
+                    resultado = "success";
+                    rnoatencion = encBean.iTotalTipoOpc;
+                } else {
+                    resultado = "error";
+                }
+            }  else {
+                resultado = "error";
+            }
+            var data = new { siatencion = rsiatencion, noatencion = rnoatencion, estado = resultado };
+            return Json(data);
+        }
+
     }
 }
