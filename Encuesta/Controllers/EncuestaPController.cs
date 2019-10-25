@@ -408,7 +408,8 @@ namespace Encuesta.Controllers
         public ActionResult GuardarEncuestaOpc(FormCollection form)
         {
             int registro = Convert.ToInt32(form["registro"]), empresa = Convert.ToInt32(form["empresa"]), tipo = 0;
-            string codigo = form["codigo"].ToString(), puesto = form["puesto"].ToString(), diagnostico = "";
+            string codigo = form["codigo"].ToString(), puesto = form["puesto"].ToString(), diagnostico = "",
+                diagnostico1 = "", diagnostico2 = "", diagnostico3 = "";
             int resp1 = Convert.ToInt32(form["resp1"]), resp2 = Convert.ToInt32(form["resp2"]),
                 resp3 = Convert.ToInt32(form["resp3"]), resp4 = Convert.ToInt32(form["resp4"]),
                 resp5 = Convert.ToInt32(form["resp5"]), resp6 = Convert.ToInt32(form["resp6"]),
@@ -419,6 +420,25 @@ namespace Encuesta.Controllers
                 resp15 = Convert.ToInt32(form["resp15"]), resp16 = Convert.ToInt32(form["resp16"]),
                 resp17 = Convert.ToInt32(form["resp17"]), resp18 = Convert.ToInt32(form["resp18"]),
                 resp19 = Convert.ToInt32(form["resp19"]);
+
+            if (resp7 == 1 || resp8 == 1) {
+                diagnostico1 = "Si";
+            } else {
+                diagnostico1 = "No";
+            }
+
+            if (resp9 == 1 || resp10 == 1 || resp11 == 1 || resp12 == 1 || resp13 == 1 || resp14 == 1 || resp15 == 1) {
+                diagnostico2 = "Si"; 
+            } else {
+                diagnostico2 = "No";
+            }
+
+            if (resp16 == 1 || resp17 == 1 || resp18 == 1 || resp19 == 1) {
+                diagnostico3 = "Si";
+            } else {
+                diagnostico3 = "No";
+            }
+
             if (resp1 == 0 && resp2 == 0 && resp3 == 0 && resp4 == 0 && resp5 == 0 && resp6 == 0)
             {
                 tipo = 0;
@@ -436,7 +456,7 @@ namespace Encuesta.Controllers
             EncuestasBean encBean = new EncuestasBean();
             EncuestaOpcDao encOpcDao = new EncuestaOpcDao();
             DateTime fecha = DateTime.Now;
-            encBean = encOpcDao.sp_Insert_Datos_DetalleEncuestaOpcional(registro, empresa, fecha, diagnostico, tipo, puesto, codigo);
+            encBean = encOpcDao.sp_Insert_Datos_DetalleEncuestaOpcional(registro, empresa, fecha, diagnostico, tipo, puesto, codigo, diagnostico1, diagnostico2, diagnostico3);
 
             return View(encBean);
         }

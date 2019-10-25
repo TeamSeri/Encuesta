@@ -26,5 +26,8 @@ namespace Encuesta.Models.Beans
         public string sDiagnosticoOpcDetalle { get; set; }
         public int iTipoDetalle { get; set; }
         public int iTotalTipoOpc { get; set; }
+        public string sDiagnosticoOpc1 { get; set; }
+        public string sDiagnosticoOpc2 { get; set; }
+        public string sDiagnosticoOpc3 { get; set; }
     }
 }

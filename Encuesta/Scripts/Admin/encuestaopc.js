@@ -19,6 +19,7 @@
                     lengt = data.length;
                     let estado = '', resatencion = '';
                     for (var i = 0; i < data.length; i++) {
+                        console.log(data[i]);
                         arrusers.push(data);
                         if (data[i].sDiagnosticoOpcDetalle != "") {
                             resatencion = data[i].sDiagnosticoOpcDetalle;

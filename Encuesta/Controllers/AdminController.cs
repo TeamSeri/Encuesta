@@ -224,7 +224,7 @@ namespace Encuesta.Controllers
             encBean = encDao.sp_DatosDetalle_RegistroEncuestaOpcional(registro);
             if (encBean.sMensaje == "success")
             {
-                var data = new { mensaje = encBean.sMensaje, fechacon = encBean.sFechaRegistroOpcDetalle, diagnostico = encBean.sDiagnosticoOpcDetalle, tipo = encBean.iTipoDetalle, empleado = encBean.sNombreEmpleadoOpc, puesto = encBean.sPuestoEmOpc, codigo = encBean.sCodigoAcOpc, estado = encBean.iEstadoEncOpc, fechareg = encBean.sFechaEncOpc, empresa = encBean.sEmpresa};
+                var data = new { mensaje = encBean.sMensaje, fechacon = encBean.sFechaRegistroOpcDetalle, diagnostico = encBean.sDiagnosticoOpcDetalle, tipo = encBean.iTipoDetalle, empleado = encBean.sNombreEmpleadoOpc, puesto = encBean.sPuestoEmOpc, codigo = encBean.sCodigoAcOpc, estado = encBean.iEstadoEncOpc, fechareg = encBean.sFechaEncOpc, empresa = encBean.sEmpresa, diagnostico1 = encBean.sDiagnosticoOpc1, diagnostico2 = encBean.sDiagnosticoOpc2, diagnostico3 = encBean.sDiagnosticoOpc3};
                 return Json(data);
             }
             else

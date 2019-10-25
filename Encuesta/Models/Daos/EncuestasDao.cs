@@ -147,6 +147,9 @@ namespace Encuesta.Models.Daos
                         encBean.sFechaEncOpc = data["FechaEnc"].ToString();
                         encBean.sEmpresa = data["Nombre"].ToString();
                         encBean.sDiagnosticoOpcDetalle = data["Diagnostico"].ToString();
+                        encBean.sDiagnosticoOpc1 = data["Diagnostico1"].ToString();
+                        encBean.sDiagnosticoOpc2 = data["Diagnostico2"].ToString();
+                        encBean.sDiagnosticoOpc3 = data["Diagnostico3"].ToString();
                         listEncBean.Add(encBean);
                     }
                 }

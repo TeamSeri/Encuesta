@@ -1,6 +1,21 @@
 ﻿document.addEventListener('DOMContentLoaded', () => {
 
     let tipoRes = 0;
+    let diagdetalle1 = document.getElementById('diagdetalle1'), diagdetalle2 = document.getElementById('diagdetalle2'),
+        diagdetalle3 = document.getElementById('diagdetalle3');
+
+    const contenidodiag1 = `
+        Se sugiere canalización para su valoración y atención clínica, ya que ha presenciado o sufrido un acontecimiento traumático severo, durante o con motivo del trabajo que desempeña.
+        Durante el último mes, refiere recuerdos persistentes sobre lo acontecido, que le provocan malestares, que pueden afectar su ciclo sueño vigilia, con ensoñaciones persistentes relacionados con lo ocurrido.
+    `;
+
+    const contenidodiag2 = `
+        Presenta esfuerzos conscientes por evitar circunstancias similares o asociadas al acontecimiento, como son sentimientos, conversaciones, lugares, actividades y personas. Su nivel de energía esta reducida modificando sus actividades cotidianas, se aísla, además puede presentar dificultad para expresar sus sentimientos, con pensamientos pesimistas sobre su futuro.
+    `;
+
+    const contenidodiag3 = `
+        Muestra afectaciones videntes en si ciclo sueño vigilia, labilidad emocional, con dificultad para sostener su concentración durante sus actividades laborales, además puede presentar ansiedad persistente.
+    `;
 
     floaddata = (param) => {
         try {
@@ -10,6 +25,15 @@
                 data: { registro: param },
                 success: function (data) {
                     console.log(data);
+                    if (data.diagnostico1 == "Si") {
+                        diagdetalle1.textContent += contenidodiag1;
+                    }
+                    if (data.diagnostico2 == "Si") {
+                        diagdetalle2.textContent += contenidodiag2;
+                    }
+                    if (data.diagnostico3 == "Si") {
+                        diagdetalle3.textContent += contenidodiag3;
+                    }
                     if (data.mensaje == "success") {
                         tipoRes = data.tipo;
                         document.getElementById('nomem').textContent = data.empleado + ".";
@@ -46,7 +70,7 @@
     }
 
     function fimprimir() {
-        let coldiag = '', simbolcode = '', simbolcode2 = '';
+        let coldiag = '', simbolcode = '', simbolcode2 = '', diag1 = '', diag2 = '', diag3 = '';
         if (tipoRes == 1) {
             coldiag = 'red';
             simbolcode = '&#33;';
@@ -106,7 +130,26 @@
                 </thead>
             </table>
         `;
-        //ventana.document.title = 'Informe-Acontecimientos-Traumáticos-Severos-' + document.getElementById('nomem').textContent;
+        ventana.document.body.innerHTML += `
+            <table width="100%" border="1" style="margin-top:80px;">
+                <thead style="padding:40px;">
+                    <tr>
+                        <th style="padding:7px;">Detalles del diagnostico</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="padding:10px;">
+                            ${document.getElementById('diagdetalle1').textContent}
+                            <br/>
+                            ${document.getElementById('diagdetalle2').textContent}
+                            <br />
+                            ${document.getElementById('diagdetalle3').textContent}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        `;
         ventana.print();
         ventana.close();
     }

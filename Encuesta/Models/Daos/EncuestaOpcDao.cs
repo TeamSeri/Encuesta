@@ -47,7 +47,7 @@ namespace Encuesta.Models.Daos
             return listEncBean;
         }
 
-        public EncuestasBean sp_Insert_Datos_DetalleEncuestaOpcional(int registro, int empresa, DateTime fecha, string diagnostico, int tipo, string puesto, string codigo)
+        public EncuestasBean sp_Insert_Datos_DetalleEncuestaOpcional(int registro, int empresa, DateTime fecha, string diagnostico, int tipo, string puesto, string codigo, string diagnostico1, string diagnostico2, string diagnostico3)
         {
             EncuestasBean encBean = new EncuestasBean();
 
@@ -63,6 +63,9 @@ namespace Encuesta.Models.Daos
                 cmd.Parameters.Add(new SqlParameter("@Fecha",fecha));
                 cmd.Parameters.Add(new SqlParameter("@Diagnostico", diagnostico));
                 cmd.Parameters.Add(new SqlParameter("@Tipo", tipo));
+                cmd.Parameters.Add(new SqlParameter("@Diagnostico1", diagnostico1));
+                cmd.Parameters.Add(new SqlParameter("@Diagnostico2", diagnostico2));
+                cmd.Parameters.Add(new SqlParameter("@Diagnostico3", diagnostico3));
                 if (cmd.ExecuteNonQuery() > 0)
                 {
                     cmd.Dispose();
@@ -119,6 +122,9 @@ namespace Encuesta.Models.Daos
                     encBean.iEstadoEncOpc = Convert.ToInt32(data["EstadoEn"].ToString());
                     encBean.sFechaEncOpc = data["FechaEnc"].ToString();
                     encBean.sEmpresa = data["Nombre"].ToString();
+                    encBean.sDiagnosticoOpc1 = data["Diagnostico1"].ToString();
+                    encBean.sDiagnosticoOpc2 = data["Diagnostico2"].ToString();
+                    encBean.sDiagnosticoOpc3 = data["Diagnostico3"].ToString();
                     encBean.sMensaje = "success";
                 } else
                 {
