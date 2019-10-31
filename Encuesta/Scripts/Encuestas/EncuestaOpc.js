@@ -40,7 +40,7 @@
     fmsgerroricom = () => {
         swal({
             title: "Atención",
-            text: "Completa las preguntas seleccionando una opción a cada una",
+            text: "Completa las preguntas seleccionando una opción a cada una de ellas",
             icon: "warning"
         });
     }
@@ -201,12 +201,12 @@
                     }
                     if (data[i].sIdentificador == 'P1' && data[i].sTipo == 'P1') {
                         preguntasdiv1.innerHTML += `
-                            <div class="form-group">
-                                <label>${data[i].sContenidoPregunta}</label>
-                                <div class="margins-quest">
-                                    <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="1" />
+                            <div class="form-group" style="margin-bottom:2em !important;">
+                                <label style="color:#0000d6 !important; text-shadow: 1px 1px 0 #ccc;">${data[i].sContenidoPregunta}</label>
+                                <div class="margins-quest" style="margin-top:2em !important;">
+                                    <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="1" />
                                     <label class="form-check-label">Si</label>
-                                       <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="0" />
+                                       <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="0" />
                                     <label class="form-check-label">No</label>
                                 </div>
                             </div>
@@ -217,12 +217,12 @@
                     }
                     if (data[i].sTipo == 'P2' && data[i].sTipo == 'P2') {
                         preguntasdiv2.innerHTML += `
-                            <div class="form-group">
-                                <label>${data[i].sContenidoPregunta}</label>
-                                <div class="margins-quest">
-                                    <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="1" />
+                            <div class="form-group" style="margin-bottom:2em !important;">
+                                <label style="color:#0000d6 !important; text-shadow: 1px 1px 0 #ccc;">${data[i].sContenidoPregunta}</label>
+                                <div class="margins-quest" style="margin-top:2em !important;">
+                                    <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="1" />
                                     <label class="form-check-label">Si</label>
-                                       <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="0" />
+                                       <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="0" />
                                     <label class="form-check-label">No</label>
                                 </div>
                             </div>
@@ -233,12 +233,12 @@
                     }
                     if (data[i].sTipo == 'P3' && data[i].sTipo == 'P3') {
                         preguntasdiv3.innerHTML += `
-                            <div class="form-group">
-                                <label>${data[i].sContenidoPregunta}</label>
-                                <div class="margins-quest">
-                                    <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="1" />
+                            <div class="form-group" style="margin-bottom:2em !important;">
+                                <label style="color:#0000d6 !important; text-shadow: 1px 1px 0 #ccc;">${data[i].sContenidoPregunta}</label>
+                                <div class="margins-quest" style="margin-top:2em !important;">
+                                    <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="1" />
                                     <label class="form-check-label">Si</label>
-                                       <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="0" />
+                                       <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="0" />
                                     <label class="form-check-label">No</label>
                                 </div>
                             </div>
@@ -249,12 +249,12 @@
                     }
                     if (data[i].sTipo == 'P4' && data[i].sTipo == 'P4') {
                         preguntasdiv4.innerHTML += `
-                            <div class="form-group">
-                                <label>${data[i].sContenidoPregunta}</label>
-                                <div class="margins-quest">
-                                    <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="1" />
+                            <div class="form-group" style="margin-bottom:2em !important;">
+                                <label style="color:#0000d6 !important; text-shadow: 1px 1px 0 #ccc;">${data[i].sContenidoPregunta}</label>
+                                <div class="margins-quest" style="margin-top:2em !important;">
+                                    <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="1" />
                                     <label class="form-check-label">Si</label>
-                                       <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="0" />
+                                       <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="0" />
                                     <label class="form-check-label">No</label>
                                 </div>
                             </div>

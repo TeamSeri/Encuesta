@@ -4,48 +4,55 @@
     Layout = "~/Views/Shared/_LayoutIni.cshtml";
 }
 
-<div class="container-fluid">
-
-    <div class="jumbotron" style="margin-top:2em !important;">
-        <h1 style="font-size:50px; margin-bottom:0.3em !important;" class="text-center text-capitalize">Completa los datos</h1>
-        <div class="row">
-            <div class="col-lg-12" style="margin-top:1.5em;">
-                <form action="../EncuestaP/Opcional" method="POST" id="form_data" class="p-3">
-                    <div class="row">
-                        <div class="col-lg-offset-4 col-lg-4">
-                            <div class="form-group" id="divempresa">
-                                <label>Empresa: </label>
-                                <select class="form-control" id="nom_empresa" name="nom_empresa">
-                                    <option value="0" selected>Selecciona</option>
-                                </select>
-                            </div>
-                            <div class="form-group" id="divpuesto">
-                                <label>Puesto:</label>
-                                <input type="text" name="puesto" id="puesto" class="form-control" />
-                            </div>
-                            <div class="form-group" id="divcodigo">
-                                <label>Codigo de acceso:</label>
-                                <input type="text" name="codigo" id="codigo" class="form-control" />
-                            </div>
-                            <div class="form-group text-center d-none" id="divloader">
-                                <div class="spinner">
-                                    <div class="double-bounce1"></div>
-                                    <div class="double-bounce2"></div>
+    <div class="container-fluid">
+        <style>
+            body {
+                background-color: #FAFFEB;
+            }
+        </style>
+        <div class="" style="margin-top:6em !important;">
+            <h1 style="font-size:30px; margin-bottom:0.3em !important; color:#0000d6 !important; font-weight:500; text-shadow: 2px 2px 0 #ccc;" class="text-center">
+                Norma  -  35 : <span>Ingresa los datos para comenzar.</span>
+            </h1>
+            <hr />
+            <div class="row">
+                <div class="col-lg-12" style="margin-top:1.5em;">
+                    <form action="../EncuestaP/Opcional" method="POST" id="form_data" class="p-3">
+                        <div class="row">
+                            <div class="col-lg-offset-4 col-lg-4">
+                                <div class="form-group" id="divempresa">
+                                    <label>Empresa: </label>
+                                    <select class="form-control" id="nom_empresa" name="nom_empresa">
+                                        <option value="0" selected>Selecciona</option>
+                                    </select>
                                 </div>
-                                <b>Procesando...</b>
-                            </div>
-                            <div class="form-group" id="divbutton">
-                                <button class="btn btn-primary btn-sm" type="submit">
-                                    Comprobar y continuar
-                                </button>
+                                <div class="form-group" id="divpuesto">
+                                    <label>Puesto:</label>
+                                    <input type="text" name="puesto" id="puesto" class="form-control" />
+                                </div>
+                                <div class="form-group" id="divcodigo">
+                                    <label>Codigo de acceso:</label>
+                                    <input type="text" name="codigo" id="codigo" class="form-control" />
+                                </div>
+                                <div class="form-group text-center d-none" id="divloader">
+                                    <div class="spinner">
+                                        <div class="double-bounce1"></div>
+                                        <div class="double-bounce2"></div>
+                                    </div>
+                                    <b>Procesando...</b>
+                                </div>
+                                <div class="form-group" id="divbutton">
+                                    <button style="margin-left:5.3em;" class="btn btn-color btn-sha btn-sm" type="submit">
+                                        Comprobar y continuar
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
 
-</div>
+    </div>
 
 <script type="text/javascript" src="~/Scripts/TestOpc.js"></script>

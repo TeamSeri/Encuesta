@@ -141,9 +141,9 @@
                     <tr>
                         <td style="padding:10px;">
                             ${document.getElementById('diagdetalle1').textContent}
-                            <br/>
+                            <br/><br/>
                             ${document.getElementById('diagdetalle2').textContent}
-                            <br />
+                            <br/><br/>
                             ${document.getElementById('diagdetalle3').textContent}
                         </td>
                     </tr>

@@ -59,6 +59,24 @@
         resp71 = document.getElementsByName('resp71'),
         resp72 = document.getElementsByName('resp72');
 
+    let flag = false;
+
+    fconfirmdialog = (param) => {
+        swal({
+            title: "Atención",
+            text: "Al realiar esta encuesta se informa que es de manera confidencialidad",
+            icon: "info",
+            closeOnClickOutside: false,
+            closeOnEsc: false
+        }).then((acepta) => {
+            if (acepta) {
+                flag = true;
+            } else {
+                location.href = '/Home/Index';
+            }
+        });
+    }
+
     fcomprobationsuccess = (apart) => {
         document.getElementById('span' + String(apart)).classList.remove('bg-danger');
         document.getElementById('span' + String(apart)).classList.add('bg-primary-s');
@@ -70,7 +88,7 @@
     fmsgerroricom = () => {
         swal({
             title: "Atención",
-            text: "Completa las preguntas seleccionando una opción a cada una",
+            text: "Completa las preguntas seleccionando una opción a cada una de ellas",
             icon: "warning"
         });
     }
@@ -434,18 +452,18 @@
                     }
                     if (data[i].sTipo == 'P1' && data[i].sIdentificador == 'P1' && data[i].iNumeroPregunta == '1') {
                         preguntasdiv1.innerHTML += `
-                            <div class="form-group">
-                                <label>${data[i].iNumeroPregunta}.- ${data[i].sContenidoPregunta}</label>
-                                <div class="margins-quest">
-                                    <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="0" />
+                            <div class="form-group" style="margin-bottom:2em !important;">
+                                <label style="color:#0000d6 !important; text-shadow: 1px 1px 0 #ccc;">${data[i].iNumeroPregunta}.- ${data[i].sContenidoPregunta}</label>
+                                <div class="margins-quest" style="margin-top:2em !important;">
+                                    <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="0" />
                                     <label class="form-check-label">Siempre</label>
-                                       <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="1" />
+                                       <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="1" />
                                     <label class="form-check-label">Casi siempre</label>
-                                        <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="2" />
+                                        <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="2" />
                                     <label class="form-check-label">Algunas veces</label>
-                                         <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="3" />
+                                         <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="3" />
                                     <label class="form-check-label">Casi nunca</label>
-                                        <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="4" />
+                                        <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="4" />
                                     <label class="form-check-label">Nunca</label>
                                 </div>
                             </div>
@@ -453,18 +471,18 @@
                     }
                     if (data[i].sTipo == 'P1' && data[i].sIdentificador == 'P1' && data[i].iNumeroPregunta == '2' || data[i].iNumeroPregunta == '3') {
                         preguntasdiv1.innerHTML += `
-                            <div class="form-group">
-                                <label>${data[i].iNumeroPregunta}.- ${data[i].sContenidoPregunta}</label>
-                                <div class="margins-quest">
-                                    <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="4" />
+                            <div class="form-group" style="margin-bottom:2em !important;">
+                                <label style="color:#0000d6 !important; text-shadow: 1px 1px 0 #ccc;">${data[i].iNumeroPregunta}.- ${data[i].sContenidoPregunta}</label>
+                                <div class="margins-quest" style="margin-top:2em !important;">
+                                    <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="4" />
                                     <label class="form-check-label">Siempre</label>
-                                       <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="3" />
+                                       <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="3" />
                                     <label class="form-check-label">Casi siempre</label>
-                                        <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="2" />
+                                        <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="2" />
                                     <label class="form-check-label">Algunas veces</label>
-                                         <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="1" />
+                                         <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="1" />
                                     <label class="form-check-label">Casi nunca</label>
-                                        <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="0" />
+                                        <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="0" />
                                     <label class="form-check-label">Nunca</label>
                                 </div>
                             </div>
@@ -472,18 +490,18 @@
                     }
                     if (data[i].sTipo == 'P1' && data[i].sIdentificador == 'P1' && data[i].iNumeroPregunta == '4') {
                         preguntasdiv1.innerHTML += `
-                            <div class="form-group">
-                                <label>${data[i].iNumeroPregunta}.- ${data[i].sContenidoPregunta}</label>
-                                <div class="margins-quest">
-                                    <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="0" />
+                            <div class="form-group" style="margin-bottom:2em !important;">
+                                <label style="color:#0000d6 !important; text-shadow: 1px 1px 0 #ccc;">${data[i].iNumeroPregunta}.- ${data[i].sContenidoPregunta}</label>
+                                <div class="margins-quest" style="margin-top:2em !important;">
+                                    <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="0" />
                                     <label class="form-check-label">Siempre</label>
-                                       <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="1" />
+                                       <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="1" />
                                     <label class="form-check-label">Casi siempre</label>
-                                        <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="2" />
+                                        <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="2" />
                                     <label class="form-check-label">Algunas veces</label>
-                                         <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="3" />
+                                         <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="3" />
                                     <label class="form-check-label">Casi nunca</label>
-                                        <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="4" />
+                                        <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="4" />
                                     <label class="form-check-label">Nunca</label>
                                 </div>
                             </div>
@@ -491,18 +509,18 @@
                     }
                     if (data[i].sTipo == 'P1' && data[i].sIdentificador == 'P1' && data[i].iNumeroPregunta == '5') {
                         preguntasdiv1.innerHTML += `
-                            <div class="form-group">
-                                <label>${data[i].iNumeroPregunta}.- ${data[i].sContenidoPregunta}</label>
-                                <div class="margins-quest">
-                                    <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="4" />
+                            <div class="form-group" style="margin-bottom:2em !important;">
+                                <label style="color:#0000d6 !important; text-shadow: 1px 1px 0 #ccc;">${data[i].iNumeroPregunta}.- ${data[i].sContenidoPregunta}</label>
+                                <div class="margins-quest" style="margin-top:2em !important;">
+                                    <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="4" />
                                     <label class="form-check-label">Siempre</label>
-                                       <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="3" />
+                                       <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="3" />
                                     <label class="form-check-label">Casi siempre</label>
-                                        <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="2" />
+                                        <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="2" />
                                     <label class="form-check-label">Algunas veces</label>
-                                         <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="1" />
+                                         <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="1" />
                                     <label class="form-check-label">Casi nunca</label>
-                                        <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="0" />
+                                        <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="0" />
                                     <label class="form-check-label">Nunca</label>
                                 </div>
                             </div>
@@ -513,18 +531,18 @@
                     }
                     if (data[i].sTipo == 'P2' && data[i].sIdentificador == 'P2') {
                         preguntasdiv2.innerHTML += `
-                            <div class="form-group">
-                                <label>${data[i].iNumeroPregunta}.- ${data[i].sContenidoPregunta}</label>
-                                <div class="margins-quest">
-                                    <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="4" />
+                            <div class="form-group" style="margin-bottom:2em !important;">
+                                <label style="color:#0000d6 !important; text-shadow: 1px 1px 0 #ccc;">${data[i].iNumeroPregunta}.- ${data[i].sContenidoPregunta}</label>
+                                <div class="margins-quest" style="margin-top:2em !important;">
+                                    <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="4" />
                                     <label class="form-check-label">Siempre</label>
-                                       <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="3" />
+                                       <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="3" />
                                     <label class="form-check-label">Casi siempre</label>
-                                        <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="2" />
+                                        <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="2" />
                                     <label class="form-check-label">Algunas veces</label>
-                                         <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="1" />
+                                         <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="1" />
                                     <label class="form-check-label">Casi nunca</label>
-                                        <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="0" />
+                                        <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="0" />
                                     <label class="form-check-label">Nunca</label>
                                 </div>
                             </div>
@@ -535,18 +553,18 @@
                     }
                     if (data[i].sTipo == 'P3' && data[i].sIdentificador == 'P3') {
                         preguntasdiv3.innerHTML += `
-                            <div class="form-group">
-                                <label>${data[i].iNumeroPregunta}.- ${data[i].sContenidoPregunta}</label>
-                                <div class="margins-quest">
-                                    <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="4" />
+                            <div class="form-group" style="margin-bottom:2em !important;">
+                                <label style="color:#0000d6 !important; text-shadow: 1px 1px 0 #ccc;">${data[i].iNumeroPregunta}.- ${data[i].sContenidoPregunta}</label>
+                                <div class="margins-quest" style="margin-top:2em !important;">
+                                    <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="4" />
                                     <label class="form-check-label">Siempre</label>
-                                       <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="3" />
+                                       <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="3" />
                                     <label class="form-check-label">Casi siempre</label>
-                                        <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="2" />
+                                        <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="2" />
                                     <label class="form-check-label">Algunas veces</label>
-                                         <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="1" />
+                                         <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="1" />
                                     <label class="form-check-label">Casi nunca</label>
-                                        <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="0" />
+                                        <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="0" />
                                     <label class="form-check-label">Nunca</label>
                                 </div>
                             </div>
@@ -557,18 +575,18 @@
                     }
                     if (data[i].sTipo == 'P4' && data[i].sIdentificador == 'P4') {
                         preguntasdiv4.innerHTML += `
-                            <div class="form-group">
-                                <label>${data[i].iNumeroPregunta}.- ${data[i].sContenidoPregunta}</label>
-                                <div class="margins-quest">
-                                    <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="4" />
+                            <div class="form-group" style="margin-bottom:2em !important;">
+                                <label style="color:#0000d6 !important; text-shadow: 1px 1px 0 #ccc;">${data[i].iNumeroPregunta}.- ${data[i].sContenidoPregunta}</label>
+                                <div class="margins-quest" style="margin-top:2em !important;">
+                                    <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="4" />
                                     <label class="form-check-label">Siempre</label>
-                                       <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="3" />
+                                       <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="3" />
                                     <label class="form-check-label">Casi siempre</label>
-                                        <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="2" />
+                                        <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="2" />
                                     <label class="form-check-label">Algunas veces</label>
-                                         <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="1" />
+                                         <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="1" />
                                     <label class="form-check-label">Casi nunca</label>
-                                        <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="0" />
+                                        <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="0" />
                                     <label class="form-check-label">Nunca</label>
                                 </div>
                             </div>
@@ -579,18 +597,18 @@
                     }
                     if (data[i].sTipo == 'P5' && data[i].sIdentificador == 'P5') {
                         preguntasdiv5.innerHTML += `
-                            <div class="form-group">
-                                <label>${data[i].iNumeroPregunta}.- ${data[i].sContenidoPregunta}</label>
-                                <div class="margins-quest">
-                                    <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="0" />
+                            <div class="form-group" style="margin-bottom:2em !important;">
+                                <label style="color:#0000d6 !important; text-shadow: 1px 1px 0 #ccc;">${data[i].iNumeroPregunta}.- ${data[i].sContenidoPregunta}</label>
+                                <div class="margins-quest" style="margin-top:2em !important;">
+                                    <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="0" />
                                     <label class="form-check-label">Siempre</label>
-                                       <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="1" />
+                                       <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="1" />
                                     <label class="form-check-label">Casi siempre</label>
-                                        <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="2" />
+                                        <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="2" />
                                     <label class="form-check-label">Algunas veces</label>
-                                         <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="3" />
+                                         <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="3" />
                                     <label class="form-check-label">Casi nunca</label>
-                                        <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="4" />
+                                        <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="4" />
                                     <label class="form-check-label">Nunca</label>
                                 </div>
                             </div>
@@ -601,18 +619,18 @@
                     }
                     if (data[i].sTipo == 'P6' && data[i].sIdentificador == 'P6' && data[i].iNumeroPregunta == '29') {
                         preguntasdiv6.innerHTML += `
-                            <div class="form-group">
-                                <label>${data[i].iNumeroPregunta}.- ${data[i].sContenidoPregunta}</label>
-                                <div class="margins-quest">
-                                    <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="4" />
+                            <div class="form-group" style="margin-bottom:2em !important;">
+                                <label style="color:#0000d6 !important; text-shadow: 1px 1px 0 #ccc;">${data[i].iNumeroPregunta}.- ${data[i].sContenidoPregunta}</label>
+                                <div class="margins-quest" style="margin-top:2em !important;">
+                                    <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="4" />
                                     <label class="form-check-label">Siempre</label>
-                                       <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="3" />
+                                       <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="3" />
                                     <label class="form-check-label">Casi siempre</label>
-                                        <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="2" />
+                                        <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="2" />
                                     <label class="form-check-label">Algunas veces</label>
-                                         <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="1" />
+                                         <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="1" />
                                     <label class="form-check-label">Casi nunca</label>
-                                        <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="0" />
+                                        <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="0" />
                                     <label class="form-check-label">Nunca</label>
                                 </div>
                             </div>
@@ -620,18 +638,18 @@
                     }
                     if (data[i].sTipo == 'P6' && data[i].sIdentificador == 'P6' && data[i].iNumeroPregunta == '30') {
                         preguntasdiv6.innerHTML += `
-                            <div class="form-group">
-                                <label>${data[i].iNumeroPregunta}.- ${data[i].sContenidoPregunta}</label>
-                                <div class="margins-quest">
-                                    <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="0" />
+                            <div class="form-group" style="margin-bottom:2em !important;">
+                                <label style="color:#0000d6 !important; text-shadow: 1px 1px 0 #ccc;">${data[i].iNumeroPregunta}.- ${data[i].sContenidoPregunta}</label>
+                                <div class="margins-quest" style="margin-top:2em !important;">
+                                    <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="0" />
                                     <label class="form-check-label">Siempre</label>
-                                       <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="1" />
+                                       <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="1" />
                                     <label class="form-check-label">Casi siempre</label>
-                                        <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="2" />
+                                        <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="2" />
                                     <label class="form-check-label">Algunas veces</label>
-                                         <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="3" />
+                                         <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="3" />
                                     <label class="form-check-label">Casi nunca</label>
-                                        <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="4" />
+                                        <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="4" />
                                     <label class="form-check-label">Nunca</label>
                                 </div>
                             </div>
@@ -642,18 +660,18 @@
                     }
                     if (data[i].sTipo == 'P7' && data[i].sIdentificador == 'P7') {
                         preguntasdiv7.innerHTML += `
-                            <div class="form-group">
-                                <label>${data[i].iNumeroPregunta}.- ${data[i].sContenidoPregunta}</label>
-                                <div class="margins-quest">
-                                    <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="0" />
+                            <div class="form-group" style="margin-bottom:2em !important;">
+                                <label style="color:#0000d6 !important; text-shadow: 1px 1px 0 #ccc;">${data[i].iNumeroPregunta}.- ${data[i].sContenidoPregunta}</label>
+                                <div class="margins-quest" style="margin-top:2em !important;">
+                                    <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="0" />
                                     <label class="form-check-label">Siempre</label>
-                                       <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="1" />
+                                       <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="1" />
                                     <label class="form-check-label">Casi siempre</label>
-                                        <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="2" />
+                                        <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="2" />
                                     <label class="form-check-label">Algunas veces</label>
-                                         <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="3" />
+                                         <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="3" />
                                     <label class="form-check-label">Casi nunca</label>
-                                        <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="4" />
+                                        <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="4" />
                                     <label class="form-check-label">Nunca</label>
                                 </div>
                             </div>
@@ -664,18 +682,18 @@
                     }
                     if (data[i].sTipo == 'P8' && data[i].sIdentificador == 'P8') {
                         preguntasdiv8.innerHTML += `
-                            <div class="form-group">
-                                <label>${data[i].iNumeroPregunta}.- ${data[i].sContenidoPregunta}</label>
-                                <div class="margins-quest">
-                                    <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="0" />
+                            <div class="form-group" style="margin-bottom:2em !important;">
+                                <label style="color:#0000d6 !important; text-shadow: 1px 1px 0 #ccc;">${data[i].iNumeroPregunta}.- ${data[i].sContenidoPregunta}</label>
+                                <div class="margins-quest" style="margin-top:2em !important;">
+                                    <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="0" />
                                     <label class="form-check-label">Siempre</label>
-                                       <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="1" />
+                                       <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="1" />
                                     <label class="form-check-label">Casi siempre</label>
-                                        <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="2" />
+                                        <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="2" />
                                     <label class="form-check-label">Algunas veces</label>
-                                         <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="3" />
+                                         <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="3" />
                                     <label class="form-check-label">Casi nunca</label>
-                                        <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="4" />
+                                        <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="4" />
                                     <label class="form-check-label">Nunca</label>
                                 </div>
                             </div>
@@ -686,18 +704,18 @@
                     }
                     if (data[i].sTipo == 'P9' && data[i].sIdentificador == 'P9') {
                         preguntasdiv9.innerHTML += `
-                            <div class="form-group">
-                                <label>${data[i].iNumeroPregunta}.- ${data[i].sContenidoPregunta}</label>
-                                <div class="margins-quest">
-                                    <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="0" />
+                            <div class="form-group" style="margin-bottom:2em !important;">
+                                <label style="color:#0000d6 !important; text-shadow: 1px 1px 0 #ccc;">${data[i].iNumeroPregunta}.- ${data[i].sContenidoPregunta}</label>
+                                <div class="margins-quest" style="margin-top:2em !important;">
+                                    <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="0" />
                                     <label class="form-check-label">Siempre</label>
-                                       <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="1" />
+                                       <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="1" />
                                     <label class="form-check-label">Casi siempre</label>
-                                        <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="2" />
+                                        <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="2" />
                                     <label class="form-check-label">Algunas veces</label>
-                                         <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="3" />
+                                         <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="3" />
                                     <label class="form-check-label">Casi nunca</label>
-                                        <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="4" />
+                                        <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="4" />
                                     <label class="form-check-label">Nunca</label>
                                 </div>
                             </div>
@@ -709,18 +727,18 @@
 
                     if (data[i].sTipo == 'P10' && data[i].sIdentificador == 'P10' && data[i].iNumeroPregunta == '47' || data[i].iNumeroPregunta == '48' || data[i].iNumeroPregunta == '49' || data[i].iNumeroPregunta == '50' || data[i].iNumeroPregunta == '51' || data[i].iNumeroPregunta == '52' || data[i].iNumeroPregunta == '53') {
                         preguntasdiv10.innerHTML += `
-                            <div class="form-group">
-                                <label>${data[i].iNumeroPregunta}.- ${data[i].sContenidoPregunta}</label>
-                                <div class="margins-quest">
-                                    <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="0" />
+                            <div class="form-group" style="margin-bottom:2em !important;">
+                                <label style="color:#0000d6 !important; text-shadow: 1px 1px 0 #ccc;">${data[i].iNumeroPregunta}.- ${data[i].sContenidoPregunta}</label>
+                                <div class="margins-quest" style="margin-top:2em !important;">
+                                    <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="0" />
                                     <label class="form-check-label">Siempre</label>
-                                       <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="1" />
+                                       <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="1" />
                                     <label class="form-check-label">Casi siempre</label>
-                                        <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="2" />
+                                        <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="2" />
                                     <label class="form-check-label">Algunas veces</label>
-                                         <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="3" />
+                                         <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="3" />
                                     <label class="form-check-label">Casi nunca</label>
-                                        <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="4" />
+                                        <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="4" />
                                     <label class="form-check-label">Nunca</label>
                                 </div>
                             </div>
@@ -729,18 +747,18 @@
 
                     if (data[i].sTipo == 'P10' && data[i].sIdentificador == 'P10' && data[i].iNumeroPregunta == '54') {
                         preguntasdiv10.innerHTML += `
-                            <div class="form-group">
-                                <label>${data[i].iNumeroPregunta}.- ${data[i].sContenidoPregunta}</label>
-                                <div class="margins-quest">
-                                    <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="4" />
+                            <div class="form-group" style="margin-bottom:2em !important;">
+                                <label style="color:#0000d6 !important; text-shadow: 1px 1px 0 #ccc;">${data[i].iNumeroPregunta}.- ${data[i].sContenidoPregunta}</label>
+                                <div class="margins-quest" style="margin-top:2em !important;">
+                                    <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="4" />
                                     <label class="form-check-label">Siempre</label>
-                                       <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="3" />
+                                       <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="3" />
                                     <label class="form-check-label">Casi siempre</label>
-                                        <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="2" />
+                                        <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="2" />
                                     <label class="form-check-label">Algunas veces</label>
-                                         <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="1" />
+                                         <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="1" />
                                     <label class="form-check-label">Casi nunca</label>
-                                        <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="0" />
+                                        <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="0" />
                                     <label class="form-check-label">Nunca</label>
                                 </div>
                             </div>
@@ -749,18 +767,18 @@
 
                     if (data[i].sTipo == 'P10' && data[i].sIdentificador == 'P10' && data[i].iNumeroPregunta == '55' || data[i].iNumeroPregunta == '56') {
                         preguntasdiv10.innerHTML += `
-                            <div class="form-group">
-                                <label>${data[i].iNumeroPregunta}.- ${data[i].sContenidoPregunta}</label>
-                                <div class="margins-quest">
-                                    <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="0" />
+                            <div class="form-group" style="margin-bottom:2em !important;">
+                                <label style="color:#0000d6 !important; text-shadow: 1px 1px 0 #ccc;">${data[i].iNumeroPregunta}.- ${data[i].sContenidoPregunta}</label>
+                                <div class="margins-quest" style="margin-top:2em !important;">
+                                    <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="0" />
                                     <label class="form-check-label">Siempre</label>
-                                       <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="1" />
+                                       <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="1" />
                                     <label class="form-check-label">Casi siempre</label>
-                                        <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="2" />
+                                        <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="2" />
                                     <label class="form-check-label">Algunas veces</label>
-                                         <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="3" />
+                                         <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="3" />
                                     <label class="form-check-label">Casi nunca</label>
-                                        <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="4" />
+                                        <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="4" />
                                     <label class="form-check-label">Nunca</label>
                                 </div>
                             </div>
@@ -771,18 +789,18 @@
                     }
                     if (data[i].sTipo == 'P11' && data[i].sIdentificador == 'P11' && data[i].iNumeroPregunta == '57') {
                         preguntasdiv11.innerHTML += `
-                            <div class="form-group">
-                                <label>${data[i].iNumeroPregunta}.- ${data[i].sContenidoPregunta}</label>
-                                <div class="margins-quest">
-                                    <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="0" />
+                            <div class="form-group" style="margin-bottom:2em !important;">
+                                <label style="color:#0000d6 !important; text-shadow: 1px 1px 0 #ccc;">${data[i].iNumeroPregunta}.- ${data[i].sContenidoPregunta}</label>
+                                <div class="margins-quest" style="margin-top:2em !important;">
+                                    <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="0" />
                                     <label class="form-check-label">Siempre</label>
-                                       <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="1" />
+                                       <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="1" />
                                     <label class="form-check-label">Casi siempre</label>
-                                        <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="2" />
+                                        <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="2" />
                                     <label class="form-check-label">Algunas veces</label>
-                                         <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="3" />
+                                         <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="3" />
                                     <label class="form-check-label">Casi nunca</label>
-                                        <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="4" />
+                                        <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="4" />
                                     <label class="form-check-label">Nunca</label>
                                 </div>
                             </div>
@@ -790,18 +808,18 @@
                     }
                     if (data[i].sTipo == 'P11' && data[i].sIdentificador == 'P11' && data[i].iNumeroPregunta != '57') {
                         preguntasdiv11.innerHTML += `
-                            <div class="form-group">
-                                <label>${data[i].iNumeroPregunta}.- ${data[i].sContenidoPregunta}</label>
-                                <div class="margins-quest">
-                                    <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="4" />
+                            <div class="form-group" style="margin-bottom:2em !important;">
+                                <label style="color:#0000d6 !important; text-shadow: 1px 1px 0 #ccc;">${data[i].iNumeroPregunta}.- ${data[i].sContenidoPregunta}</label>
+                                <div class="margins-quest" style="margin-top:2em !important;">
+                                    <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="4" />
                                     <label class="form-check-label">Siempre</label>
-                                       <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="3" />
+                                       <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="3" />
                                     <label class="form-check-label">Casi siempre</label>
-                                        <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="2" />
+                                        <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="2" />
                                     <label class="form-check-label">Algunas veces</label>
-                                         <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="1" />
+                                         <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="1" />
                                     <label class="form-check-label">Casi nunca</label>
-                                        <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="0" />
+                                        <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="0" />
                                     <label class="form-check-label">Nunca</label>
                                 </div>
                             </div>
@@ -812,18 +830,18 @@
                     }
                     if (data[i].sTipo == 'P12' && data[i].sIdentificador == 'P12') {
                         preguntasdiv12.innerHTML += `
-                            <div class="form-group">
-                                <label>${data[i].iNumeroPregunta}.- ${data[i].sContenidoPregunta}</label>
-                                <div class="margins-quest">
-                                    <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="4" />
+                            <div class="form-group" style="margin-bottom:2em !important;">
+                                <label style="color:#0000d6 !important; text-shadow: 1px 1px 0 #ccc;">${data[i].iNumeroPregunta}.- ${data[i].sContenidoPregunta}</label>
+                                <div class="margins-quest" style="margin-top:2em !important;">
+                                    <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="4" />
                                     <label class="form-check-label">Siempre</label>
-                                       <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="3" />
+                                       <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="3" />
                                     <label class="form-check-label">Casi siempre</label>
-                                        <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="2" />
+                                        <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="2" />
                                     <label class="form-check-label">Algunas veces</label>
-                                         <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="1" />
+                                         <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="1" />
                                     <label class="form-check-label">Casi nunca</label>
-                                        <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="0" />
+                                        <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="0" />
                                     <label class="form-check-label">Nunca</label>
                                 </div>
                             </div>
@@ -834,18 +852,18 @@
                     }
                     if (data[i].sTipo == 'P13' && data[i].sIdentificador == 'P13') {
                         preguntasdiv13.innerHTML += `
-                            <div class="form-group">
-                                <label>${data[i].iNumeroPregunta}.- ${data[i].sContenidoPregunta}</label>
-                                <div class="margins-quest">
-                                    <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="4" />
+                            <div class="form-group" style="margin-bottom:2em !important;">
+                                <label style="color:#0000d6 !important; text-shadow: 1px 1px 0 #ccc;">${data[i].iNumeroPregunta}.- ${data[i].sContenidoPregunta}</label>
+                                <div class="margins-quest" style="margin-top:2em !important;">
+                                    <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="4" />
                                     <label class="form-check-label">Siempre</label>
-                                       <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="3" />
+                                       <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="3" />
                                     <label class="form-check-label">Casi siempre</label>
-                                        <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="2" />
+                                        <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="2" />
                                     <label class="form-check-label">Algunas veces</label>
-                                         <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="1" />
+                                         <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="1" />
                                     <label class="form-check-label">Casi nunca</label>
-                                        <input class="margin-radio" type="radio" name="resp${data[i].iNumeroPregunta}" value="0" />
+                                        <input class="margin-radio option-input" type="radio" name="resp${data[i].iNumeroPregunta}" value="0" />
                                     <label class="form-check-label">Nunca</label>
                                 </div>
                             </div>
