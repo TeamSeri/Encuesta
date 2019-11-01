@@ -295,5 +295,20 @@ namespace Encuesta.Controllers
             return Json(data);
         }
 
+        public ActionResult Usuarios()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public JsonResult ListadoUsuarios(int tipo)
+        {
+            LoginBean logBean = new LoginBean();
+            LoginDao logDao = new LoginDao();
+            logBean = logDao.sp_Datos_Usuarios(tipo);
+            var data = new { };
+            return Json(data);
+        }
+
     }
 }

@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "Usuarios";
+}
+
+@if (Session["typeUser"].ToString() == "1" && Session["keyUser"] != null) 
+{
+    <div class="container-fluid" style="margin-top:2em !important;">
+        <div class="row">
+            <div class="col-md-2" style="margin-top:6.7em !important;">
+                <a href="/Admin/Index" class="btn btn-primary btn-block">
+                    <i class="fas fa-arrow-left"></i> <span style="margin-left:1em;">Volver</span>
+                </a>
+                <a href="#" data-toggle="modal" data-target="#regDatosEmpresa" class="btn btn-primary btn-block" style="margin-top:3em !important;" id="btnnewreg">
+                    <i class="fas fa-plus"></i> <span style="margin-left:0.5em;">Nuevo registro</span>
+                </a>
+            </div>
+            <div class="col-md-10">
+                <h2><b> <i class="fas fa-users color-primary" style="margin-right:0.5em !important;"></i> Listado de usuarios </b></h2>
+                <hr />
+                <div>
+                    <table class="display" id="tabusers">
+                        <thead>
+                            <tr>
+                                <th>Usuario</th>
+                                <th>Estatus</th>
+                                <th>Tipo</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbodyusers"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="~/Scripts/Admin/usuarios.js"></script>
+
+}

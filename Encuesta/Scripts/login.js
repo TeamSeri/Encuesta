@@ -1,7 +1,6 @@
 ﻿document.addEventListener('DOMContentLoaded', () => {
 
     const formData = document.getElementById('formLogin');
-
     formData.addEventListener('submit', (e) => {
         const user = document.getElementById('user');
         const pass = document.getElementById('pass');
@@ -12,19 +11,30 @@
                     type: "POST",
                     data: { user: user.value, pass: pass.value },
                     success: function (data) {
-                        console.log(data.sMensaje);
                         if (data.sMensaje == 'success') {
-                            swal({
-                                title: "Datos correctos",
-                                text: "Redirigiendo...",
-                                icon: "success",
-                                closeOnClickOutside: false,
-                                closeOnEsc: false,
-                                buttons: false
-                            });
-                            setTimeout(() => {
-                                location.href = '../../Admin/Index';
-                            }, 2000);
+                            if (data.iEstado == 1) {
+                                swal({
+                                    title: "Datos correctos",
+                                    text: "Redirigiendo...",
+                                    icon: "success",
+                                    closeOnClickOutside: false,
+                                    closeOnEsc: false,
+                                    buttons: false
+                                });
+                                setTimeout(() => {
+                                    location.href = '../../Admin/Index';
+                                }, 2000);
+                            } else {
+                                swal({
+                                    title: "Atención",
+                                    text: "Tu cuenta ha sido bloqueada",
+                                    icon: "warning",
+                                    closeOnClickOutside: false,
+                                    closeOnEsc: false
+                                }).then((acepta) => {
+                                    location.reload();
+                                });
+                            }
                         } else {
                             swal("Los datos ingresados son incorrectos");
                             user.value = "";

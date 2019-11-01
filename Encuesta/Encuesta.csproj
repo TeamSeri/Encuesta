@@ -168,6 +168,7 @@
     <Content Include="Scripts\Admin\graficatest1.js" />
     <Content Include="Scripts\Admin\index.js" />
     <Content Include="Scripts\Admin\registrosempresa.js" />
+    <Content Include="Scripts\Admin\usuarios.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
@@ -222,6 +223,7 @@
     <Content Include="Views\EncuestaP\GuardarEncuestaOpc.cshtml" />
     <Content Include="Views\Shared\_LayoutTests.cshtml" />
     <Content Include="Views\Admin\DetallesRegistroEncuestaOpc.cshtml" />
+    <Content Include="Views\Admin\Usuarios.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

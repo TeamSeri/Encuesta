@@ -26,11 +26,19 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav" style="margin-left: 1em !important;">
-                    <li>
-                        <a style="color:white !important; background:none !important;" data-toggle="modal" data-target="#regEmpresa" href="#">
-                            Registrar empresa <i class="fas fa-plus" style="margin-left:0.5em !important;"></i>
-                        </a>
-                    </li>
+                    @if (Session["typeUser"].ToString() == "1")
+                    {
+                        <li>
+                            <a style="color:white !important; background:none !important;" data-toggle="modal" data-target="#regEmpresa" href="#">
+                                Registrar empresa <i class="fas fa-plus" style="margin-left:0.5em !important;"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a style="color:white !important; background:none !important;" href="/Admin/Usuarios">
+                                Registrar usuario <i class="fas fa-plus" style="margin-left:0.5em !important;"></i>
+                            </a>
+                        </li>
+                    }
                     <li>
                         <a style="color:white !important; background:none !important;" href="/Admin/EncuestaEspecial">
                             Encuesta especial <i class="fas fa-plus" style="margin-left:0.5em !important;"></i>

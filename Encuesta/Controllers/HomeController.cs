@@ -28,13 +28,17 @@ namespace Encuesta.Controllers
             LoginBean logBean = new LoginBean();
             LoginDao logDao = new LoginDao();
             logBean = logDao.sp_Datos_Usuarios_Retrieve_Usuario(user, pass);
-            Session["keyAdm"] = logBean.iIdUsuario;
+            Session["keyUser"] = logBean.iIdUsuario;
+            Session["nameUser"] = logBean.sUsuario;
+            Session["typeUser"] = logBean.iTipoUsuario;
             return Json(logBean);
         }
 
         public ActionResult Logout()
         {
-            Session.Remove("keyAdm");
+            Session.Remove("keyUser");
+            Session.Remove("nameUser");
+            Session.Remove("typeUser");
             return Redirect("/Home/Index");
         }
 
