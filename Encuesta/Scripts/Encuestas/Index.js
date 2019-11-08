@@ -29,6 +29,50 @@
             console.error("Error ", err.message);
         }
     }
+
+    const centrotra = document.getElementById('centro_tra');
+    const txterror = document.getElementById('txterror');
+    const envform = document.getElementById('envform');
+    centrotra.disabled = true;
+    centrotra.innerHTML += '<option value="0">Selecciona</option>';
+    let validcent = 0;
+
+    fchangecentrotra = () => {
+        let valenv = { empresa: empresa.value };
+        centrotra.innerHTML = '<option value="0">Selecciona</option>';
+        console.log(valenv);
+        try {
+            $.ajax({
+                url: "../../EncuestaP/DatosCentroTrabajo",
+                type: "POST",
+                data: valenv,
+                success: function (data) {
+                    validcent = data.length;
+                    if (validcent > 0) {
+                        centrotra.disabled = false;
+                        envform.disabled = false;
+                        txterror.textContent = '';
+                        setTimeout(() => {
+                            for (var i = 0; i < data.length; i++) {
+                                centrotra.innerHTML += `<option value="${data[i].iIdCentroTrabajo}">${data[i].sCentroTrabajo}</option>`;
+                            }
+                        }, 200);
+                    } else {
+                        centrotra.disabled = true;
+                        envform.disabled = true;
+                        txterror.textContent = 'La empresa seleccionada no tiene ningun centro de trabajo registrado, verifica tus datos.';
+                    }
+                }, error: function (xhr, status) {
+                    console.error(xhr.message);
+                }
+            });
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    empresa.addEventListener('change', fchangecentrotra);
+
     formData.addEventListener('submit', (e) => {
         if (empresa.value != "0") {
             if (codigo.value != "") {
@@ -39,7 +83,7 @@
                     $.ajax({
                         url: "../../EncuestaP/DatosEmpresa",
                         type: "POST",
-                        data: { empresa: empresa.value, codigo: codigo.value },
+                        data: { empresa: empresa.value, centro: centrotra.value, codigo: codigo.value },
                         success: function (data) {
                             if (data.sMensaje == "success") {
                                 if (data.iAplicacionesRealizadas == data.iAplicacionesReq) {

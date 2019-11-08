@@ -39,7 +39,7 @@
                                 descdiv = '';
                             }
                             contain.innerHTML += `
-                            <div class="col-lg-4 col-md-4 col-sm-6">
+                            <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="card">
                                     <h5 class="text-center">
                                         <i class="fas fa-calendar fa-lg color-primary" style="margin-right:0.5em !important;"></i> <span><b>${data[i].sMes} - ${data[i].sFechaAnio}</b></span>
@@ -263,6 +263,7 @@
     const btnsareg = document.getElementById('btnsareg');
 
     btnsareg.addEventListener('click', () => {
+        const centro = document.getElementById('clvcentro');
         if (empleados.value > 0) {
             if (mes.value != "none") {
                 if (anio.value != "none") {
@@ -273,7 +274,8 @@
                         "tipo": tipo.value,
                         "codigo": codigo.value,
                         "mes": mes.value,
-                        "anio": anio.value
+                        "anio": anio.value,
+                        "centro": centro.value
                     }
                     $.ajax({
                         url: "/Admin/RegDetallesEmpresa",

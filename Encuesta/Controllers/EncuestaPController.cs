@@ -21,10 +21,10 @@ namespace Encuesta.Controllers
 
             objEnc.iIdEmpresa = Convert.ToInt32(Request.Form["nom_empresa"]);
             objEnc.sCodigoEmpresa = Request.Form["codigo"].ToString();
-            int empre = objEnc.iIdEmpresa;
+            empBean.iIdCentroTrabajo = Convert.ToInt32(Request.Form["centro_tra"]);
+            int empre = objEnc.iIdEmpresa, estado = 1, centro = empBean.iIdCentroTrabajo;
             string codigo = objEnc.sCodigoEmpresa;
-            int estado = 1;
-            empBean = empDao.sp_Datos_Empresas_Retrieve_Empresa(empre, codigo, estado);
+            empBean = empDao.sp_Datos_Empresas_Retrieve_Empresa(empre, codigo, estado, centro);
             objEnc.iIdRegistroEmpresas = empBean.iIdRegistroEmpresas;
             objEnc.iEmpleados = empBean.iEmpleados;
             objEnc.iAplicacionesReq = empBean.iAplicacionesReq;
@@ -89,12 +89,12 @@ namespace Encuesta.Controllers
         }
 
         [HttpPost]
-        public JsonResult DatosEmpresa(int empresa, string codigo)
+        public JsonResult DatosEmpresa(int empresa, int centro, string codigo)
         {
             EmpresasBean empBe = new EmpresasBean();
             EmpresasDao empDa = new EmpresasDao();
             int estado = 1;
-            empBe = empDa.sp_Datos_Empresas_Retrieve_Empresa(empresa, codigo, estado);
+            empBe = empDa.sp_Datos_Empresas_Retrieve_Empresa(empresa, codigo, estado, centro);
             return Json(empBe);
         }
 
@@ -114,6 +114,15 @@ namespace Encuesta.Controllers
             List<EmpresasBean> empBean = new List<EmpresasBean>();
             EmpresasDao empDao = new EmpresasDao();
             empBean = empDao.sp_Empresas_Retrieve_Empresas();
+            return Json(empBean);
+        }
+
+        [HttpPost]
+        public JsonResult DatosCentroTrabajo(int empresa)
+        {
+            List<EmpresasBean> empBean = new List<EmpresasBean>();
+            EmpresasDao empDao = new EmpresasDao();
+            empBean = empDao.sp_Empresas_CentroTrabajo(empresa);
             return Json(empBean);
         }
 

@@ -7,8 +7,8 @@
     <title>@ViewBag.Title - Encuestas.net</title>
     <link href="../../Content/Styles.css" rel="stylesheet" media="all" />
     <link rel="stylesheet" href="~/Content/animate.css" />
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <link rel="stylesheet" href="~/Content/bootstrap.min.css" type="text/css" media="all"/>
+    <script type="text/javascript" src="~/Scripts/sweetalert.js"></script>
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css" type="text/css" media="all" />
     <link rel="stylesheet" href="~/Content/datatables.css" type="text/css" media="all" />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
@@ -26,25 +26,38 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav" style="margin-left: 1em !important;">
-                    @if (Session["typeUser"].ToString() == "1")
+                    @if (Convert.ToInt32(Session["typeUser"]) == 1)
                     {
                         <li>
-                            <a style="color:white !important; background:none !important;" data-toggle="modal" data-target="#regEmpresa" href="#">
-                                Registrar empresa <i class="fas fa-plus" style="margin-left:0.5em !important;"></i>
+                            <a style="color:white !important; background:none !important; font-size:13px !important;" data-toggle="modal" data-target="#regEmpresa" href="#">
+                                Registrar empresa <i class="fas fa-plus" style="margin-left:0.5em !important; color:greenyellow !important;"></i>
                             </a>
                         </li>
                         <li>
-                            <a style="color:white !important; background:none !important;" href="/Admin/Usuarios">
-                                Registrar usuario <i class="fas fa-plus" style="margin-left:0.5em !important;"></i>
+                            <a style="color:white !important; background:none !important; font-size:13px !important;" href="/Admin/Usuarios">
+                                Registrar usuario <i class="fas fa-plus" style="margin-left:0.5em !important; color:greenyellow !important;"></i>
                             </a>
                         </li>
                     }
                     <li>
-                        <a style="color:white !important; background:none !important;" href="/Admin/EncuestaEspecial">
-                            Encuesta especial <i class="fas fa-plus" style="margin-left:0.5em !important;"></i>
+                        <a style="color:white !important; background:none !important; font-size:13px !important;" href="/Admin/EncuestaEspecial">
+                            Encuesta especial <i class="fas fa-plus" style="margin-left:0.5em !important; color:greenyellow !important;"></i>
                         </a>
                     </li>
-                    <li><a style="color:white !important; background:none !important;" href="/Home/Logout">Cerrar sesión <i class="fas fa-sign-out-alt" style="margin-left:0.5em !important;"></i> </a></li>
+                    @if (Convert.ToInt32(Session["typeUser"]) == 1)
+                    {
+                        <li>
+                            <a data-toggle="modal" data-target="#changePass" href="#" style="color:white !important; background:none !important; font-size:13px !important;" >
+                                Contraseña <i class="fas fa-key" style="margin-left:0.5em !important; color:greenyellow !important;"></i>
+                            </a>
+                        </li>
+                    }
+                    <li>
+                        <a style="color:white !important; background:none !important; font-size:13px !important;">
+                            @Session["nameUser"] <i class="fas fa-user" style="margin-left:0.5em !important; color:lawngreen !important;"></i>
+                        </a>
+                    </li>
+                    <li><a style="color:white !important; background:none !important; font-size:13px !important;" href="/Home/Logout">Salir <i class="fas fa-sign-out-alt" style="margin-left:0.5em !important; color:red !important;"></i> </a></li>
                 </ul>
             </div>
         </div>
@@ -80,6 +93,39 @@
             </div>
         </div>
         <hr />
+        <div class="modal fade" id="changePass" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">
+                            <b>Actualizar mi contraseña</b>
+                        </h5>
+                        <button id="icocle" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-offset-3 col-lg-6">
+                                <input type="hidden" value="@Session["keyUser"]" id="keyuserpass" />
+                                <div class="form-group">
+                                    <label>Nueva contraseña:</label>
+                                    <input type="password" id="newpassuser" name="newpassuser" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Repite la contraseña:</label>
+                                    <input type="password" id="confnewpass" name="confnewpass" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btnpassclose">Cerrar</button>
+                        <button type="button" class="btn btn-primary" id="btnpassupdate">Guardar cambios</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <footer class="text-left">
             <p>&copy; @DateTime.Now.Year - Grupo Seri. Todos los derechos reservados.</p>
         </footer>
@@ -89,7 +135,6 @@
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
     <script src="https://kit.fontawesome.com/af5b80622e.js" crossorigin="anonymous"></script>
-    }
     <script type="text/javascript" src="~/Scripts/Admin/index.js"></script>
     <script type="text/javascript" src="~/Scripts/datatables.js"></script>
 </body>

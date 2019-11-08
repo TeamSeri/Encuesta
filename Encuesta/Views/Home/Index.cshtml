@@ -27,8 +27,13 @@
                                         <option value="0" selected>Selecciona</option>
                                     </select>
                                 </div>
+                                <div class="form-group" id="divcentro">
+                                    <label>Centro de trabajo:</label>
+                                    <select class="form-control" id="centro_tra" name="centro_tra">
+                                    </select>
+                                </div>
                                 <div class="form-group" id="divcodigo">
-                                    <label>Codigo de empresa:</label>
+                                    <label>Codigo de acceso:</label>
                                     <input type="text" name="codigo" id="codigo" class="form-control" />
                                 </div>
                                 <div class="form-group text-center d-none" id="divloader">
@@ -39,10 +44,13 @@
                                     <b>Procesando...</b>
                                 </div>
                                 <div class="form-group" id="divbutton">
-                                    <button style="margin-left:5.3em !important; margin-top:2em !important;" class="btn btn-color btn-sm btn-sha" type="submit">
+                                    <button id="envform" style="margin-left:5.3em !important; margin-top:2em !important;" class="btn btn-color btn-sm btn-sha" type="submit">
                                         Comprobar y continuar
                                     </button>
                                 </div>
+                            </div>
+                            <div class="col-lg-4" style="margin-top:7em !important;">
+                                <p class="text-danger"> <b id="txterror"></b> </p>
                             </div>
                         </div>
                     </form>

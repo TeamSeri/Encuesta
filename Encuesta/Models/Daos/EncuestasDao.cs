@@ -121,6 +121,49 @@ namespace Encuesta.Models.Daos
             return encBean;
         }
 
+        public List<EncuestasBean> sp_DatosEncuestaOpcional_DatosPorEmpresa(int key)
+        {
+            List<EncuestasBean> listEncBean = new List<EncuestasBean>();
+            try
+            {
+                this.Conectar();
+                SqlCommand cmd = new SqlCommand("sp_DatosEncuestaOpcional_DatosPorEmpresa", this.conexion)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+                cmd.Parameters.Add(new SqlParameter("@IdEmpresa", key));
+                SqlDataReader data = cmd.ExecuteReader();
+                if(data.HasRows)
+                {
+                    while (data.Read())
+                    {
+                        EncuestasBean encBean = new EncuestasBean();
+                        encBean.iIdRegistroOpc = Convert.ToInt32(data["IdRegistroEOp"].ToString());
+                        encBean.iIdEmpresaOpc = Convert.ToInt32(data["IdEmpresa"].ToString());
+                        encBean.sNombreEmpleadoOpc = data["NombreEmpleado"].ToString();
+                        encBean.sPuestoEmOpc = data["PuestoEm"].ToString();
+                        encBean.sCodigoAcOpc = data["CodigoAc"].ToString();
+                        encBean.iEstadoEncOpc = Convert.ToInt32(data["EstadoEn"].ToString());
+                        encBean.sFechaEncOpc = data["FechaEnc"].ToString();
+                        encBean.sEmpresa = data["Nombre"].ToString();
+                        encBean.sDiagnosticoOpcDetalle = data["Diagnostico"].ToString();
+                        encBean.sDiagnosticoOpc1 = data["Diagnostico1"].ToString();
+                        encBean.sDiagnosticoOpc2 = data["Diagnostico2"].ToString();
+                        encBean.sDiagnosticoOpc3 = data["Diagnostico3"].ToString();
+                        listEncBean.Add(encBean);
+                    }
+                }
+                cmd.Dispose();
+                data.Close();
+                conexion.Close();
+            }
+            catch (Exception exc)
+            {
+                Console.WriteLine(exc);
+            }
+            return listEncBean;
+        }
+
         public List<EncuestasBean> sp_Datos_EncuestaOpcional_Datos()
         {
             List<EncuestasBean> listEncBean = new List<EncuestasBean>();
@@ -222,6 +265,41 @@ namespace Encuesta.Models.Daos
                     encBean.iTotalTipoOpc = Convert.ToInt32(data["Cantidad"].ToString());
                     encBean.sMensaje = "success";
                 } 
+                else
+                {
+                    encBean.sMensaje = "error";
+                }
+                cmd.Dispose();
+                data.Close();
+                conexion.Close();
+            }
+            catch (Exception exc)
+            {
+                Console.Write(exc);
+            }
+
+            return encBean;
+        }
+
+        public EncuestasBean sp_Datos_EncuestaOpcional_GraficaPorEmpresa(int tipo, int keyEmpresa)
+        {
+            EncuestasBean encBean = new EncuestasBean();
+
+            try
+            {
+                this.Conectar();
+                SqlCommand cmd = new SqlCommand("sp_Datos_EncuestaOpcional_GraficaPorEmpresa", this.conexion)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+                cmd.Parameters.Add(new SqlParameter("@Tipo", tipo));
+                cmd.Parameters.Add(new SqlParameter("@IdEmpresa", keyEmpresa));
+                SqlDataReader data = cmd.ExecuteReader();
+                if (data.Read())
+                {
+                    encBean.iTotalTipoOpc = Convert.ToInt32(data["Cantidad"].ToString());
+                    encBean.sMensaje = "success";
+                }
                 else
                 {
                     encBean.sMensaje = "error";

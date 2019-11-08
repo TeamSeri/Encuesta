@@ -67,4 +67,74 @@
         }
     });
 
+    document.getElementById('btnpassupdate').addEventListener('click', () => {
+        const newpassuser = document.getElementById('newpassuser');
+        const confnewpass = document.getElementById('confnewpass');
+        if (newpassuser.value != "") {
+            if (confnewpass.value != "") {
+                if (newpassuser.value == confnewpass.value) {
+                    const dataEnv = { user: document.getElementById('keyuserpass').value, pass: newpassuser.value }
+                    $.ajax({
+                        url: "/Admin/CambiarContraseña",
+                        type: "POST",
+                        data: dataEnv,
+                        success: function (data) {
+                            if (data.resp == "correct") {
+                                swal({
+                                    title: "Correcto",
+                                    text: "Contraseña actualizada",
+                                    icon: "success",
+                                    closeOnClickOutside: false,
+                                    closeOnEsc: false
+                                }).then((acepta) => {
+                                    location.reload();
+                                });
+                            } else if (data.resp == "incorrect") {
+                                swal({
+                                    title: "Error",
+                                    text: "La contraseña no se actualizo",
+                                    icon: "error",
+                                    closeOnClickOutside: false,
+                                    closeOnEsc: false
+                                }).then((acepta) => {
+                                    newpassuser.value = "";
+                                    passconfirm.value = "";
+                                });
+                            }
+                        }, error: function (error) {
+                            console.log(error);
+                        }
+                    });
+                } else {
+                    swal({
+                        text: "Las contraseñas no coinciden verifique",
+                        icon: "warning",
+                        closeOnClickOutside: false,
+                        closeOnEsc: false
+                    }).then((acepta) => {
+                        newpassuser.focus();
+                    });
+                }
+            } else {
+                swal({
+                    text: "Repite la nueva contraseña",
+                    icon: "warning",
+                    closeOnClickOutside: false,
+                    closeOnEsc: false
+                }).then((acepta) => {
+                    newpassuser.focus();
+                });
+            }
+        } else {
+            swal({
+                text: "Ingresa una contraseña",
+                icon: "warning",
+                closeOnClickOutside: false,
+                closeOnEsc: false
+            }).then((acepta) => {
+                newpassuser.focus();
+            });
+        }
+    });
+
 });

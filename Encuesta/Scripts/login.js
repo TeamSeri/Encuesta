@@ -2,14 +2,14 @@
 
     const formData = document.getElementById('formLogin');
     formData.addEventListener('submit', (e) => {
-        const user = document.getElementById('user');
+        const user = document.getElementById('user').value;
         const pass = document.getElementById('pass');
         if (user.value != "") {
             if (pass.value != "") {
                 $.ajax({
                     url: "./ValidarLogin",
                     type: "POST",
-                    data: { user: user.value, pass: pass.value },
+                    data: { user: user.toLowerCase(), pass: pass.value },
                     success: function (data) {
                         if (data.sMensaje == 'success') {
                             if (data.iEstado == 1) {
@@ -32,7 +32,8 @@
                                     closeOnClickOutside: false,
                                     closeOnEsc: false
                                 }).then((acepta) => {
-                                    location.reload();
+                                    user.value = "";
+                                    pass.value = "";
                                 });
                             }
                         } else {

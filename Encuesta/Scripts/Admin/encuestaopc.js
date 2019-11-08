@@ -9,17 +9,21 @@
 
     let arrusers = [], satencion = 0, natencion = 0;
 
-    loaddataencopc = () => {
+    loaddataencopc = (param1, param2) => {
+        let dataEnv = { type : param1, key : param2 };
+        if (param1 != 1) {
+            dataEnv = { type : param1, key : param2 };
+        }
+        console.log(dataEnv);
         try {
             $.ajax({
                 url: "../Admin/DetallesEncuestaOpc",
                 type: "POST",
-                data: {},
+                data: dataEnv,
                 success: function (data) {
                     lengt = data.length;
                     let estado = '', resatencion = '';
                     for (var i = 0; i < data.length; i++) {
-                        console.log(data[i]);
                         arrusers.push(data);
                         if (data[i].sDiagnosticoOpcDetalle != "") {
                             resatencion = data[i].sDiagnosticoOpcDetalle;
@@ -60,15 +64,27 @@
         }
     }
 
-    loaddataencopc();
-
-    setTimeout(() => {
-        $('#tablaus').DataTable({
-            "language": {
-                "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
-            }
-        });
-    }, 100);
+    fdatacharts = (keyEmp) => {
+        console.log(keyEmp)
+        try {
+            $.ajax({
+                url: "../Admin/GraficaEncuestaOpcionalPorEmpresa",
+                type: "POST",
+                data: { key : keyEmp },
+                success: function (data) {
+                    if (data.estado == "success") {
+                        satencion = data.siatencion;
+                        natencion = data.noatencion;
+                    }
+                },
+                error: function (err) {
+                    console.error(err);
+                }
+            });
+        } catch (err) {
+            console.error(err);
+        }
+    }
 
     loaddatachart = () => {
         try {
@@ -91,7 +107,7 @@
         }
     }
 
-    loaddatachart();
+    //loaddatachart();
 
     google.charts.load('current', { 'packages': ['bar'] });
     google.charts.setOnLoadCallback(drawChart);
@@ -232,7 +248,8 @@
         }
         if (empresa.value != "none") {
             if (empleado.value != "") {
-                txtempresa = $('select[name="empresasel"] option:selected').text();
+                //txtempresa = $('select[name="empresasel"] option:selected').text();
+                txtempresa = document.getElementById('empsel').value;
                 subempl = empleado.value;
                 formatcode = txtempresa.substr(0, 4) + "EOPC" + subempl.substr(0, 4) + "AD" + String(code) + "PS";
                 codigoasc.value = formatcode;

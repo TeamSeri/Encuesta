@@ -167,6 +167,7 @@
     <Content Include="Scripts\Admin\graficatest2.js" />
     <Content Include="Scripts\Admin\graficatest1.js" />
     <Content Include="Scripts\Admin\index.js" />
+    <Content Include="Scripts\Admin\registrocentros.js" />
     <Content Include="Scripts\Admin\registrosempresa.js" />
     <Content Include="Scripts\Admin\usuarios.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -190,6 +191,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\login.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\sweetalert.js" />
     <Content Include="Scripts\TestOpc.js" />
     <Content Include="Scripts\toastr.js" />
     <Content Include="Web.config" />
@@ -224,6 +226,7 @@
     <Content Include="Views\Shared\_LayoutTests.cshtml" />
     <Content Include="Views\Admin\DetallesRegistroEncuestaOpc.cshtml" />
     <Content Include="Views\Admin\Usuarios.cshtml" />
+    <Content Include="Views\Admin\CentroTrabajo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

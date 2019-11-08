@@ -31,11 +31,27 @@ namespace Encuesta.Controllers
             Session["keyUser"] = logBean.iIdUsuario;
             Session["nameUser"] = logBean.sUsuario;
             Session["typeUser"] = logBean.iTipoUsuario;
+            if (logBean.iTipoUsuario != 1)
+            {
+                EmpresasBean empBean = new EmpresasBean();
+                EmpresasDao empDao = new EmpresasDao();
+                empBean = empDao.sp_DatosEmpresa_UsuarioSession(logBean.iTipoUsuario, logBean.iIdUsuario);
+                if (empBean.sMensaje == "success")
+                {
+                    Session["keyEmpresa"] = empBean.iIdEmpresa;
+                    Session["nameEmpresa"] = empBean.sNombre;
+                }
+            }
             return Json(logBean);
         }
 
         public ActionResult Logout()
         {
+            if (Convert.ToInt32(Session["typeUser"]) != 1)
+            {
+                Session.Remove("nameEmpresa");
+                Session.Remove("keyEmpresa");
+            }
             Session.Remove("keyUser");
             Session.Remove("nameUser");
             Session.Remove("typeUser");

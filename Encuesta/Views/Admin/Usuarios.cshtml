@@ -3,15 +3,26 @@
     ViewBag.Title = "Usuarios";
 }
 
-@if (Session["typeUser"].ToString() == "1" && Session["keyUser"] != null) 
+@if (Convert.ToInt32(Session["typeUser"]) == 1 && Session["keyUser"] != null)
 {
-    <div class="container-fluid" style="margin-top:2em !important;">
+    <style>
+        #minimizeadmin:hover {
+            cursor:pointer;
+        }
+    </style>
+    <div class="container-fluid" style="margin-top:2em !important; margin-bottom:5em !important;">
         <div class="row">
             <div class="col-md-2" style="margin-top:6.7em !important;">
                 <a href="/Admin/Index" class="btn btn-primary btn-block">
                     <i class="fas fa-arrow-left"></i> <span style="margin-left:1em;">Volver</span>
                 </a>
-                <a href="#" data-toggle="modal" data-target="#regDatosEmpresa" class="btn btn-primary btn-block" style="margin-top:3em !important;" id="btnnewreg">
+                <a class="btn btn-primary btn-block" style="margin-top:3em !important;" id="admins">
+                    <i class="fas fa-plus"></i> <span style="margin-left:0.5em;">Administradores</span>
+                </a>
+                <a href="#" data-toggle="modal" data-target="#newUserReg" class="btn btn-primary btn-block" style="margin-top:3em !important;" id="btnnewreguser">
+                    <i class="fas fa-plus"></i> <span style="margin-left:0.5em;">Nuevo usuario</span>
+                </a>
+                <a href="#" data-toggle="modal" data-target="#newUser" class="btn btn-primary btn-block" style="margin-top:3em !important;" id="btnnewreg">
                     <i class="fas fa-plus"></i> <span style="margin-left:0.5em;">Nuevo registro</span>
                 </a>
             </div>
@@ -23,17 +34,218 @@
                         <thead>
                             <tr>
                                 <th>Usuario</th>
+                                <th>Empresa</th>
                                 <th>Estatus</th>
-                                <th>Tipo</th>
+                                <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody id="tbodyusers"></tbody>
+                    </table>
+                </div>
+                <br /> <br /> <br /> <br />
+                <div id="divadmin">
+                    <div class="text-right">
+                        <i class="fas fa-window-minimize fa-2x color-danger" id="minimizeadmin"></i>
+                    </div>
+                    <h2><b> <i class="fas fa-user-tie color-primary" style="margin-right:0.5em !important;"></i> Listado de administradores </b></h2>
+                    <hr />
+                    <table class="display" id="tabadmin">
+                        <thead>
+                            <tr>
+                                <th>Usuario</th>
+                                <th>Estatus</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbodyadmin"></tbody>
                     </table>
                 </div>
             </div>
         </div>
     </div>
 
+    <div class="modal fade" data-backdrop="static" id="newUserReg" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-center" id="exampleModalLabel">
+                        <b> Agregar usuario </b>
+                    </h5>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-offset-3 col-lg-6">
+                            <div class="form-group">
+                                <label>Nombre de usuario: </label>
+                                <input type="text" id="newuserreg" name="newuserreg" class="form-control" />
+                                @*<button class="btn btn-link"> <i class="fas fa-search"></i> </button>*@
+                            </div>
+                            <div class="form-group">
+                                <label>Contraseña: </label>
+                                <input type="password" id="passuserreg" name="passuserreg" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label>Repite la contraseña: </label>
+                                <input type="password" id="passrepreg" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <label>Tipo de usuario: </label>
+                                <select class="form-control" id="typeuser" name="typeuser">
+                                    <option value="0">Selecciona</option>
+                                    <option value="1">Administrador</option>
+                                    <option value="2">Cliente</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Es super administrador? </label>
+                                <select class="form-control" id="typeadmin" name="typeadmin">
+                                    <option value="none">Selecciona</option>
+                                    <option value="1">Si</option>
+                                    <option value="0">No</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btncloseuserreg">Cerrar</button>
+                    <button type="button" class="btn btn-success" id="btnsaveuserreg">Agregar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" data-backdrop="static" id="newUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-center" id="exampleModalLabel">
+                        <b> Agregar registro </b>
+                    </h5>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-offset-3 col-lg-6">
+                            <div class="form-group">
+                                <label>Nombre de usuario: </label>
+                                <select type="text" id="newuser" name="newuser" class="form-control">
+                                    <option value="0">Selecciona</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Empresa: </label>
+                                <select class="form-control" id="empresa" name="empresa">
+                                    <option value="0" selected>Selecciona</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btncloseuser">Cerrar</button>
+                    <button type="button" class="btn btn-success" id="btnsaveuser">Agregar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" data-backdrop="static" id="passUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-center" id="exampleModalLabel">
+                        <b> Cambiar contraseña a <span id="userpass"></span> </b>
+                    </h5>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-offset-3 col-lg-6">
+                            <div class="form-group">
+                                <label>Ingresa la nueva contraseña:</label>
+                                <input type="password" id="newpassuser" name="newpassuser" class="form-control" />
+                                <input type="hidden" id="clvpass" />
+                            </div>
+                            <div class="form-group">
+                                <label>Repite la nueva contraseña:</label>
+                                <input type="password" id="passconfirm" name="passconfirm" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btnclepass">Cerrar</button>
+                    <button type="button" class="btn btn-primary" id="btnupdatepass">Actualizar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" data-backdrop="static" id="blockUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-center" id="exampleModalLabel">
+                        <b> ¿Esta seguro de bloquear a <span id="userblock"></span> ? </b>
+                    </h5>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-offset-3 col-lg-6">
+                            <div class="form-group">
+                                <label>Escribe tu contraseña para confirmar:</label>
+                                <input type="password" id="passblock" name="passblock" class="form-control" />
+                                <input type="hidden" id="clvblock" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btncle">Cerrar</button>
+                    <button type="button" class="btn btn-danger" id="btnblock">Bloquear</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" data-backdrop="static" id="activeUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-center" id="exampleModalLabel">
+                        <b> ¿Esta seguro de desbloquear a <span id="useractive"></span> ? </b>
+                    </h5>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-offset-3 col-lg-6">
+                            <div class="form-group">
+                                <label>Escribe tu contraseña para confirmar:</label>
+                                <input type="password" id="passactive" name="passactive" class="form-control" />
+                                <input type="hidden" id="clvactive" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btncledes">Cerrar</button>
+                    <button type="button" class="btn btn-success" id="btnactive">Desbloquear</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script type="text/javascript" src="~/Scripts/Admin/usuarios.js"></script>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', () => {
+            floaddataadmin(@Session["keyUser"]);
+            setTimeout(() => {
+            $("#tabadmin").DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+                }
+            });
+        }, 1000);
+        });
+    </script>
 
 }

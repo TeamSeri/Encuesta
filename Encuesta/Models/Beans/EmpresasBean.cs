@@ -20,5 +20,8 @@ namespace Encuesta.Models.Beans
         public string sMes { get; set; }
         public int iActivo { get; set; }
         public string sMensaje { get; set; }
+        public int iIdCentroTrabajo { get; set; }
+        public string sCentroTrabajo { get; set; }
+        public string sUbicacionCentro { get; set; }
     }
 }

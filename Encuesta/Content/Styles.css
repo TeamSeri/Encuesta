@@ -256,3 +256,29 @@
 .margins-quest label {
     font-size: 13px !important;
 }
+
+#li1, #li2, #li3 {
+    transition:0.5s !important;
+    /*transition-delay:0.5s !important;
+    transition-duration:0.5s !important;*/
+}
+
+#li1:hover {
+   background-color:aliceblue !important;
+   transform: scale(1.05,1.05);
+}
+
+#li2:hover {
+   background-color:aliceblue !important;
+   transform: scale(1.05,1.05);
+}
+
+#li3:hover {
+   background-color:aliceblue !important;
+   transform: scale(1.05,1.05);
+}
+
+#listacciones > li > a {
+    text-decoration:none !important;
+}
+

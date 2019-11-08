@@ -14,43 +14,112 @@
             td {    padding: 8px;     background: #e8edff;     border-bottom: 1px solid #fff;
                     color: #669;    border-top: 1px solid transparent; }
             tr:hover td { background: #d0dafd; color: #339; }
+            body {
+                    background-color: #FAFFEB;
+                }
         </style>
 
-        <h2 class="text-center" style="margin-top:2em !important;">
-            <b>Empresas en el sistema</b>
-        </h2>
-        <hr />
-        <div class="container-fluid mt-p">
-            <div class="row animated fadeInDown delay-1s" id="contempresas" style="margin-bottom: 3em !important;">
-                <div class="col-lg-12">
-                    <div class="table">
-                        <table id="tablaem" class="display">
-                            <thead>
-                                <tr>
-                                    <th>Empresa <i title="Presiona este icono para ordenar alfabeticamente" class="fas fa-sort" style="margin-left:0.5em !important;"></i> </th>
-                                    <th>Opción <i title="Presiona este icono para ordenar alfabeticamente" class="fas fa-sort" style="margin-left:0.5em !important;"></i> </th>
-                                </tr>
-                            </thead>
-                            <tbody id="cont">
-                                @foreach (var item in Model)
-                                {
+        <div class="container-fluid mt-p" style="margin-bottom:8em !important;">
+            @if (Convert.ToInt32(Session["typeUser"]) == 1)
+            {
+                <h2 class="text-center" style="margin-top:2em !important;">
+                    <b>Empresas en el sistema</b>
+                </h2>
+                <hr />
+                <div class="row animated fadeInDown delay-1s" id="contempresas" style="margin-bottom: 3em !important;">
+                    <div class="col-lg-12">
+                        <div class="table">
+                            <table id="tablaem" class="display">
+                                <thead>
                                     <tr>
-                                        <td>
-                                            <i class="fas fa-university fa-lg"></i> <span style="margin-left:1em !important;"><b>@Html.DisplayFor(modelItem => item.sNombre)</b></span>
-                                        </td>
-                                        <td>
-                                            <b>
-                                                <i class="fas fa-external-link-alt" style="margin-right:1em;"></i>
-                                                @Html.ActionLink("Ver Detalles", "Detalles", new { empresa = item.iIdEmpresa })
-                                            </b>
-                                        </td>
+                                        <th>Empresa <i title="Presiona este icono para ordenar alfabeticamente" class="fas fa-sort" style="margin-left:0.5em !important;"></i> </th>
+                                        <th>Opción <i title="Presiona este icono para ordenar alfabeticamente" class="fas fa-sort" style="margin-left:0.5em !important;"></i> </th>
                                     </tr>
-                                }
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody id="cont">
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                <i class="fas fa-university fa-lg"></i> <span style="margin-left:1em !important;"><b>@Html.DisplayFor(modelItem => item.sNombre)</b></span>
+                                            </td>
+                                            <td>
+                                                <b>
+                                                    <i class="fas fa-external-link-alt" style="margin-right:1em;"></i>
+                                                    @Html.ActionLink("Ver Detalles", "Detalles", new { empresa = item.iIdEmpresa })
+                                                </b>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
-            </div>
+            }
+            else
+            {
+                <div style="box-shadow:4px 4px 4px 4px #eee; width:520px; padding:2em !important; border-radius:10px;" id="divpanel">
+                    <h2 class="text-left" style="margin-top:0em !important;">
+                        <b> <i class="fas color-primary fa-chalkboard-teacher" style="margin-right:0.5em !important;"></i> Panel de control @Session["nameEmpresa"]</b>
+                    </h2>
+                </div>
+                <hr />
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <h3 class="text-center">
+                                <b> <i class="fas fa-clipboard-list color-primary" style="margin-right:0.5em !important;"></i> Opciones</b>
+                            </h3>
+                            <hr />
+                            <div>
+                                <ul class="list-group" style="font-family:Verdana, Geneva, Tahoma, sans-serif;" id="listacciones">
+                                    <li class="list-group-item" style="margin-top:1em !important;" id="li1">
+                                        <a href="/Admin/Detalles">
+                                            <i class="fas fa-building color-primary" style="margin-right:0.5em !important;"></i>
+                                            @Html.ActionLink("Centros de trabajo", "Detalles", new { empresa = Session["keyEmpresa"] })
+                                        </a>
+                                    </li>
+                                    <li class="list-group-item" style="margin-top:1em !important;" id="li2">
+                                        <a href="#">
+                                            <i class="fas fa-lock color-primary" style="margin-right:0.5em !important;"></i>
+                                            Cambiar contraseña.
+                                        </a>
+                                    </li>
+                                    <li class="list-group-item" style="margin-top:1em !important;" id="li3">
+                                        <a href="#">
+                                            <i class="fas fa-bug color-primary" style="margin-right:0.5em !important;"></i>
+                                            Reportar un problema.
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <h3 class="text-center">
+                                <b> <i class="fas fa-info color-primary" style="margin-right:0.5em !important;"></i> ¿Norma 35?</b>
+                            </h3>
+                            <hr />
+                            <p class="text-justify" style="font-family:Verdana, Geneva, Tahoma, sans-serif; margin-top:2.5em !important;">
+                                Esta norma permite a las empresas identificar y prevenir los riesgos psicosociales que se puedan presentar en sus actividades laborales.
+                                El cumplimiento de la Norma Oficial Mexicana resulta ser obligatorio para todos los centros de trabajo del territorio nacional. Sin embargo hay capítulos específicos que deben cumplirse dependiendo del número de trabajadores de la organización.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <script type="text/javascript">
+                    document.addEventListener('DOMContentLoaded', () => {
+                        const divpanel = document.getElementById('divpanel');
+                        //divpanel.style.cssText = "transition:1s;";
+                        setTimeout(() => {
+                            //divpanel.style.cssText = "background-color:blue;";
+                            setTimeout(() => {
+                                //divpanel.style.cssText = "background-color:red;";
+                            }, 1500);
+                        }, 1500);
+                    });
+                </script>
+            }
         </div>
 
         <script type="text/javascript">
