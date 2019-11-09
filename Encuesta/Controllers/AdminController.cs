@@ -28,11 +28,11 @@ namespace Encuesta.Controllers
         }
 
         [HttpPost]
-        public JsonResult DetallesRegistros(int empresa)
+        public JsonResult DetallesRegistros(int empresa, int centro)
         {
             List<EmpresasBean> empBe = new List<EmpresasBean>();
             EmpresasDao empDao = new EmpresasDao();
-            empBe = empDao.sp_Datos_TRegistrosEmpresas_Empresa(empresa);
+            empBe = empDao.sp_Datos_TRegistrosEmpresas_Empresa(empresa, centro);
             return Json(empBe);
         }
 
@@ -465,12 +465,12 @@ namespace Encuesta.Controllers
         }
 
         [HttpPost]
-        public JsonResult CambiarContraseña(int user, string pass)
+        public JsonResult CambiarContrasena(int user, string pass)
         {
             LoginBean logBean = new LoginBean();
             LoginDao logDao = new LoginDao();
             string result = "";
-            logBean = logDao.sp_CambiarContraseñaUsuarios(user, pass);
+            logBean = logDao.sp_CambiarContrasenaUsuarios(user, pass);
             if (logBean.sMensaje == "success") {
                 result = "correct";
             } else {
@@ -511,6 +511,22 @@ namespace Encuesta.Controllers
             EmpresasDao empDao = new EmpresasDao();
             empBean = empDao.sp_Datos_Centro_Trabajo(registro);
             return View(empBean);
+        }
+
+        [HttpPost]
+        public JsonResult EditarCentros(int centro, string nombrec, string ubicacionc)
+        {
+            EmpresasBean empBean = new EmpresasBean();
+            EmpresasDao empDao = new EmpresasDao();
+            string result = "";
+            empBean = empDao.sp_Update_Centro_Trabajo(centro, nombrec, ubicacionc);
+            if (empBean.sMensaje == "success") {
+                result = "correct";
+            } else {
+                result = "incorrect";
+            }
+            var data = new { resp = result };
+            return Json(data);
         }
 
     }

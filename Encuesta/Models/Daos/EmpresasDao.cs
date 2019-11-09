@@ -106,7 +106,7 @@ namespace Encuesta.Models.Daos
             return listEmp;
         }
 
-        public List<EmpresasBean> sp_Datos_TRegistrosEmpresas_Empresa(int empresa)
+        public List<EmpresasBean> sp_Datos_TRegistrosEmpresas_Empresa(int empresa, int centro)
         {
             List<EmpresasBean> listEmpBean = new List<EmpresasBean>();
 
@@ -118,6 +118,7 @@ namespace Encuesta.Models.Daos
                     CommandType = CommandType.StoredProcedure
                 };
                 cmd.Parameters.Add(new SqlParameter("@IdEmpresa", empresa));
+                cmd.Parameters.Add(new SqlParameter("@Centro", centro));
                 SqlDataReader data = cmd.ExecuteReader();
                 if (data.HasRows)
                 {
@@ -136,6 +137,9 @@ namespace Encuesta.Models.Daos
                         empBean.sFechaAnio = data["FechaAnio"].ToString();
                         empBean.iActivo = Convert.ToInt32(data["Activo"].ToString());
                         empBean.sMes = data["Mes"].ToString();
+                        empBean.iIdCentroTrabajo = Convert.ToInt32(data["IdCentroTrabajo"]);
+                        empBean.sCentroTrabajo = data["CentroTrabajo"].ToString();
+                        empBean.sUbicacionCentro = data["Ubicacion"].ToString();
                         listEmpBean.Add(empBean);
                     }
                 }
@@ -211,6 +215,9 @@ namespace Encuesta.Models.Daos
                     empBean.sFechaAnio = data["FechaAnio"].ToString();
                     empBean.iActivo = Convert.ToInt32(data["Activo"].ToString());
                     empBean.sMes = data["Mes"].ToString();
+                    empBean.iIdCentroTrabajo = Convert.ToInt32(data["IdCentroTrabajo"]);
+                    empBean.sCentroTrabajo = data["CentroTrabajo"].ToString();
+                    empBean.sUbicacionCentro = data["Ubicacion"].ToString();
                     empBean.sMensaje = "success";
                 } else
                 {
@@ -410,6 +417,7 @@ namespace Encuesta.Models.Daos
                 };
                 cmd.Parameters.Add(new SqlParameter("@Empresa", empresa));
                 cmd.Parameters.Add(new SqlParameter("@Estado", estado));
+                cmd.Parameters.Add(new SqlParameter("@Centro", centro));
                 SqlDataReader data = cmd.ExecuteReader();
                 if (!data.HasRows)
                 {
@@ -542,6 +550,37 @@ namespace Encuesta.Models.Daos
                 }
                 cmd.Dispose();
                 data.Close();
+                conexion.Close();
+            }
+            catch (Exception exc)
+            {
+                Console.WriteLine(exc);
+            }
+            return empBean;
+        }
+
+        public EmpresasBean sp_Update_Centro_Trabajo(int centro, string nombrec, string ubicacionc)
+        {
+            EmpresasBean empBean = new EmpresasBean();
+            try
+            {
+                this.Conectar();
+                SqlCommand cmd = new SqlCommand("sp_Update_Centro_Trabajo", this.conexion)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+                cmd.Parameters.Add(new SqlParameter("@Centro", centro));
+                cmd.Parameters.Add(new SqlParameter("@Nombrec", nombrec));
+                cmd.Parameters.Add(new SqlParameter("@Ubicacionc", ubicacionc));
+                if (cmd.ExecuteNonQuery() > 0)
+                {
+                    empBean.sMensaje = "success";
+                }
+                else
+                {
+                    empBean.sMensaje = "error";
+                }
+                cmd.Dispose();
                 conexion.Close();
             }
             catch (Exception exc)

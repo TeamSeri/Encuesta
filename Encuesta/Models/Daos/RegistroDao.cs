@@ -11,7 +11,7 @@ namespace Encuesta.Models.Daos
 {
     public class RegistroDao : Conexion
     {
-        public RegistroBean sp_RegistroEncuestas_Insert_RegistroEncuestas(int empresa, DateTime fecha, int resultado, string tipo, int registro)
+        public RegistroBean sp_RegistroEncuestas_Insert_RegistroEncuestas(int empresa, DateTime fecha, int resultado, string tipo, int registro, int centro)
         {
             RegistroBean regBean = new RegistroBean();
             try
@@ -27,6 +27,7 @@ namespace Encuesta.Models.Daos
                 cmd.Parameters.Add(new SqlParameter("@Resultado", resultado));
                 cmd.Parameters.Add(new SqlParameter("@TipoEncuesta", tipo));
                 cmd.Parameters.Add(new SqlParameter("@IdRegistroEncuestas", registro));
+                cmd.Parameters.Add(new SqlParameter("@Centro", centro));
                 if (cmd.ExecuteNonQuery() > 0) 
                 {
                     cmd.Dispose();
@@ -38,6 +39,7 @@ namespace Encuesta.Models.Daos
                     dre.Parameters.Add(new SqlParameter("@iIdEmpresa", empresa));
                     dre.Parameters.Add(new SqlParameter("@sCodigoEmpresa",""));
                     dre.Parameters.Add(new SqlParameter("@iActivo", estado));
+                    dre.Parameters.Add(new SqlParameter("@Centro", centro));
                     SqlDataReader dataDre = dre.ExecuteReader();
                     if (dataDre.Read())
                     {
@@ -47,7 +49,7 @@ namespace Encuesta.Models.Daos
                         {
                             CommandType = CommandType.StoredProcedure
                         };
-                        sel.Parameters.Add(new SqlParameter("@IdEmpresa", empresa));
+                        sel.Parameters.Add(new SqlParameter("@Centro", centro));
                         SqlDataReader dataSel = sel.ExecuteReader();
                         if (dataSel.Read())
                         {
@@ -63,6 +65,7 @@ namespace Encuesta.Models.Daos
                             upd.Parameters.Add(new SqlParameter("@Restantes", rest));
                             upd.Parameters.Add(new SqlParameter("@Activo", estado));
                             upd.Parameters.Add(new SqlParameter("@IdRegistro", registro));
+                            upd.Parameters.Add(new SqlParameter("@Centro", centro));
                             if (upd.ExecuteNonQuery() > 0)
                             {
                                 regBean.sMensaje = "success";
@@ -76,7 +79,8 @@ namespace Encuesta.Models.Daos
                         {
                             regBean.sMensaje = "error select";
                         }
-                    } else
+                    } 
+                    else
                     {
                         regBean.sMensaje = "error restantes";
                     }
@@ -93,7 +97,7 @@ namespace Encuesta.Models.Daos
             return regBean;
         }
 
-        public RegistroCategoriasBean sp_Insert_Categorias_Data_Categoria(string nombre, int valor, int empresa, int registro)
+        public RegistroCategoriasBean sp_Insert_Categorias_Data_Categoria(string nombre, int valor, int empresa, int registro, int centro)
         {
             RegistroCategoriasBean catBean = new RegistroCategoriasBean();
             try
@@ -107,6 +111,7 @@ namespace Encuesta.Models.Daos
                 cmd.Parameters.Add(new SqlParameter("@Valor", valor));
                 cmd.Parameters.Add(new SqlParameter("@Empresa", empresa));
                 cmd.Parameters.Add(new SqlParameter("@Registro", registro));
+                cmd.Parameters.Add(new SqlParameter("@Centro", centro));
                 if (cmd.ExecuteNonQuery() > 0)
                 {
                     catBean.sMensaje = "success";
@@ -121,7 +126,7 @@ namespace Encuesta.Models.Daos
             }
             return catBean;
         }
-        public RegistroCategoriasBean sp_Insert_Dominios_Data_Dominio(string nombre, int valor, int empresa, int registro)
+        public RegistroCategoriasBean sp_Insert_Dominios_Data_Dominio(string nombre, int valor, int empresa, int registro, int centro)
         {
             RegistroCategoriasBean catBean = new RegistroCategoriasBean();
             try
@@ -135,6 +140,7 @@ namespace Encuesta.Models.Daos
                 cmd.Parameters.Add(new SqlParameter("@Valor", valor));
                 cmd.Parameters.Add(new SqlParameter("@Empresa", empresa));
                 cmd.Parameters.Add(new SqlParameter("@Registro", registro));
+                cmd.Parameters.Add(new SqlParameter("@Centro", centro));
                 if (cmd.ExecuteNonQuery() > 0)
                 {
                     catBean.sMensaje = "success";

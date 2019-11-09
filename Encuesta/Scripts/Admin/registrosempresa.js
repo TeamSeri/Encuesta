@@ -5,12 +5,12 @@
     btndesc.disabled = true;
     let tipoEnc = "", estact = 0, listenv = 0, ident = 0;
 
-    datareg = (emp) => {
+    datareg = (emp, cent) => {
         try {
             $.ajax({
                 url: "../Admin/DetallesRegistros",
                 type: "POST",
-                data: { empresa: emp },
+                data: { empresa: emp, centro: cent },
                 success: function (data) {
                     var estado = "";
                     valid = data.length;
@@ -230,12 +230,12 @@
                 if (val_emp >= 50) {
                     requeridas.value = parseInt(oper);
                     tipo.value = "E1";
-                    formatcode = nomemp.value + String(val_emp) + String(requeridas.value) + tipo.value + 'TE' + String(code) + String(codp);
+                    formatcode = nomemp.value.replace(' ', '') + String(val_emp) + String(requeridas.value) + tipo.value + 'TE' + String(code) + String(codp);
                     codigo.value = formatcode;
                 } else {
                     requeridas.value = val_emp;
                     tipo.value = "E2";
-                    formatcode = nomemp.value + String(val_emp) + String(requeridas.value) + tipo.value + 'TE' + String(code) + String(codp);
+                    formatcode = nomemp.value.replace(' ','') + String(val_emp) + String(requeridas.value) + tipo.value + 'TE' + String(code) + String(codp);
                     codigo.value = formatcode;
                 }
             }

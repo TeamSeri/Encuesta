@@ -14,12 +14,14 @@
                     valid = data.length;
                     if (valid > 0) {
                         for (var i = 0; i < data.length; i++) {
-                            console.log(data[i]);
                             contain.innerHTML += `
-                            <div class="col-lg-4 col-md-4 col-sm-6">
+                            <div class="col-lg-4 col-md-4 col-sm-6" style="margin-bottom:2em !important;">
                                 <div class="card">
+                                    <div class="text-right" style="margin-top:-1em !important; margin-left:15em; padding-top:0em !important;">
+                                        <button onclick="feditcentro(${data[i].iIdCentroTrabajo},'${data[i].sCentroTrabajo}','${data[i].sUbicacionCentro}')" class="btn btn-sm btn-primary"> <i class="fas fa-edit"></i> </button>
+                                    </div>
                                     <h5 class="text-center">
-                                        <i class="fas fa-circle fa-lg color-primary" style="margin-right:0.5em !important;"></i> <span><b>${data[i].sCentroTrabajo}</b></span>
+                                        <i class="fas fa-building fa-lg color-primary" style="margin-right:0.5em !important;"></i> <span><b>${data[i].sCentroTrabajo}</b></span>
                                     </h5>
                                     <hr style="height:2px !important;" />
                                     <div class="card-body">
@@ -65,6 +67,112 @@
             }
         }
     }
+
+    fswalmsg = (element, type, msgtext, param) => {
+        swal({
+            text: msgtext,
+            icon: type,
+            closeOnClickOutside: false,
+            closeOnEsc: false,
+        }).then((acepta) => {
+            if (param === 1) {
+                location.reload();
+            } else {
+                element.focus();
+            }
+        });
+    }
+
+    const clvcentro = document.getElementById('clvcentro');
+    const nomcent = document.getElementById('nomcent');
+    const centron = document.getElementById('centro_nom');
+    const centrou = document.getElementById('ubicacion_nom');
+    const centronorg = document.getElementById('centron_org');
+    const ubicacionorg = document.getElementById('ubicacionc_org');
+
+    feditcentro = (centro, centronomb, centroubic) => {
+        clvcentro.value = centro;
+        nomcent.textContent = centronomb;
+        centron.value = centronomb;
+        centrou.value = centroubic;
+        centronorg.value = centronomb;
+        ubicacionorg.value = centroubic;
+        $("#editcentro").modal("show");
+    }
+
+    flimpeditcent = () => {
+        clvcentro.value = "";
+        nomcent.textContent = "";
+        centron.value = "";
+        centrou.value = "";
+        centronorg.value = "";
+        ubicacionorg.value = "";
+    }
+
+    document.getElementById('btncloseeditcen').addEventListener('click', flimpeditcent);
+
+    document.getElementById('btnsaveeditcent').addEventListener('click', () => {
+        if (centron.value != "") {
+            if (centrou.value != "") {
+                if (clvempcentro.value != "" || clvempcentro.value != "0" || clvempcentro.value != 0) {
+                    if (centron.value != centronorg.value || centrou.value != ubicacionorg.value) {
+                        const dataEnv = { centro: clvcentro.value, nombrec: centron.value, ubicacionc: centrou.value };
+                        const clvempdat = document.getElementById('clvempdat');
+                        $.ajax({
+                            url: "../Admin/EditarCentros",
+                            type: "POST",
+                            data: dataEnv,
+                            success: function (data) {
+                                if (data.resp == "correct") {
+                                    contain.innerHTML = "";
+                                    swal({
+                                        title: "Correcto",
+                                        text: "Datos actualizados",
+                                        icon: "success",
+                                        closeOnEsc: false,
+                                        closeOnClickOutside: false
+                                    }).then((acepta) => {
+                                        $("#editcentro").modal("hide");
+                                        flimpeditcent();
+                                    });
+                                    setTimeout(() => {
+                                        datareg(clvempdat.value);
+                                    }, 100);
+                                } else if (data.resp == "incorrect") {
+                                    swal({
+                                        title: "Error",
+                                        text: "No se actualizaron los datos, informe del problema",
+                                        icon: "error",
+                                        closeOnClickOutside: false,
+                                        closeOnEsc: false
+                                    }).then((acepta) => {
+                                        location.reload();
+                                    });
+                                }
+                            }, error: function (err) {
+                                console.log(err);
+                            }
+                        });
+                    } else {
+                        swal({
+                            text: "No hay nada que actualizar",
+                            icon: "info",
+                            closeOnClickOutside: false,
+                            closeOnEsc: false
+                        }).then((acepta) => {
+                            $("#editcentro").modal("hide");
+                        });
+                    }
+                } else {
+                    fswalmsg(clvempcentro,"error","El código ha sido modificado",1);
+                }
+            } else {
+                fswalmsg(centrou, "warning", "Ingrese la ubicación del centro de trabajo",0);
+            }
+        } else {
+            fswalmsg(centron,"warning","Ingrese el nombre del centro de trabajo",0);
+        }
+    });
 
     document.getElementById('btnregcentro').addEventListener('click', () => {
         const centrotra = document.getElementById('centrotra');

@@ -167,6 +167,7 @@
     <Content Include="Scripts\Admin\graficatest2.js" />
     <Content Include="Scripts\Admin\graficatest1.js" />
     <Content Include="Scripts\Admin\index.js" />
+    <Content Include="Scripts\Admin\indexusers.js" />
     <Content Include="Scripts\Admin\registrocentros.js" />
     <Content Include="Scripts\Admin\registrosempresa.js" />
     <Content Include="Scripts\Admin\usuarios.js" />

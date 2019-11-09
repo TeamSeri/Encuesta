@@ -21,8 +21,8 @@ namespace Encuesta.Controllers
 
             objEnc.iIdEmpresa = Convert.ToInt32(Request.Form["nom_empresa"]);
             objEnc.sCodigoEmpresa = Request.Form["codigo"].ToString();
-            empBean.iIdCentroTrabajo = Convert.ToInt32(Request.Form["centro_tra"]);
-            int empre = objEnc.iIdEmpresa, estado = 1, centro = empBean.iIdCentroTrabajo;
+            objEnc.iIdCentroTrabajo = Convert.ToInt32(Request.Form["centro_tra"]);
+            int empre = objEnc.iIdEmpresa, estado = 1, centro = objEnc.iIdCentroTrabajo;
             string codigo = objEnc.sCodigoEmpresa;
             empBean = empDao.sp_Datos_Empresas_Retrieve_Empresa(empre, codigo, estado, centro);
             objEnc.iIdRegistroEmpresas = empBean.iIdRegistroEmpresas;
@@ -158,7 +158,7 @@ namespace Encuesta.Controllers
         {
             int resultado = 0, formLenght = form.Count, resultadoC1 = 0, resultadoC2 = 0, resultadoC3 = 0, resultadoC4 = 0, resultadoC5 = 0, empresa = Convert.ToInt32(form["empresa"]);
             string tipo = form["tipo"].ToString(), codigo = form["codigo"].ToString();
-            int registro = Convert.ToInt32(form["registro"]);
+            int registro = Convert.ToInt32(form["registro"]), centro = Convert.ToInt32(form["centro"]);
             int resp1 = Convert.ToInt32(form["resp1"]), resp2 = Convert.ToInt32(form["resp2"]),
                 resp3 = Convert.ToInt32(form["resp3"]), resp4 = Convert.ToInt32(form["resp4"]),
                 resp5 = Convert.ToInt32(form["resp5"]), resp6 = Convert.ToInt32(form["resp6"]),
@@ -234,19 +234,19 @@ namespace Encuesta.Controllers
             RegistroDao regDao = new RegistroDao();
             RegistroCategoriasBean catBean = new RegistroCategoriasBean();
 
-            catBean = regDao.sp_Insert_Categorias_Data_Categoria(nombreC1, resultadoC1, empresa, registro);
+            catBean = regDao.sp_Insert_Categorias_Data_Categoria(nombreC1, resultadoC1, empresa, registro, centro);
             if (catBean.sMensaje == "success")
             {
-                catBean = regDao.sp_Insert_Categorias_Data_Categoria(nombreC2, resultadoC2, empresa, registro);
+                catBean = regDao.sp_Insert_Categorias_Data_Categoria(nombreC2, resultadoC2, empresa, registro, centro);
                 if (catBean.sMensaje == "success")
                 {
-                    catBean = regDao.sp_Insert_Categorias_Data_Categoria(nombreC3, resultadoC3, empresa, registro);
+                    catBean = regDao.sp_Insert_Categorias_Data_Categoria(nombreC3, resultadoC3, empresa, registro, centro);
                     if (catBean.sMensaje == "success")
                     {
-                        catBean = regDao.sp_Insert_Categorias_Data_Categoria(nombreC4, resultadoC4, empresa, registro);
+                        catBean = regDao.sp_Insert_Categorias_Data_Categoria(nombreC4, resultadoC4, empresa, registro, centro);
                         if (catBean.sMensaje == "success")
                         {
-                            catBean = regDao.sp_Insert_Categorias_Data_Categoria(nombreC5, resultadoC5, empresa, registro);
+                            catBean = regDao.sp_Insert_Categorias_Data_Categoria(nombreC5, resultadoC5, empresa, registro, centro);
                         }
                     }
                 }
@@ -255,31 +255,31 @@ namespace Encuesta.Controllers
             if (catBean.sMensaje == "success")
             {
                 RegistroCategoriasBean domBean = new RegistroCategoriasBean();
-                domBean = regDao.sp_Insert_Dominios_Data_Dominio(nombreD2, resultadoD2, empresa, registro);
+                domBean = regDao.sp_Insert_Dominios_Data_Dominio(nombreD2, resultadoD2, empresa, registro, centro);
                 if(domBean.sMensaje == "success")
                 {
-                    domBean = regDao.sp_Insert_Dominios_Data_Dominio(nombreD3, resultadoD3, empresa, registro);
+                    domBean = regDao.sp_Insert_Dominios_Data_Dominio(nombreD3, resultadoD3, empresa, registro, centro);
                     if(domBean.sMensaje == "success")
                     {
-                        domBean = regDao.sp_Insert_Dominios_Data_Dominio(nombreD4, resultadoD4, empresa, registro);
+                        domBean = regDao.sp_Insert_Dominios_Data_Dominio(nombreD4, resultadoD4, empresa, registro, centro);
                         if(domBean.sMensaje == "success")
                         {
-                            domBean = regDao.sp_Insert_Dominios_Data_Dominio(nombreD5, resultadoD5, empresa, registro);
+                            domBean = regDao.sp_Insert_Dominios_Data_Dominio(nombreD5, resultadoD5, empresa, registro, centro);
                             if (domBean.sMensaje == "success")
                             {
-                                domBean = regDao.sp_Insert_Dominios_Data_Dominio(nombreD6, resultadoD6, empresa, registro);
+                                domBean = regDao.sp_Insert_Dominios_Data_Dominio(nombreD6, resultadoD6, empresa, registro, centro);
                                 if (domBean.sMensaje == "success")
                                 {
-                                    domBean = regDao.sp_Insert_Dominios_Data_Dominio(nombreD7, resultadoD7, empresa, registro);
+                                    domBean = regDao.sp_Insert_Dominios_Data_Dominio(nombreD7, resultadoD7, empresa, registro, centro);
                                     if (domBean.sMensaje == "success")
                                     {
-                                        domBean = regDao.sp_Insert_Dominios_Data_Dominio(nombreD8, resultadoD8, empresa, registro);
+                                        domBean = regDao.sp_Insert_Dominios_Data_Dominio(nombreD8, resultadoD8, empresa, registro, centro);
                                         if (domBean.sMensaje == "success")
                                         {
-                                            domBean = regDao.sp_Insert_Dominios_Data_Dominio(nombreD9, resultadoD9, empresa, registro);
+                                            domBean = regDao.sp_Insert_Dominios_Data_Dominio(nombreD9, resultadoD9, empresa, registro, centro);
                                             if (domBean.sMensaje == "success")
                                             {
-                                                domBean = regDao.sp_Insert_Dominios_Data_Dominio(nombreD10, resultadoD10, empresa, registro);
+                                                domBean = regDao.sp_Insert_Dominios_Data_Dominio(nombreD10, resultadoD10, empresa, registro, centro);
                                             }
                                         }
                                     }
@@ -292,7 +292,7 @@ namespace Encuesta.Controllers
 
             RegistroBean regBean = new RegistroBean();
             DateTime fecha = DateTime.Now;
-            regBean = regDao.sp_RegistroEncuestas_Insert_RegistroEncuestas(empresa, fecha, resultado, tipo, registro);
+            regBean = regDao.sp_RegistroEncuestas_Insert_RegistroEncuestas(empresa, fecha, resultado, tipo, registro, centro);
             return View(regBean);
         }
 
@@ -304,7 +304,7 @@ namespace Encuesta.Controllers
                 empresa = Convert.ToInt32(form["empresa"]);
             string tipo = form["tipo"].ToString(),
                 codigo = form["codigo"].ToString();
-            int registro = Convert.ToInt32(form["registro"]);
+            int registro = Convert.ToInt32(form["registro"]), centro = Convert.ToInt32(form["centro"]);
             int resp1 = Convert.ToInt32(form["resp1"]), resp2 = Convert.ToInt32(form["resp2"]),
                 resp3 = Convert.ToInt32(form["resp3"]), resp4 = Convert.ToInt32(form["resp4"]),
                 resp5 = Convert.ToInt32(form["resp5"]), resp6 = Convert.ToInt32(form["resp6"]),
@@ -361,17 +361,17 @@ namespace Encuesta.Controllers
             RegistroDao regDao = new RegistroDao();
 
             RegistroCategoriasBean catBean = new RegistroCategoriasBean();
-            catBean = regDao.sp_Insert_Categorias_Data_Categoria(nombreC1, resultadoC1, empresa, registro);
+            catBean = regDao.sp_Insert_Categorias_Data_Categoria(nombreC1, resultadoC1, empresa, registro, centro);
 
             if (catBean.sMensaje == "success")
             {
-                catBean = regDao.sp_Insert_Categorias_Data_Categoria(nombreC2, resultadoC2, empresa, registro);
+                catBean = regDao.sp_Insert_Categorias_Data_Categoria(nombreC2, resultadoC2, empresa, registro, centro);
                 if (catBean.sMensaje == "success")
                 {
-                    catBean = regDao.sp_Insert_Categorias_Data_Categoria(nombreC3, resultadoC3, empresa, registro);
+                    catBean = regDao.sp_Insert_Categorias_Data_Categoria(nombreC3, resultadoC3, empresa, registro, centro);
                     if (catBean.sMensaje == "success")
                     {
-                        catBean = regDao.sp_Insert_Categorias_Data_Categoria(nombreC4, resultadoC4, empresa, registro);
+                        catBean = regDao.sp_Insert_Categorias_Data_Categoria(nombreC4, resultadoC4, empresa, registro, centro);
                     }
                 }
             }
@@ -379,25 +379,25 @@ namespace Encuesta.Controllers
             if (catBean.sMensaje == "success")
             {
                 RegistroCategoriasBean domBean = new RegistroCategoriasBean();
-                domBean = regDao.sp_Insert_Dominios_Data_Dominio(nombreD2, resultadoD2, empresa, registro);
+                domBean = regDao.sp_Insert_Dominios_Data_Dominio(nombreD2, resultadoD2, empresa, registro, centro);
                 if (domBean.sMensaje == "success")
                 {
-                    domBean = regDao.sp_Insert_Dominios_Data_Dominio(nombreD3, resultadoD3, empresa, registro);
+                    domBean = regDao.sp_Insert_Dominios_Data_Dominio(nombreD3, resultadoD3, empresa, registro, centro);
                     if (domBean.sMensaje == "success")
                     {
-                        domBean = regDao.sp_Insert_Dominios_Data_Dominio(nombreD4, resultadoD4, empresa, registro);
+                        domBean = regDao.sp_Insert_Dominios_Data_Dominio(nombreD4, resultadoD4, empresa, registro, centro);
                         if (domBean.sMensaje == "success")
                         {
-                            domBean = regDao.sp_Insert_Dominios_Data_Dominio(nombreD5, resultadoD5, empresa, registro);
+                            domBean = regDao.sp_Insert_Dominios_Data_Dominio(nombreD5, resultadoD5, empresa, registro, centro);
                             if (domBean.sMensaje == "success")
                             {
-                                domBean = regDao.sp_Insert_Dominios_Data_Dominio(nombreD6, resultadoD6, empresa, registro);
+                                domBean = regDao.sp_Insert_Dominios_Data_Dominio(nombreD6, resultadoD6, empresa, registro, centro);
                                 if (domBean.sMensaje == "success")
                                 {
-                                    domBean = regDao.sp_Insert_Dominios_Data_Dominio(nombreD7, resultadoD7, empresa, registro);
+                                    domBean = regDao.sp_Insert_Dominios_Data_Dominio(nombreD7, resultadoD7, empresa, registro, centro);
                                     if (domBean.sMensaje == "success")
                                     {
-                                        domBean = regDao.sp_Insert_Dominios_Data_Dominio(nombreD8, resultadoD8, empresa, registro);
+                                        domBean = regDao.sp_Insert_Dominios_Data_Dominio(nombreD8, resultadoD8, empresa, registro, centro);
                                     }
                                 }
                             }
@@ -409,7 +409,7 @@ namespace Encuesta.Controllers
 
             RegistroBean regBean = new RegistroBean();
             DateTime fecha = DateTime.Now;
-            regBean = regDao.sp_RegistroEncuestas_Insert_RegistroEncuestas(empresa, fecha, resultado, tipo, registro);
+            regBean = regDao.sp_RegistroEncuestas_Insert_RegistroEncuestas(empresa, fecha, resultado, tipo, registro, centro);
             return View(regBean);
         }
 

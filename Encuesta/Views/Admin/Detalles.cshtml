@@ -14,7 +14,7 @@
                     background-color: #FAFFEB;
                 }
             </style>
-            <div style="margin-top:2em !important;">
+            <div style="margin-top:2em !important; margin-bottom:6em !important;">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-2 col-md-2 col-sm-2" style="margin-top:6.7em !important;">
@@ -24,59 +24,11 @@
                             <a href="#" data-toggle="modal" data-target="#regCentro" class="btn btn-primary btn-block" style="margin-top:3em !important;" id="btnnewregcentro">
                                 <i class="fas fa-plus"></i> <span style="margin-left:0.5em;">Nuevo centro</span>
                             </a>
-                            <a href="#" data-toggle="modal" data-target="#regDatosEmpresa" class="btn btn-primary btn-block" style="margin-top:3em !important;" id="btnnewreg">
-                                <i class="fas fa-plus"></i> <span style="margin-left:0.5em;">Nuevo registro</span>
-                            </a>
-                            <button class="btn btn-primary btn-block" style="margin-top:3em !important;" id="btndesc">
-                                <i class="fas fa-check"></i> <span style="margin-left:0.5em !important;">Continuar</span>
-                            </button>
-                            <a href="#" data-toggle="modal" data-target="#info" class="btn btn-primary btn-block" style="margin-top:3em !important;" id="btninfo">
-                                <i class="fas fa-info"></i> <span style="margin-left:0.5em;">Ayuda</span>
-                            </a>
                         </div>
                         <div class="col-lg-10 col-md-10 col-sm-12">
                             <h2><b> <i class="fas fa-industry color-primary" style="margin-right:0.5em !important;"></i> Centros de trabajo de: @Model.sNombre </b></h2>
                             <hr />
-                            <div class="row" id="contain_reg">
-                            </div>
                             <div class="row" id="containcentros"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="modal fade" id="info" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">
-                                <b>Ayuda</b>
-                            </h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <h4 class="text-center text-primary">
-                                        <b>
-                                            <i class="fas fa-info" style="margin-right:1em !important;"></i>
-                                            Información importante
-                                        </b>
-                                    </h4>
-                                    <hr />
-                                    <ul class="list-group">
-                                        <li class="list-group-item">
-                                            Para registrar un nuevo elemento es importante que desactive el actual ya que solo puede tener una encuesta activa en el sistema, si no hace esto el sistema no procedera a registrar los datos de la nueva encuesta.
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                         </div>
                     </div>
                 </div>
@@ -117,77 +69,35 @@
                 </div>
             </div>
 
-            <div class="modal fade" id="regDatosEmpresa" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" data-backdrop="static" id="editcentro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">
-                                <b>Registrar datos</b>
+                            <h5 class="modal-title text-center" id="exampleModalLabel">
+                                <b> Agregar registro <span id="nomcent"></span> </b>
                             </h5>
-                            <button id="icoclreg" type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
                         </div>
                         <div class="modal-body">
                             <div class="row">
-                                <input value="@Model.sNombre" type="hidden" id="nomemp" />
-                                <input value="@Model.iIdEmpresa" type="hidden" id="clvemp" />
-                                <div class="col-lg-6">
+                                <div class="col-lg-offset-3 col-lg-6">
+                                    <input type="hidden" id="clvempdat" value="@Model.iIdEmpresa" />
+                                    <input type="hidden" id="clvcentro" />
                                     <div class="form-group">
-                                        <label>Numero de empleados:</label>
-                                        <input type="number" id="empleados" required name="empleados" class="form-control" />
+                                        <label>Nombre del centro: </label>
+                                        <input type="text" id="centro_nom" class="form-control" />
+                                        <input type="hidden" id="centron_org" />
                                     </div>
                                     <div class="form-group">
-                                        <label>Encuesta:</label>
-                                        <input type="text" id="tipo" name="tipo" readonly class="form-control" />
+                                        <label>Ubicación: </label>
+                                        <input type="text" id="ubicacion_nom" class="form-control" />
+                                        <input type="hidden" id="ubicacionc_org" />
                                     </div>
-                                    <div class="form-group">
-                                        <label>Mes:</label>
-                                        <select name="mes" id="mes" class="form-control">
-                                            <option value="none" selected>Selecciona</option>
-                                            <option value="Enero">Enero</option>
-                                            <option value="Febrero">Febrero</option>
-                                            <option value="Marzo">Marzo</option>
-                                            <option value="Abril">Abril</option>
-                                            <option value="Mayo">Mayo</option>
-                                            <option value="Junio">Junio</option>
-                                            <option value="Julio">Julio</option>
-                                            <option value="Agosto">Agosto</option>
-                                            <option value="Septiembre">Septiembre</option>
-                                            <option value="Octubre">Octubre</option>
-                                            <option value="Noviembre">Noviembre</option>
-                                            <option value="Diciembre">Diciembre</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <label>Aplicaciones requeridas:</label>
-                                        <input type="number" id="requeridas" name="requeridas" readonly class="form-control" />
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Codigo empresa:</label>
-                                        <input type="text" id="codigo" name="codigo" readonly class="form-control" />
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Año:</label>
-                                        <select name="anio" id="anio" class="form-control">
-                                            <option value="none" selected>Selecciona</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12 text-center">
-                                    <hr />
-                                    <p>
-                                        <i class="fas fa-info color-primary" style="margin-right:0.5em !important"></i>
-                                        <b class="color-primary">Información importante</b>, al registrar nuevos datos asegurese de que todos los registros anteriores se encuentres inactivos, en caso contrario no se hará el registro.
-                                    </p>
                                 </div>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btnclreg">Cerrar</button>
-                            <button type="button" class="btn btn-primary" id="btnsareg">Guardar cambios</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btncloseeditcen">Cerrar</button>
+                            <button type="button" class="btn btn-primary" id="btnsaveeditcent">Actualizar</button>
                         </div>
                     </div>
                 </div>

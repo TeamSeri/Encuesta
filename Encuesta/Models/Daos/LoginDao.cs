@@ -288,7 +288,7 @@ namespace Encuesta.Models.Daos
             return logBean;
         }
 
-        public LoginBean sp_CambiarContraseñaUsuarios(int user, string pass)
+        public LoginBean sp_CambiarContrasenaUsuarios(int user, string pass)
         {
             LoginBean logBean = new LoginBean();
             try

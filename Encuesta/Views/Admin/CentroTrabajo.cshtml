@@ -157,11 +157,11 @@
 
             <script type="text/javascript" src="~/Scripts/Admin/registrosempresa.js"></script>
 
-                <script type="text/javascript">
+            <script type="text/javascript">
                 document.addEventListener('DOMContentLoaded', () => {
-                    datareg(@Model.iIdEmpresa);
+                    datareg(@Model.iIdEmpresa, @Model.iIdCentroTrabajo);
                 });
-                </script>
+            </script>
 
         }
         else

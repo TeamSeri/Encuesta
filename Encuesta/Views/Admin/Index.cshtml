@@ -81,7 +81,7 @@
                                         </a>
                                     </li>
                                     <li class="list-group-item" style="margin-top:1em !important;" id="li2">
-                                        <a href="#">
+                                        <a href="#" data-toggle="modal" data-target="#changePassUser" href="#">
                                             <i class="fas fa-lock color-primary" style="margin-right:0.5em !important;"></i>
                                             Cambiar contraseña.
                                         </a>
@@ -107,18 +107,38 @@
                         </div>
                     </div>
                 </div>
-                <script type="text/javascript">
-                    document.addEventListener('DOMContentLoaded', () => {
-                        const divpanel = document.getElementById('divpanel');
-                        //divpanel.style.cssText = "transition:1s;";
-                        setTimeout(() => {
-                            //divpanel.style.cssText = "background-color:blue;";
-                            setTimeout(() => {
-                                //divpanel.style.cssText = "background-color:red;";
-                            }, 1500);
-                        }, 1500);
-                    });
-                </script>
+
+                <div class="modal fade" data-backdrop="static" id="changePassUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title text-center" id="exampleModalLabel">
+                                    <b> Cambiar contraseña</b>
+                                </h5>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-lg-offset-3 col-lg-6">
+                                        <div class="form-group">
+                                            <label>Ingresa la nueva contraseña:</label>
+                                            <input type="password" id="newpassuserc" name="newpassuser" class="form-control" />
+                                            <input type="hidden" id="clvpassuser" value="@Session["keyUser"]" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Repite la nueva contraseña:</label>
+                                            <input type="password" id="passconfirmc" name="passconfirm" class="form-control" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btnclepassuserc">Cerrar</button>
+                                <button type="button" class="btn btn-primary" id="btnchangeuserpass">Actualizar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <script src="~/Scripts/Admin/indexusers.js"></script>
             }
         </div>
 

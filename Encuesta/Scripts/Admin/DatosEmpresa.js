@@ -10,6 +10,7 @@
                 data: { registro: param },
                 success: function (data) {
                     document.getElementById('emp').textContent = data.sNombre;
+                    document.getElementById('cen').textContent = data.sCentroTrabajo;
                     document.getElementById('emple').textContent = data.iEmpleados;
                     document.getElementById('req').textContent = data.iAplicacionesReq;
                     document.getElementById('cont').textContent = data.iAplicacionesRealizadas;
@@ -18,9 +19,9 @@
                     document.getElementById('mes').textContent = data.sMes;
                     document.getElementById('code').textContent = data.sCodigoEmpresa;
                     if (data.sTipoEncuesta == 'E1') {
-                        tipoEnc = 'Encuesta 1';
+                        tipoEnc = 'Guia 3';
                     } else if (data.sTipoEncuesta == 'E2') {
-                        tipoEnc = 'Encuesta 2';
+                        tipoEnc = 'Guia 2';
                     }
                     document.getElementById('tipo').textContent = tipoEnc;
                 },

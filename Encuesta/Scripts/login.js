@@ -34,12 +34,21 @@
                                 }).then((acepta) => {
                                     user.value = "";
                                     pass.value = "";
+                                    pass.focus();
                                 });
                             }
                         } else {
-                            swal("Los datos ingresados son incorrectos");
-                            user.value = "";
-                            pass.value = "";
+                            swal({
+                                text: "Los datos ingresados son incorrectos",
+                                icon: "warning",
+                                closeOnEsc: false,
+                                closeOnClickOutside: false
+                            }).then((acepta) => {
+                                user.value = "";
+                                pass.value = "";
+                                user.focus();
+                            });
+
                         }
                     },
                     error: function (xhr, status) {
