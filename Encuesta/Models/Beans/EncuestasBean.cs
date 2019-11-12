@@ -29,5 +29,6 @@ namespace Encuesta.Models.Beans
         public string sDiagnosticoOpc1 { get; set; }
         public string sDiagnosticoOpc2 { get; set; }
         public string sDiagnosticoOpc3 { get; set; }
+        public string sCentroTrabajo { get; set; }
     }
 }

@@ -9,12 +9,33 @@
 
     let arrusers = [], satencion = 0, natencion = 0;
 
+    floadcentros = (emp) => {
+        const namcent = document.getElementById('namcent');
+        try {
+            $.ajax({
+                url: "../Admin/RegistrosCentros",
+                type: "POST",
+                data: { empresa: emp },
+                success: function (data) {
+                    for (var i = 0; i < data.length; i++) {
+                        namcent.innerHTML += `
+                            <option value="${data[i].iIdCentroTrabajo}">${data[i].sCentroTrabajo}</option>
+                        `;
+                    }
+                }, error: function (error) {
+                    console.log(error);
+                } 
+            });
+        } catch (error) {
+            console.error(error);
+        }
+    } 
+
     loaddataencopc = (param1, param2) => {
         let dataEnv = { type : param1, key : param2 };
         if (param1 != 1) {
             dataEnv = { type : param1, key : param2 };
         }
-        console.log(dataEnv);
         try {
             $.ajax({
                 url: "../Admin/DetallesEncuestaOpc",
@@ -41,7 +62,7 @@
                                 <td>
                                     <a href="/Admin/Detalles?empresa=${data[i].iIdEmpresaOpc}"> 
                                         <i class="fas fa-external-link-alt" style="margin-right:0.5em !important;"></i>
-                                        ${data[i].sEmpresa} 
+                                        ${data[i].sCentroTrabajo} 
                                     </a>
                                 </td>
                                 <td> ${data[i].sPuestoEmOpc} </td>
@@ -281,6 +302,7 @@
                             "empleado": empleado.value,
                             "puesto": puesto.value,
                             "codigo": codigoasc.value,
+                            "centro": namcent.value
                         }
                         $.ajax({
                             url: "/Admin/RegEncuestaOpcional",

@@ -14,7 +14,7 @@
                     const userpass = document.getElementById('clvpassuser');
                     const dataEnv = { user: userpass.value, pass: newpassuser.value };
                     $.ajax({
-                        url: "../Admin/CambiarContraseña",
+                        url: "../Admin/CambiarContrasena",
                         type: "POST",
                         data: dataEnv,
                         success: function (data) {

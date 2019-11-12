@@ -1,0 +1,85 @@
+﻿
+@{
+    ViewBag.Title = "ReportarProblema";
+}
+
+@{
+    if (@Session["keyUser"] != null)
+    {
+        <style>
+            body {
+                background-color: #FAFFEB;
+            }
+        </style>
+
+        <div class="container-fluid" style="margin-top:2em !important;">
+
+            <div class="row">
+
+                <div class="col-md-4">
+                    <h2>
+                        <b>
+                            <i class="fas fa-headset color-primary" style="margin-right:0.5em !important"></i>
+                            Soporte.
+                        </b>
+                    </h2>
+                    <hr />
+                    <div style="margin-top:4em !important;">
+                        <p class="text-justify">
+                            Una vez tu reporte sea enviado a la brevedad será revisado para su posterior correción, una vez hecho esto se le notificara que el problema ha sido resuelto.
+                        </p>
+                        <hr />
+                        <p class="text-center">
+                            <b class="text-danger">Importante!</b>
+                        </p>
+                        <p class="text-justify">
+                            Este apartado es solo para reportar fallas que presente el sistema, en caso de que quiera alguna modificacion puede dirigirse directamente al departamento de sistemas, en caso de que usted haga mal uso de esta funcionalidad se le deshabilitara dicha función.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <h2><b> <i class="fas fa-bug color-primary" style="margin-right:0.5em !important;"></i> Reportar problema.</b></h2>
+                    <hr />
+                    <form class="row" style="padding:2em !important;">
+                        <div>
+                            <div class="form-group row">
+                                <label class="col-sm-4">Descripción del problema:</label>
+                                <div class="col-sm-8">
+                                    <textarea id="msjreport" placeholder="Describe el problema" rows="7" class="form-control"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-4">Reporta:</label>
+                                <div class="col-sm-8">
+                                    <input type="text" readonly class="form-control" value="@Session["nameUser"]" />
+                                    <input type="hidden" id="clvrep" readonly class="form-control" value="@Session["keyUser"]" />
+                                </div>
+                            </div>
+                            <div class="form-group text-center" style="margin-top:4em !important;">
+                                <button class="btn btn-sm btn-primary" type="button" id="btnreport">
+                                    Enviar reporte
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <hr />
+                    <h3><b> <i class="fas fa-list color-primary" style="margin-right:0.5em !important;"></i> Reportes enviados.</b></h3>
+                    <hr />
+                    <div class="row" id="contrep">
+                        
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <script type="text/javascript" src="~/Scripts/Admin/reportaprob.js"></script>
+    }
+    else
+    {
+        <script type="text/javascript">
+            location.href = "/Home/Logout";
+        </script>
+    }
+}

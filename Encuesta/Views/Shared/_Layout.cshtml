@@ -38,6 +38,24 @@
                                 Registrar usuario <i class="fas fa-plus" style="margin-left:0.5em !important; color:greenyellow !important;"></i>
                             </a>
                         </li>
+                        <li>
+                            <a style="color:white !important; background:none !important; font-size:13px !important;" href="/Admin/Reportes">
+                                Reportes <span style="margin-left:0.5em !important; color:greenyellow !important;" id="repnotif"></span>
+                            </a>
+                        </li>
+                    }
+                    @if (Convert.ToInt32(Session["typeUser"]) == 2)
+                    {
+                        <li class="dropdown">
+                            <a style="color:white !important; background:none !important; font-size:13px !important;" class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Notificaciones
+                                <span id="cantnotif" style="margin-left:0.5em !important; font-size:12px !important;"></span>
+                                <i class="fas fa-bell" style="color:greenyellow !important;"></i>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <div id="notifreport" style="padding:0.5em !important;"></div>
+                            </div>
+                        </li>
                     }
                     <li>
                         <a style="color:white !important; background:none !important; font-size:13px !important;" href="/Admin/EncuestaEspecial">
@@ -47,7 +65,7 @@
                     @if (Convert.ToInt32(Session["typeUser"]) == 1)
                     {
                         <li>
-                            <a data-toggle="modal" data-target="#changePass" href="#" style="color:white !important; background:none !important; font-size:13px !important;" >
+                            <a data-toggle="modal" data-target="#changePass" href="#" style="color:white !important; background:none !important; font-size:13px !important;">
                                 Contraseña <i class="fas fa-key" style="margin-left:0.5em !important; color:greenyellow !important;"></i>
                             </a>
                         </li>
@@ -135,7 +153,73 @@
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
     <script src="https://kit.fontawesome.com/af5b80622e.js" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="~/Scripts/Admin/index.js"></script>
+    @{
+        if (Convert.ToInt32(Session["typeUser"]) == 1)
+        {
+            <script type="text/javascript" src="~/Scripts/Admin/index.js"></script>
+        }
+    }
     <script type="text/javascript" src="~/Scripts/datatables.js"></script>
+    @{
+        if (Convert.ToInt32(Session["typeUser"]) != 1)
+        {
+            <script type="text/javascript">
+
+                fviewnotif = (param) => {
+                    $.ajax({
+                        url: "../Admin/NotificaConfirm",
+                        type: "POST",
+                        data: { clvrep:param },
+                        success: function (data) {
+                            if (data.resp == "success") {
+                                location.href = "/Admin/ReportarProblema#contrep";
+                            } else if (data.resp == "error") {
+                                location.reload();
+                            }
+                        }, error: function (error) {
+                            console.log(error);
+                        }
+                    });
+                }
+
+                floadnotifreport = () => {
+                    try {
+                        $.ajax({
+                            url: "../Admin/NotificaReportesRes",
+                            type: "POST",
+                            data: { clvuser: @Session["keyUser"], tipo: 'One' },
+                            success: function (data) {
+                                let cant = data.length;
+                                if (cant > 0) {
+                                    for (var i = 0; i < data.length; i++) {
+                                        if (data[i].sMensaje == "success") {
+                                            document.getElementById('cantnotif').textContent = cant;
+                                            document.getElementById('notifreport').innerHTML += `
+                                                <span>
+                                                    <a href="#" onclick="fviewnotif(${data[i].iIdReporte})" style="font-size:11px;"> <i class="fas fa-check"></i> El problema con código ${data[i].sCodigoReporte} que reportaste ha sido solucionado</a>
+                                                </span>
+                                                <br />
+                                            `;
+                                        }
+                                    }
+                                } else {
+                                    document.getElementById('cantnotif').textContent = 0;
+                                    document.getElementById('notifreport').innerHTML += `
+                                        <div class="text-center"> <b class="text-primary">Todo correcto</b> </div>
+                                    `;
+                                }
+                            }, error: function (error) {
+                                console.log(error);
+                            }
+                        });
+                    } catch (error) {
+                        console.error(error);
+                    }
+                }
+
+            floadnotifreport();
+            </script>
+        }
+    }
 </body>
 </html>

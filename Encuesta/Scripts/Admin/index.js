@@ -137,4 +137,32 @@
         }
     });
 
+    floadnotifreport = () => {
+        try {
+            $.ajax({
+                url: "../Admin/NotificaReportesRes",
+                type: "POST",
+                data: { clvuser: 0, tipo: 'AllAdmin'},
+                success: function (data) {
+                    let cant = data.length;
+                    if (cant > 0) {
+                        for (var i = 0; i < data.length; i++) {
+                            if (data[i].sMensaje == "success") {
+                                document.getElementById('repnotif').textContent = cant;
+                            }
+                        }
+                    } else {
+                        document.getElementById('repnotif').textContent = 0;
+                    }
+                }, error: function (error) {
+                    console.log(error);
+                }
+            });
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    floadnotifreport();
+
 });

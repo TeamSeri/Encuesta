@@ -260,12 +260,12 @@ namespace Encuesta.Controllers
         }
 
         [HttpPost]
-        public JsonResult RegEncuestaOpcional(int empresa, string empleado, string puesto, string codigo)
+        public JsonResult RegEncuestaOpcional(int empresa, string empleado, string puesto, string codigo, int centro)
         {
             EncuestasBean encBean = new EncuestasBean();
             EncuestasDao encDao = new EncuestasDao();
             int estado = 0;
-            encBean = encDao.sp_Insert_EncuestaOpcional_Datos(empresa, empleado, puesto, codigo, estado);
+            encBean = encDao.sp_Insert_EncuestaOpcional_Datos(empresa, empleado, puesto, codigo, estado, centro);
             var data = new { mensaje = encBean.sMensaje };
             return Json(data);
         }
@@ -526,6 +526,57 @@ namespace Encuesta.Controllers
                 result = "incorrect";
             }
             var data = new { resp = result };
+            return Json(data);
+        }
+
+        public ActionResult ReportarProblema()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public JsonResult EnvReportProblema(int keyreport, string msjreport, string code)
+        {
+            ReporteBean repBean = new ReporteBean();
+            ReporteDao repDao = new ReporteDao();
+            string result = "";
+            repBean = repDao.sp_Insert_Reporta_Problema(keyreport, msjreport, code);
+            result = repBean.sMensaje;
+            var data = new { resp = result };
+            return Json(data);
+        }
+
+        [HttpPost]
+        public JsonResult NotificaReportesRes(int clvuser, string tipo)
+        {
+            List<ReporteBean> repBean = new List<ReporteBean>();
+            ReporteDao repDao = new ReporteDao();
+            repBean = repDao.sp_Notifica_Reportes_Resueltos(clvuser, tipo);
+            return Json(repBean);
+        }
+
+        [HttpPost] 
+        public JsonResult NotificaConfirm(int clvrep)
+        {
+            ReporteBean repBean = new ReporteBean();
+            ReporteDao repDao = new ReporteDao();
+            repBean = repDao.sp_Notifica_Confirma_Vista(clvrep);
+            var data = new { resp = repBean.sMensaje };
+            return Json(data);
+        }
+
+        public ActionResult Reportes()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public JsonResult ActualizaReportesProb (int clvreport, int estado, string msjreport)
+        {
+            ReporteBean repBean = new ReporteBean();
+            ReporteDao repDao = new ReporteDao();
+            repBean = repDao.sp_Actualizar_ReporteProblema_Notifica(clvreport, estado, msjreport);
+            var data = new { resp = repBean.sMensaje };
             return Json(data);
         }
 

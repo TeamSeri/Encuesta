@@ -84,7 +84,7 @@ namespace Encuesta.Models.Daos
             return listEncBean;
         }
 
-        public EncuestasBean sp_Insert_EncuestaOpcional_Datos(int empresa, string empleado, string puesto, string codigo, int estado)
+        public EncuestasBean sp_Insert_EncuestaOpcional_Datos(int empresa, string empleado, string puesto, string codigo, int estado, int centro)
         {
             EncuestasBean encBean = new EncuestasBean();
 
@@ -102,6 +102,7 @@ namespace Encuesta.Models.Daos
                 cmd.Parameters.Add(new SqlParameter("@Codigo", codigo));
                 cmd.Parameters.Add(new SqlParameter("@Estado", estado));
                 cmd.Parameters.Add(new SqlParameter("@Fecha", fecha));
+                cmd.Parameters.Add(new SqlParameter("@Centro", centro));
                 if (cmd.ExecuteNonQuery() > 0)
                 {
                     encBean.sMensaje = "success";
@@ -147,6 +148,7 @@ namespace Encuesta.Models.Daos
                         encBean.sFechaEncOpc = data["FechaEnc"].ToString();
                         encBean.sEmpresa = data["Nombre"].ToString();
                         encBean.sDiagnosticoOpcDetalle = data["Diagnostico"].ToString();
+                        encBean.sCentroTrabajo = data["CentroTrabajo"].ToString();
                         encBean.sDiagnosticoOpc1 = data["Diagnostico1"].ToString();
                         encBean.sDiagnosticoOpc2 = data["Diagnostico2"].ToString();
                         encBean.sDiagnosticoOpc3 = data["Diagnostico3"].ToString();

@@ -137,12 +137,14 @@
     <Compile Include="Models\Beans\RegistroBean.cs" />
     <Compile Include="Models\Beans\RegistroCategoriasBean.cs" />
     <Compile Include="Models\Beans\RegistroDominioBean.cs" />
+    <Compile Include="Models\Beans\ReporteBean.cs" />
     <Compile Include="Models\Daos\EmpresasDao.cs" />
     <Compile Include="Models\Daos\EncuestasDao.cs" />
     <Compile Include="Models\Daos\EncuestaOpcDao.cs" />
     <Compile Include="Models\Daos\LoginDao.cs" />
     <Compile Include="Models\Daos\PreguntasDao.cs" />
     <Compile Include="Models\Daos\RegistroDao.cs" />
+    <Compile Include="Models\Daos\ReporteDao.cs" />
     <Compile Include="Models\EncuestaP.cs" />
     <Compile Include="Models\Utilerias\Conexion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -170,6 +172,8 @@
     <Content Include="Scripts\Admin\indexusers.js" />
     <Content Include="Scripts\Admin\registrocentros.js" />
     <Content Include="Scripts\Admin\registrosempresa.js" />
+    <Content Include="Scripts\Admin\reportaprob.js" />
+    <Content Include="Scripts\Admin\reportesdet.js" />
     <Content Include="Scripts\Admin\usuarios.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -228,6 +232,8 @@
     <Content Include="Views\Admin\DetallesRegistroEncuestaOpc.cshtml" />
     <Content Include="Views\Admin\Usuarios.cshtml" />
     <Content Include="Views\Admin\CentroTrabajo.cshtml" />
+    <Content Include="Views\Admin\ReportarProblema.cshtml" />
+    <Content Include="Views\Admin\Reportes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

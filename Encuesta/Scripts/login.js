@@ -34,7 +34,6 @@
                                 }).then((acepta) => {
                                     user.value = "";
                                     pass.value = "";
-                                    pass.focus();
                                 });
                             }
                         } else {

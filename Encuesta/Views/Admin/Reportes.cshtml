@@ -1,0 +1,135 @@
+﻿
+@{
+    ViewBag.Title = "Reportes";
+}
+
+
+@{
+    if (Session["keyUser"] != null)
+    {
+
+        <style>
+            body {
+                background-color: #FAFFEB;
+            }
+        </style>
+
+        <div class="container-fluid" style="margin-top:2em !important; margin-bottom:5em !important;">
+
+            <div class="row">
+
+                <div class="col-md-2 text-center">
+                    <h2>
+                        <b>
+                            <i class="fas fa-headset color-primary" style="margin-right:0.5em !important"></i>
+                        </b>
+                    </h2>
+                    <hr />
+                </div>
+
+                <div class="col-md-10">
+                    <h2>
+                        <b>
+                            <i class="fas fa-list color-primary" style="margin-right:0.5em !important"></i>
+                            Listado
+                        </b>
+                    </h2>
+                    <hr />
+                    <div>
+                        <table id="tabreport">
+                            <thead>
+                                <tr>
+                                    <th>Codigo</th>
+                                    <th>Usuario</th>
+                                    <th>Problema</th>
+                                    <th>Empresa</th>
+                                    <th>Estado</th>
+                                    <th>Opciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="bodrep"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="modal fade" data-backdrop="static" id="detallesrep" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-center" id="exampleModalLabel">
+                            <b> Detalles de reporte: <span id="codreport"></span>. </b>
+                        </h5>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-6 text-center">
+                                <b> <i class="fas fa-user" style="margin-right:0.5em !important;"></i> Reporto: <span id="namrep"></span> </b>
+                            </div>
+                            <div class="col-lg-6 text-center">
+                                <b> <i class="fas fa-industry" style="margin-right:0.5em !important;"></i> Empresa: <span id="namemp"></span> </b>
+                            </div>
+                            <div class="col-lg-12" style="margin-top:3em !important;">
+                                <p> <b><i class="fas fa-comments" style="margin-right:0.5em !important;"></i> Problema:</b> <span id="contprob"></span> </p>
+                            </div>
+                            <div class="col-lg-12" style="margin-top:2em !important;">
+                                <p> <b><i class="fas fa-comment" style="margin-right:0.5em !important;"></i> Mensaje:</b> <span id="msjprob"></span> </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btncloserep">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" data-backdrop="static" id="updrep" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-center" id="exampleModalLabel">
+                            <b> Actualizar reporte: <span id="codreportupd"></span>. </b>
+                        </h5>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-12" style="margin-top:2em !important;">
+                                <p> <b><i class="fas fa-comments" style="margin-right:0.5em !important;"></i> Problema:</b> <span id="contentreprob"></span> </p>
+                            </div>
+                            <div class="col-lg-offset-3 col-lg-6" style="margin-top:2em !important;">
+                                <input type="hidden" id="clvrepenv" />
+                                <div class="form-group">
+                                    <label>Se ha solucionado?</label>
+                                    <select class="form-control" id="selrep">
+                                        <option value="0">Si</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Añade un mensaje</label>
+                                    <textarea rows="6" class="form-control" id="msjrep" placeholder="Escribe el mensaje para el usuario que reporto"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btnclsupdrep">Cerrar</button>
+                        <button type="button" class="btn btn-success" id="btnupdreport">Actualizar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript" src="~/Scripts/Admin/reportesdet.js"></script>
+
+    }
+    else
+    {
+        <script type="text/javascript">
+            location.href = "/Home/Logout";
+        </script>
+    }
+}
