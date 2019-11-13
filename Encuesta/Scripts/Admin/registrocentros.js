@@ -17,7 +17,7 @@
                             contain.innerHTML += `
                             <div class="col-lg-4 col-md-4 col-sm-6" style="margin-bottom:2em !important;">
                                 <div class="card">
-                                    <div class="text-right" style="margin-top:-1em !important; margin-left:15em; padding-top:0em !important;">
+                                    <div class="text-right" style="padding-top:0em !important;">
                                         <button onclick="feditcentro(${data[i].iIdCentroTrabajo},'${data[i].sCentroTrabajo}','${data[i].sUbicacionCentro}')" class="btn btn-sm btn-primary"> <i class="fas fa-edit"></i> </button>
                                     </div>
                                     <h5 class="text-center">
@@ -44,7 +44,7 @@
                                 <h3 class="text-center"><b> <i class="fas fa-info color-primary" style="margin-right:0.5em !important;"></i> Añada un nuevo registro para continuar</b></h3>
                                 <br/>
                                 <div style="padding:3em !important">
-                                    <p style="font-size:20px;" class="text-center"> Complete todos los campos del formulario <span class="color-primary">Nuevo Registro</span>, asegurese de desactivar las encuestas que su fecha de realización ya haya pasado, cualquier duda o problema reporte a sistemas <i class="fas fa-headset color-primary" style="margin-lef:0.5em !important;"></i>.</p>
+                                    <p style="font-size:20px;" class="text-center"> Complete todos los campos del formulario <span class="color-primary">Nuevo Registro</span>,cualquier duda o problema <a href="/Admin/ReportarProblema">reportar</a> a sistemas <i class="fas fa-headset color-primary" style="margin-lef:0.5em !important;"></i>.</p>
                                 </div>
                             </div>
                        `;

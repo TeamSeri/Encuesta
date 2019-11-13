@@ -4,46 +4,69 @@
     Layout = "~/Views/Shared/_LayoutIni.cshtml";
 }
 
-    <div class="container" style="margin-top:3em !important; margin-bottom: 6em !important;">
+    <div class="container" style="margin-top:6em !important; margin-bottom: 10em !important;">
         <style>
-            body {
+            /*body {
                 background-color: #FAFFEB;
-            }
+            }*/
         </style>
+
         <div class="row">
-            <div class="col-lg-offset-4 col-lg-4">
-                <div class="row" style="margin-top:1em !important;">
-                    <div class="col-lg-6 text-center">
-                        <a class="btn btn-color btn-sha btn-sm" href="/Home/Index" style="color: white !important; outline: none !important; text-decoration-line:none !important;">
-                            <i class="fas fa-home"></i>
-                            <b style="margin-left:5px !important;">Inicio</b>
-                        </a>
-                    </div>
-                    <div class="col-lg-6">
-                        <a href="#" class="btn btn-link btn-sm" style="outline: none !important; text-decoration-line:none !important;">
-                            <i class="fas fa-door-closed"></i>
-                            <b style="margin-left:5px !important;">Login</b>
-                        </a>
-                    </div>
-                </div>
-                <div class="card shadow p-3" style="margin-top:3em !important; margin-bottom: 4em !important;">
-                    <form id="formLogin">
-                        <div class="form-group">
-                            <label for="user">Nombre de usuario</label>
-                            <input type="text" name="user" id="user" class="form-control text-capitalize" />
-                        </div>
-                        <div class="form-group">
-                            <label for="pass">Contraseña de acceso</label>
-                            <input type="password" name="pass" id="pass" class="form-control" />
-                        </div>
-                        <div class="form-group text-center" style="margin-bottom:0px !important;">
-                            <button type="submit" class="btn btn-color btn-sha btn-sm">
-                                Iniciar
-                            </button>
-                        </div>
-                    </form>
-                </div>
+
+            <div class="col-lg-6 animated flipInX">
+                <img src="~/Content/Img/undraw_authentication_fsn5.svg" class="img-responsive" />
             </div>
+            <div class="col-lg-6 animated zoomIn delay-1s">
+                <h1 style="font-size:30px; margin-bottom:0.3em !important; color:#0000d6 !important; font-weight:500; text-shadow: 2px 2px 0 #ccc;" class="text-center">
+                    <span>Inicio de sesión</span>
+                </h1>
+                <hr />
+                <form id="formLogin" class="p-3">
+                    <div class="row">
+                        <div class="col-lg-offset-3 col-lg-9">
+                            <div class="form-group">
+                                <label for="user"> <i class="fas fa-user text-primary mr-05-ico"></i> Usuario: </label>
+                                <input type="text" name="user" id="user" class="form-control text-capitalize" />
+                            </div>
+                            <div class="form-group">
+                                <label for="pass"> <i class="fas fa-key text-primary mr-05-ico"></i> Contraseña: </label>
+                                <input type="password" name="pass" id="pass" class="form-control" />
+                            </div>
+                            <div class="form-group text-left">
+                                <button type="submit" class="btn btn-color btn-sha btn-sm" style="margin-left:8em !important; margin-bottom:0px !important; margin-top:2em !important;">
+                                    Iniciar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            @*<div class="col-lg-8 col-lg-offset-2" style="position:relative; display:inline-block; text-align:center;">
+                <img src="~/Content/Img/design-2461957_1280.png" class="img-responsive" />
+                <div class="card shadow p-3" style="margin-top:3em !important; margin-bottom: 4em !important; position:absolute; top:40%; left:50%; transform:translate(-50%, -50%); background:white; opacity:0.9;" id="divlog">
+                    <h3>inicio</h3>
+                    <hr />
+                    <div class="row">
+                        <form id="formLogin" class="text-left col-lg-12">
+                            <div class="form-group col-lg-12">
+                                <label for="user"> <i class="fas fa-user text-primary mr-05-ico"></i> Usuario: </label>
+                                <input type="text" name="user" id="user" class="form-control text-capitalize" />
+                            </div>
+                            <div class="form-group col-lg-12">
+                                <label for="pass"> <i class="fas fa-key text-primary mr-05-ico"></i> Contraseña: </label>
+                                <input type="password" name="pass" id="pass" class="form-control" />
+                            </div>
+                            <div class="form-group text-center col-lg-12" style="margin-bottom:0px !important; margin-top:2em !important;">
+                                <button type="submit" class="btn btn-color btn-sha btn-sm">
+                                    Iniciar
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>*@
+
         </div>
     </div>
 

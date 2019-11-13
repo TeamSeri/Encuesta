@@ -6,8 +6,18 @@
     const empleado = document.getElementById('empleado');
     const puesto = document.getElementById('puesto');
     const codigoasc = document.getElementById('codigoasc');
+    const namcent = document.getElementById('namcent');
 
     let arrusers = [], satencion = 0, natencion = 0;
+
+    flimpcamps = () => {
+        namcent.value = "0";
+        empleado.value = "";
+        puesto.value = "";
+        codigoasc.value = "";
+    }
+
+    document.getElementById('btncloregopc').addEventListener('click', flimpcamps);
 
     floadcentros = (emp) => {
         const namcent = document.getElementById('namcent');
@@ -46,6 +56,7 @@
                     let estado = '', resatencion = '';
                     for (var i = 0; i < data.length; i++) {
                         arrusers.push(data);
+                        console.log(data[i]);
                         if (data[i].sDiagnosticoOpcDetalle != "") {
                             resatencion = data[i].sDiagnosticoOpcDetalle;
                         } else {
@@ -53,14 +64,11 @@
                         }
                         if (data[i].iEstadoEncOpc == 1) {
                             estado = "Contestada";
-                        } else {
-                            estado = "Sin contestar";
-                        }
-                        conttable.innerHTML += `
+                            conttable.innerHTML += `
                             <tr>
                                 <td> <i class="fas fa-user"></i> ${data[i].sNombreEmpleadoOpc} </td>
                                 <td>
-                                    <a href="/Admin/Detalles?empresa=${data[i].iIdEmpresaOpc}"> 
+                                    <a href="/Admin/CentroTrabajo?registro=${data[i].iIdCentroTrabajo}&empresa=${data[i].iIdEmpresaOpc}"> 
                                         <i class="fas fa-external-link-alt" style="margin-right:0.5em !important;"></i>
                                         ${data[i].sCentroTrabajo} 
                                     </a>
@@ -77,6 +85,27 @@
                                 </td>
                             </tr>
                          `;
+                        } else {
+                            estado = "Sin contestar";
+                            conttable.innerHTML += `
+                                <tr>
+                                    <td> <i class="fas fa-user"></i> ${data[i].sNombreEmpleadoOpc} </td>
+                                    <td>
+                                        <a href="/Admin/CentroTrabajo?registro=${data[i].iIdCentroTrabajo}&empresa=${data[i].iIdEmpresaOpc}"> 
+                                            <i class="fas fa-external-link-alt" style="margin-right:0.5em !important;"></i>
+                                            ${data[i].sCentroTrabajo} 
+                                        </a>
+                                    </td>
+                                    <td> ${data[i].sPuestoEmOpc} </td>
+                                    <td> ${data[i].sCodigoAcOpc} </td>
+                                    <td> ${estado} </td>
+                                    <td> ${resatencion} </td>
+                                    <td> 
+                                        En espera <i class="fas fa-clock" style="margin-left:0.5em !important;"></i>
+                                    </td>
+                                </tr>
+                             `;
+                        }
                     }
                 }
             });

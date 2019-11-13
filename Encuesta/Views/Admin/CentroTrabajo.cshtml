@@ -10,14 +10,17 @@
         if (Model.sMensaje == "success")
         {
             <style>
-                body {
+                /*body {
                     background-color: #FAFFEB;
-                }
+                }*/
             </style>
-            <div style="margin-top:2em !important;">
+            <div style="margin-top:2em !important; margin-bottom:8em !important;">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-lg-2 col-md-2 col-sm-2" style="margin-top:6.7em !important;">
+                        <div class="col-lg-3 col-md-3 col-sm-12 animated fadeIn" style="margin-top:6.7em !important;">
+                            <div style="margin-bottom:2em !important;">
+                                <img class="img-responsive" src="~/Content/Img/undraw_Working_oh83.svg" />
+                            </div>
                             <a href="/Admin/Detalles?empresa=@Model.iIdEmpresa" class="btn btn-primary btn-block">
                                 <i class="fas fa-arrow-left"></i> <span style="margin-left:1em;">Volver</span>
                             </a>
@@ -31,7 +34,7 @@
                                 <i class="fas fa-info"></i> <span style="margin-left:0.5em;">Ayuda</span>
                             </a>
                         </div>
-                        <div class="col-lg-10 col-md-10 col-sm-12">
+                        <div class="col-lg-9 col-md-9 col-sm-12 animated fadeInLeft delay-1s">
                             <h2><b> <i class="fas fa-building color-primary" style="margin-right:0.5em !important;"></i> Centro de trabajo @Model.sCentroTrabajo .</b></h2>
                             <hr />
                             <div class="row" id="contain_reg">

@@ -7,16 +7,16 @@
     if (@Session["keyUser"] != null)
     {
         <style>
-            body {
+            /*body {
                 background-color: #FAFFEB;
-            }
+            }*/
         </style>
 
         <div class="container-fluid" style="margin-top:2em !important;">
 
             <div class="row">
 
-                <div class="col-md-4">
+                <div class="col-md-4 animated fadeIn">
                     <h2>
                         <b>
                             <i class="fas fa-headset color-primary" style="margin-right:0.5em !important"></i>
@@ -36,8 +36,11 @@
                             Este apartado es solo para reportar fallas que presente el sistema, en caso de que quiera alguna modificacion puede dirigirse directamente al departamento de sistemas, en caso de que usted haga mal uso de esta funcionalidad se le deshabilitara dicha función.
                         </p>
                     </div>
+                    <div style="margin-top:9em !important;">
+                        <img class="img-responsive" src="~/Content/Img/undraw_bug_fixing_oc7a.svg" />
+                    </div>
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-8 animated fadeInLeft delay-1s">
                     <h2><b> <i class="fas fa-bug color-primary" style="margin-right:0.5em !important;"></i> Reportar problema.</b></h2>
                     <hr />
                     <form class="row" style="padding:2em !important;">

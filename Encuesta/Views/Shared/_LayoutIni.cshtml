@@ -8,6 +8,7 @@
     <link href="../../Content/Styles.css" rel="stylesheet" />
     <script type="text/javascript" src="~/Scripts/sweetalert.js"></script>
     <link href="~/Content/toast.css" rel="stylesheet" />
+    <link href="~/Content/animate.css" rel="stylesheet" />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -16,7 +17,7 @@
         <div class="container">
             <div class="navbar-header">
                 <a href="/" style="color:white !important;" class="navbar-brand">
-                    Inicio
+                    <i class="fas fa-home" style="margin-right:0.5em;"></i> Inicio
                 </a>
                 @*@Html.ActionLink("Iniciar sesion", "Login", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
             </div>
@@ -24,12 +25,12 @@
                 <ul class="nav navbar-nav" style="margin-left: 1em !important;">
                     <li>
                         <a href="/Home/Login" style="color:white !important; background:none !important;">
-                            Iniciar sesión
+                            <i class="fas fa-sign-in-alt" style="margin-right:0.5em;"></i> Iniciar sesión
                         </a>
                     </li>
                     <li>
                         <a style="color:white !important; background:none !important;" href="/Home/Encuesta3">
-                            Encuesta especial
+                            <i class="fas fa-user-edit" style="margin-right:0.5em;"></i> Encuesta especial
                         </a>
                     </li>
                 </ul>
@@ -40,14 +41,16 @@
         @RenderBody()
         <hr />
         <footer class="text-left">
-            <p>&copy; @DateTime.Now.Year - Grupo Seri. Todos los derechos reservados.</p>
+            <p> <i class="fas fa-copyright mr-05-ico ml-05-ico"></i>  @DateTime.Now.Year - Grupo Seri. Todos los derechos reservados. 
+                <i class="fas fa-image mr-05-ico ml-05-ico"></i> Images by <a href="https://undraw.co/"> undraw</a>. 
+                <i class="fas fa-flag mr-05-ico ml-05-ico"></i> Icons by <a href="https://fontawesome.com/"> FontAwesome</a>. </p>
         </footer>
     </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
-    <script src="https://kit.fontawesome.com/af5b80622e.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="~/Scripts/fontawesome.js"></script>
     <script type="text/javascript" src="~/Scripts/toastr.js"></script>
 </body>
 </html>

@@ -7,8 +7,11 @@
 
     if (Session["keyUser"] != null)
     {
-        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript" src="~/Scripts/charts.js"></script>
         <style type="text/css">
+            /*body {
+                background-color: #FAFFEB;
+            }*/
             th {
                 font-size: 13px;
                 font-weight: normal;
@@ -36,7 +39,10 @@
         <div style="margin-top:2em !important;">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg- col-md-2 col-sm-2" style="margin-top:6.7em !important;">
+                    <div class="col-lg-3 col-md-3 col-sm-10 animated fadeIn" style="margin-top:6.7em !important;">
+                        <div style="margin-bottom:2em !important;">
+                            <img class="img-responsive" src="~/Content/Img/undraw_reading_list_4boi.svg" />
+                        </div>
                         <a href="/Admin/Index" class="btn btn-primary btn-block">
                             <i class="fas fa-arrow-left"></i> <span style="margin-left:1em;">Volver</span>
                         </a>
@@ -46,19 +52,16 @@
                         <button type="button" class="btn btn-primary btn-block" style="margin-top:3em !important;" id="btnprint">
                             <i class="fas fa-print"></i> <span style="margin-left:0.5em;">Imprimir</span>
                         </button>
-                        @*<button type="button" class="btn btn-primary btn-block" style="margin-top:3em !important;" id="btnmostgraph">
-                                <i class="fas fa-chart-pie"></i> <span style="margin-left:0.5em;">Grafica</span>
-                            </button>*@
                         <a href="#" data-toggle="modal" data-target="#info" class="btn btn-primary btn-block" style="margin-top:3em !important;" id="btninfo">
                             <i class="fas fa-info"></i> <span style="margin-left:0.5em;">Ayuda</span>
                         </a>
                     </div>
-                    <div class="col-lg-10 col-md-10 col-sm-12" id="divtabla">
+                    <div class="col-lg-9 col-md-9 col-sm-12 animated fadeInLeft delay-1s" id="divtabla">
                         <h2><b> <i class="fas fa-edit color-primary" style="margin-right:0.5em !important;"></i> Encuestas especiales</b></h2>
                         <hr />
-                        <div class="row animated fadeInDown delay-1s" style="padding:20px; margin-bottom:5em !important; margin-top:1em !important;">
-                            <div class="text-center" style="margin-left:16em !important;">
-                                <div id="piechart" style="width: 800px; height: 500px;"></div>
+                        <div class="row" style="padding:20px; margin-bottom:5em !important; margin-top:1em !important;">
+                            <div class="text-center card" style="margin-left:6em !important;">
+                                <div id="piechart" style="width: 800px; height: 500px; padding:3px !important;"></div>
                             </div>
                         </div>
                     </div>
@@ -89,7 +92,7 @@
             </div>
         </div>
 
-        <div class="modal fade" id="regDatosEmpresa" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" data-backdrop="static" id="regDatosEmpresa" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -120,8 +123,8 @@
                                     }
                                 </div>
                                 <div class="form-group">
-                                    <label>Puesto:</label>
-                                    <input type="text" id="puesto" name="puesto" required class="form-control" />
+                                    <label>Nombre completo de empleado:</label>
+                                    <input type="text" id="empleado" required name="empleado" class="form-control text-capitalize" />
                                 </div>
                                 <div class="form-group">
                                     <label>Codigo de acceso:</label>
@@ -136,8 +139,8 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label>Nombre completo de empleado:</label>
-                                    <input type="text" id="empleado" required name="empleado" class="form-control" />
+                                    <label>Puesto:</label>
+                                    <input type="text" id="puesto" name="puesto" required class="form-control" />
                                 </div>
                             </div>
                             <div class="col-lg-12 text-center">
@@ -150,7 +153,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btnclreg">Cerrar</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btncloregopc">Cerrar</button>
                         <button type="button" class="btn btn-primary" id="btnsaregopc">Guardar cambios</button>
                     </div>
                 </div>

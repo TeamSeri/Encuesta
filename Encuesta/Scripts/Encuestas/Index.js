@@ -36,6 +36,7 @@
     centrotra.disabled = true;
     centrotra.innerHTML += '<option value="0">Selecciona</option>';
     let validcent = 0;
+    $("#diverror").hide(1000);
 
     fchangecentrotra = () => {
         let valenv = { empresa: empresa.value };
@@ -52,6 +53,7 @@
                         centrotra.disabled = false;
                         envform.disabled = false;
                         txterror.textContent = '';
+                        $("#diverror").hide(1000);
                         setTimeout(() => {
                             for (var i = 0; i < data.length; i++) {
                                 centrotra.innerHTML += `<option value="${data[i].iIdCentroTrabajo}">${data[i].sCentroTrabajo}</option>`;
@@ -60,6 +62,7 @@
                     } else {
                         centrotra.disabled = true;
                         envform.disabled = true;
+                        $("#diverror").show(1000);
                         txterror.textContent = 'La empresa seleccionada no tiene ningun centro de trabajo registrado, verifica tus datos.';
                     }
                 }, error: function (xhr, status) {

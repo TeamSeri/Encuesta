@@ -4,7 +4,7 @@
     formData.addEventListener('submit', (e) => {
         const user = document.getElementById('user').value;
         const pass = document.getElementById('pass');
-        if (user.value != "") {
+        if (user != "") {
             if (pass.value != "") {
                 $.ajax({
                     url: "./ValidarLogin",
@@ -45,7 +45,7 @@
                             }).then((acepta) => {
                                 user.value = "";
                                 pass.value = "";
-                                user.focus();
+                                pass.focus();
                             });
 
                         }

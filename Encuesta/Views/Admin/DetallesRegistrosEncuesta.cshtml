@@ -6,17 +6,19 @@
 @{
     if (Session["keyUser"] != null)
     {
-        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript" src="~/Scripts/charts.js"></script>
 
         <div class="container-fluid" id="contnone"></div>
 
         <div class="container-fluid" style="margin-top:2em !important;" id="contprinc">
             <div class="row">
-                <div class="col-lg-4">
+                <div class="col-lg-4 animated fadeIn">
                     <h2 class="text-center animated fadeIn"><b> <i class="fas fa-percentage color-primary" style="margin-right:1em !important;"></i> Porcentajes</b></h2>
                     <hr />
-
-                    <div class="card animated fadeInLeft">
+                    <div style="margin-bottom:2em !important;">
+                        <img class="img-responsive" src="~/Content/Img/undraw_result_5583.svg" />
+                    </div>
+                    <div class="card">
                         <div class="text-center" style="margin-top:0 !important;">
                             <a href="/Admin/Detalles?empresa=@Model.iIdEmpresa" class="btn btn-sm btn-primary" style="margin-bottom:0.5em !important; margin-top: 0px !important;"> <i class="fas fa-arrow-left" style="margin-right:0.5em !important;"></i> Volver </a>
                         </div>
@@ -40,7 +42,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-8">
+                <div class="col-lg-8 animated fadeInLeft delay-1s">
                     <div class="text-center">
                         <h2 class="animated fadeIn">
                             <b> <i class="fas fa-chart-pie color-primary" style="margin-right:1em !important;"></i> Por dominio y categoría</b>

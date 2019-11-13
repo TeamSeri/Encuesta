@@ -38,6 +38,7 @@
                         tipoRes = data.tipo;
                         document.getElementById('nomem').textContent = data.empleado + ".";
                         document.getElementById('empre').textContent = data.empresa + ".";
+                        document.getElementById('centempre').textContent = data.centro + ".";
                         document.getElementById('puest').textContent = data.puesto + ".";
                         document.getElementById('fechasig').textContent = data.fechareg;
                         document.getElementById('fecharel').textContent = data.fechacon;

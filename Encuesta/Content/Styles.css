@@ -1,4 +1,17 @@
-﻿
+﻿#divlog {
+    transition:0.5s !important;
+}
+#divlog:hover {
+    opacity:1 !important;
+}
+
+.mr-05-ico {
+    margin-right:0.5em !important;
+}
+
+.ml-05-ico {
+    margin-left: 0.5em !important;
+}
 
 .mostbtn {
     animation: float 3s ease-out infinite;

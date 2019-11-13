@@ -116,6 +116,9 @@
                             }
                         }
                     } else {
+                        contrep.innerHTML += `
+                            <h2 class="text-center text-primary" style="margin-top:2em !important;"> Aún no ha generado ningun reporte. </h2>
+                        `;
                         document.getElementById('cantnotif').textContent = 0;
                     }
                 }, error: function (error) {

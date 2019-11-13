@@ -156,6 +156,20 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\datatables.css" />
+    <Content Include="Content\Img\undraw_active_support_6rwo.svg" />
+    <Content Include="Content\Img\undraw_Add_friends_wa2a.svg" />
+    <Content Include="Content\Img\undraw_analyze_17kw.svg" />
+    <Content Include="Content\Img\undraw_authentication_fsn5.svg" />
+    <Content Include="Content\Img\undraw_bug_fixing_oc7a.svg" />
+    <Content Include="Content\Img\undraw_control_panel1_20gm.svg" />
+    <Content Include="Content\Img\undraw_in_progress_ql66.svg" />
+    <Content Include="Content\Img\undraw_questions_75e0.svg" />
+    <Content Include="Content\Img\undraw_reading_list_4boi.svg" />
+    <Content Include="Content\Img\undraw_result_5583.svg" />
+    <Content Include="Content\Img\undraw_searching_p5ux.svg" />
+    <Content Include="Content\Img\undraw_team_work_k80m.svg" />
+    <Content Include="Content\Img\undraw_usability_testing_2xs4.svg" />
+    <Content Include="Content\Img\undraw_Working_oh83.svg" />
     <Content Include="Content\Styles.css" />
     <Content Include="Content\toast.css" />
     <Content Include="favicon.ico" />
@@ -178,6 +192,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\charts.js" />
     <Content Include="Scripts\datatables.js" />
     <Content Include="Scripts\Encuestas\dataTests.js" />
     <Content Include="Scripts\Encuestas\dataIndex.js" />
@@ -185,6 +200,7 @@
     <Content Include="Scripts\Encuestas\Encuesta2.js" />
     <Content Include="Scripts\Encuestas\EncuestaOpc.js" />
     <Content Include="Scripts\Encuestas\Index.js" />
+    <Content Include="Scripts\fontawesome.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
@@ -237,7 +253,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Img\" />
     <Folder Include="Views\DetallesEmpresa\" />
   </ItemGroup>
   <ItemGroup>

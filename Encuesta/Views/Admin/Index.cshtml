@@ -14,87 +14,69 @@
             td {    padding: 8px;     background: #e8edff;     border-bottom: 1px solid #fff;
                     color: #669;    border-top: 1px solid transparent; }
             tr:hover td { background: #d0dafd; color: #339; }
-            body {
+            /*body {
                     background-color: #FAFFEB;
-                }
+                }*/
         </style>
 
-        <div class="container-fluid mt-p" style="margin-bottom:8em !important;">
+        <div class="container-fluid mt-p" style="margin-bottom:8em !important; margin-top:3em !important;">
             @if (Convert.ToInt32(Session["typeUser"]) == 1)
             {
-                <h2 class="text-center" style="margin-top:2em !important;">
-                    <b>Empresas en el sistema</b>
-                </h2>
-                <hr />
-                <div class="row animated fadeInDown delay-1s" id="contempresas" style="margin-bottom: 3em !important;">
-                    <div class="col-lg-12">
-                        <div class="table">
-                            <table id="tablaem" class="display">
-                                <thead>
-                                    <tr>
-                                        <th>Empresa <i title="Presiona este icono para ordenar alfabeticamente" class="fas fa-sort" style="margin-left:0.5em !important;"></i> </th>
-                                        <th>Opción <i title="Presiona este icono para ordenar alfabeticamente" class="fas fa-sort" style="margin-left:0.5em !important;"></i> </th>
-                                    </tr>
-                                </thead>
-                                <tbody id="cont">
-                                    @foreach (var item in Model)
-                                    {
+                <div class="row" id="contempresas" style="margin-bottom: 3em !important;">
+                    <div class="col-lg-3">
+                        <h2 class="text-center">
+                            <b> <i class="fas fa-chalkboard-teacher text-primary mr-05-ico"></i> Panel</b>
+                        </h2>
+                        <hr />
+                        <img class="img-responsive" src="~/Content/Img/undraw_control_panel1_20gm.svg" />
+                    </div>
+                    <div class="col-lg-9">
+                        <h2 class="text-center">
+                            <b> <i class="fas fa-university text-primary mr-05-ico"></i> Empresas en el sistema</b>
+                        </h2>
+                        <hr />
+                        <div class="">
+                            <div class="table">
+                                <table id="tablaem" class="display">
+                                    <thead>
                                         <tr>
-                                            <td>
-                                                <i class="fas fa-university fa-lg"></i> <span style="margin-left:1em !important;"><b>@Html.DisplayFor(modelItem => item.sNombre)</b></span>
-                                            </td>
-                                            <td>
-                                                <b>
-                                                    <i class="fas fa-external-link-alt" style="margin-right:1em;"></i>
-                                                    @Html.ActionLink("Ver Detalles", "Detalles", new { empresa = item.iIdEmpresa })
-                                                </b>
-                                            </td>
+                                            <th>Empresa <i title="Presiona este icono para ordenar alfabeticamente" class="fas fa-sort" style="margin-left:0.5em !important;"></i> </th>
+                                            <th>Opción <i title="Presiona este icono para ordenar alfabeticamente" class="fas fa-sort" style="margin-left:0.5em !important;"></i> </th>
                                         </tr>
-                                    }
-                                </tbody>
-                            </table>
+                                    </thead>
+                                    <tbody id="cont">
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    <i class="fas fa-university fa-lg"></i> <span style="margin-left:1em !important;"><b>@Html.DisplayFor(modelItem => item.sNombre)</b></span>
+                                                </td>
+                                                <td>
+                                                    <b>
+                                                        <i class="fas fa-external-link-alt" style="margin-right:1em;"></i>
+                                                        @Html.ActionLink("Ver Detalles", "Detalles", new { empresa = item.iIdEmpresa })
+                                                    </b>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
             }
             else
             {
-                <div style="box-shadow:4px 4px 4px 4px #eee; width:520px; padding:2em !important; border-radius:10px;" id="divpanel">
-                    <h2 class="text-left" style="margin-top:0em !important;">
-                        <b> <i class="fas color-primary fa-chalkboard-teacher" style="margin-right:0.5em !important;"></i> Panel de control @Session["nameEmpresa"]</b>
+                <div id="divpanel" style="margin-top:2em !important;">
+                    <h2 class="text-center" style="margin-top:0em !important;">
+                        <b> <i class="fas color-primary fa-chalkboard-teacher" style="margin-right:0.5em !important;"></i> Empresa: @Session["nameEmpresa"]</b>.
                     </h2>
                 </div>
                 <hr />
                 <div class="container">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <h3 class="text-center">
-                                <b> <i class="fas fa-clipboard-list color-primary" style="margin-right:0.5em !important;"></i> Opciones</b>
-                            </h3>
-                            <hr />
-                            <div>
-                                <ul class="list-group" style="font-family:Verdana, Geneva, Tahoma, sans-serif;" id="listacciones">
-                                    <li class="list-group-item" style="margin-top:1em !important;" id="li1">
-                                        <a href="/Admin/Detalles">
-                                            <i class="fas fa-building color-primary" style="margin-right:0.5em !important;"></i>
-                                            @Html.ActionLink("Centros de trabajo", "Detalles", new { empresa = Session["keyEmpresa"] })
-                                        </a>
-                                    </li>
-                                    <li class="list-group-item" style="margin-top:1em !important;" id="li2">
-                                        <a href="#" data-toggle="modal" data-target="#changePassUser">
-                                            <i class="fas fa-lock color-primary" style="margin-right:0.5em !important;"></i>
-                                            Cambiar contraseña.
-                                        </a>
-                                    </li>
-                                    <li class="list-group-item" style="margin-top:1em !important;" id="li3">
-                                        <a href="/Admin/ReportarProblema">
-                                            <i class="fas fa-bug color-primary" style="margin-right:0.5em !important;"></i>
-                                            Reportar un problema.
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+
+                    <div class="row animated fadeInDown" style="margin-top:3em !important;">
                         <div class="col-lg-6">
                             <h3 class="text-center">
                                 <b> <i class="fas fa-info color-primary" style="margin-right:0.5em !important;"></i> ¿Norma 35?</b>
@@ -105,10 +87,80 @@
                                 El cumplimiento de la Norma Oficial Mexicana resulta ser obligatorio para todos los centros de trabajo del territorio nacional. Sin embargo hay capítulos específicos que deben cumplirse dependiendo del número de trabajadores de la organización.
                             </p>
                         </div>
+                        <div class="col-lg-6 text-center">
+                            <img class="img-responsive" src="~/Content/Img/undraw_searching_p5ux.svg" width="500" />
+                        </div>
                     </div>
+
+                    <div class="row animated fadeIn delay-1s" style="margin-top:3em !important;">
+                        <div class="col-lg-6 text-center">
+                            <img class="img-responsive" src="~/Content/Img/undraw_questions_75e0.svg" width="400" />
+                        </div>
+                        <div class="col-lg-6">
+                            <h3 class="text-center">
+                                <b> <i class="fas fa-info color-primary" style="margin-right:0.5em !important;"></i> ¿A quién aplica?</b>
+                            </h3>
+                            <hr />
+                            <p class="text-justify" style="font-family:Verdana, Geneva, Tahoma, sans-serif; margin-top:2.5em !important;">
+                                De acuerdo con el campo de aplicación, la NOM 035 rige en todo el territorio nacional y aplica en todos los centros de trabajo.  Sin embargo, las disposiciones de esta norma aplican de acuerdo con el número de trabajadores que laboran en el centro de trabajo. Derivado de lo anterior, existen tres niveles:
+                            </p>
+                            <ul class="list-group" style="margin-top:2em !important;">
+                                <li class="list-group-item">
+                                    <i class="fas fa-circle text-primary mr-05-ico"></i> Centros de trabajo donde laboran hasta 15 trabajadores.
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="fas fa-circle text-primary mr-05-ico"></i> Centros de trabajo donde laboran entre 16 y 50 trabajadores.
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="fas fa-circle text-primary mr-05-ico"></i> Centros de trabajo donde laboran más de 50 trabajadores.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    @*<div class="row">
+            <div class="col-lg-6">
+                <h3 class="text-center">
+                    <b> <i class="fas fa-clipboard-list color-primary" style="margin-right:0.5em !important;"></i> Opciones</b>
+                </h3>
+                <hr />
+                <div>
+                    <ul class="list-group" style="font-family:Verdana, Geneva, Tahoma, sans-serif;" id="listacciones">
+                        <li class="list-group-item" style="margin-top:1em !important;" id="li1">
+                            <a href="/Admin/Detalles">
+                                <i class="fas fa-building color-primary" style="margin-right:0.5em !important;"></i>
+                                @Html.ActionLink("Centros de trabajo", "Detalles", new { empresa = Session["keyEmpresa"] })
+                            </a>
+                        </li>
+                        <li class="list-group-item" style="margin-top:1em !important;" id="li2">
+                            <a href="#" data-toggle="modal" data-target="#changePassUser">
+                                <i class="fas fa-lock color-primary" style="margin-right:0.5em !important;"></i>
+                                Cambiar contraseña.
+                            </a>
+                        </li>
+                        <li class="list-group-item" style="margin-top:1em !important;" id="li3">
+                            <a href="/Admin/ReportarProblema">
+                                <i class="fas fa-bug color-primary" style="margin-right:0.5em !important;"></i>
+                                Reportar un problema.
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <h3 class="text-center">
+                    <b> <i class="fas fa-info color-primary" style="margin-right:0.5em !important;"></i> ¿Norma 35?</b>
+                </h3>
+                <hr />
+                <p class="text-justify" style="font-family:Verdana, Geneva, Tahoma, sans-serif; margin-top:2.5em !important;">
+                    Esta norma permite a las empresas identificar y prevenir los riesgos psicosociales que se puedan presentar en sus actividades laborales.
+                    El cumplimiento de la Norma Oficial Mexicana resulta ser obligatorio para todos los centros de trabajo del territorio nacional. Sin embargo hay capítulos específicos que deben cumplirse dependiendo del número de trabajadores de la organización.
+                </p>
+            </div>
+        </div>*@
                 </div>
 
-                <div class="modal fade" data-backdrop="static" id="changePassUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                @*<div class="modal fade" data-backdrop="static" id="changePassUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -138,7 +190,7 @@
                         </div>
                     </div>
                 </div>
-                <script src="~/Scripts/Admin/indexusers.js"></script>
+                <script src="~/Scripts/Admin/indexusers.js"></script>*@
             }
         </div>
 

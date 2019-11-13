@@ -10,14 +10,17 @@
         if (Model.sMensaje == "success")
         {
             <style>
-                body {
+                /*body {
                     background-color: #FAFFEB;
-                }
+                }*/
             </style>
-            <div style="margin-top:2em !important; margin-bottom:6em !important;">
+            <div style="margin-top:3em !important; margin-bottom:12em !important;">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-lg-2 col-md-2 col-sm-2" style="margin-top:6.7em !important;">
+                        <div class="col-lg-3 col-md-3 col-sm-12 animated fadeIn" style="margin-top:6.7em !important;">
+                            <div style="margin-bottom:2em !important;">
+                                <img class="img-responsive" src="~/Content/Img/undraw_team_work_k80m.svg" />
+                            </div>
                             <a href="/Admin/Index" class="btn btn-primary btn-block">
                                 <i class="fas fa-arrow-left"></i> <span style="margin-left:1em;">Volver</span>
                             </a>
@@ -25,7 +28,7 @@
                                 <i class="fas fa-plus"></i> <span style="margin-left:0.5em;">Nuevo centro</span>
                             </a>
                         </div>
-                        <div class="col-lg-10 col-md-10 col-sm-12">
+                        <div class="col-lg-9 col-md-9 col-sm-12 animated fadeInLeft delay-1s">
                             <h2><b> <i class="fas fa-industry color-primary" style="margin-right:0.5em !important;"></i> Centros de trabajo de: @Model.sNombre </b></h2>
                             <hr />
                             <div class="row" id="containcentros"></div>
@@ -41,9 +44,6 @@
                             <h5 class="modal-title" id="exampleModalLabel">
                                 <b>Registrar centro de trabajo</b>
                             </h5>
-                            <button id="icoclreg" type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
                         </div>
                         <div class="modal-body">
                             <div class="row">
@@ -74,7 +74,7 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title text-center" id="exampleModalLabel">
-                                <b> Agregar registro <span id="nomcent"></span> </b>
+                                <b> Editar registro <span id="nomcent"></span> </b>
                             </h5>
                         </div>
                         <div class="modal-body">

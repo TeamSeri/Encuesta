@@ -149,6 +149,7 @@ namespace Encuesta.Models.Daos
                         encBean.sEmpresa = data["Nombre"].ToString();
                         encBean.sDiagnosticoOpcDetalle = data["Diagnostico"].ToString();
                         encBean.sCentroTrabajo = data["CentroTrabajo"].ToString();
+                        encBean.iIdCentroTrabajo = Convert.ToInt32(data["IdCentroTrabajo"]);
                         encBean.sDiagnosticoOpc1 = data["Diagnostico1"].ToString();
                         encBean.sDiagnosticoOpc2 = data["Diagnostico2"].ToString();
                         encBean.sDiagnosticoOpc3 = data["Diagnostico3"].ToString();
@@ -192,6 +193,8 @@ namespace Encuesta.Models.Daos
                         encBean.sFechaEncOpc = data["FechaEnc"].ToString();
                         encBean.sEmpresa = data["Nombre"].ToString();
                         encBean.sDiagnosticoOpcDetalle = data["Diagnostico"].ToString();
+                        encBean.sCentroTrabajo = data["CentroTrabajo"].ToString();
+                        encBean.iIdCentroTrabajo = Convert.ToInt32(data["IdCentroTrabajo"]);
                         encBean.sDiagnosticoOpc1 = data["Diagnostico1"].ToString();
                         encBean.sDiagnosticoOpc2 = data["Diagnostico2"].ToString();
                         encBean.sDiagnosticoOpc3 = data["Diagnostico3"].ToString();
