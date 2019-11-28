@@ -75,7 +75,7 @@
                 if (newpassuser.value == confnewpass.value) {
                     const dataEnv = { user: document.getElementById('keyuserpass').value, pass: newpassuser.value }
                     $.ajax({
-                        url: "/Admin/CambiarContraseña",
+                        url: "../Admin/CambiarContrasena",
                         type: "POST",
                         data: dataEnv,
                         success: function (data) {

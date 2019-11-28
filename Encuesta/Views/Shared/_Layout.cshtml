@@ -5,12 +5,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Encuestas.net</title>
+    <link rel="icon" type="image/png" href="~/Content/img/test-ico.png" />
     <link href="../../Content/Styles.css" rel="stylesheet" media="all" />
     <link rel="stylesheet" href="~/Content/animate.css" />
     <script type="text/javascript" src="~/Scripts/sweetalert.js"></script>
-    <link rel="stylesheet" href="~/Content/bootstrap.min.css" type="text/css" media="all" />
+    @*<link rel="stylesheet" href="~/Content/bootstrap.min.css" type="text/css" media="all" />*@
     <link rel="stylesheet" href="~/Content/datatables.css" type="text/css" media="all" />
-    @Styles.Render("~/Content/css")
+    <link rel="stylesheet" href="~/Content/bootstrap/css/bootstrap.min.css" />
+    @*@Styles.Render("~/Content/css")*@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
@@ -73,6 +75,12 @@
                                 <i class="fas fa-bug color-primary" style="margin-left:0.5em !important; color:greenyellow !important;"></i>
                             </a>
                         </li>
+                        <li>
+                            <a href="/Admin/BuzonEmpresa" style="color:white !important; background:none !important; font-size:13px !important;">
+                                Buzón
+                                <i class="fas fa-mail-bulk color-primary" style="margin-left:0.5em !important; color:greenyellow !important;"></i>
+                            </a>
+                        </li>
                     }
                     <li>
                         <a style="color:white !important; background:none !important; font-size:13px !important;" href="/Admin/EncuestaEspecial">
@@ -84,6 +92,11 @@
                         <li>
                             <a data-toggle="modal" data-target="#changePass" href="#" style="color:white !important; background:none !important; font-size:13px !important;">
                                 Contraseña <i class="fas fa-key" style="margin-left:0.5em !important; color:greenyellow !important;"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/Admin/Buzon" style="color:white !important; background:none !important; font-size:13px !important;">
+                                Buzón <i class="fas fa-mail-bulk" style="margin-left:0.5em !important; color:greenyellow !important;"></i>
                             </a>
                         </li>
                     }

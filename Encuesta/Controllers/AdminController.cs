@@ -11,20 +11,26 @@ namespace Encuesta.Controllers
     public class AdminController : Controller
     {
         // GET: Admin
-        public ActionResult Index()
-        {
-            List<EmpresasBean> empBean = new List<EmpresasBean>();
-            EmpresasDao empDao = new EmpresasDao();
-            empBean = empDao.sp_Empresas_Retrieve_Empresas();
-            return View(empBean);
+        public ActionResult Index() {
+            if (Session["keyUser"] != null) {
+                List<EmpresasBean> empBean = new List<EmpresasBean>();
+                EmpresasDao empDao = new EmpresasDao();
+                empBean = empDao.sp_Empresas_Retrieve_Empresas();
+                return View(empBean);
+            } else {
+               return Redirect("../Home/Index");
+            }
         }
 
-        public ActionResult Detalles(int empresa)
-        {
-            EmpresasBean empBe = new EmpresasBean();
-            EmpresasDao empDao = new EmpresasDao();
-            empBe = empDao.sp_Datos_Empresa(empresa);
-            return View(empBe);
+        public ActionResult Detalles(int empresa) {
+            if (Session["keyUser"] != null) {
+                EmpresasBean empBe = new EmpresasBean();
+                EmpresasDao empDao = new EmpresasDao();
+                empBe = empDao.sp_Datos_Empresa(empresa);
+                return View(empBe);
+            } else {
+                return Redirect("../Home/Index");
+            }
         }
 
         [HttpPost]
@@ -36,13 +42,16 @@ namespace Encuesta.Controllers
             return Json(empBe);
         }
 
-        public ActionResult DetallesRegistrosEncuesta(int registro, int empresa, string tipo)
-        {
-            RegistroBean regBean = new RegistroBean();
-            regBean.iIdRegistro = registro;
-            regBean.iIdEmpresa = empresa;
-            regBean.sTipoEncuesta = tipo;
-            return View(regBean);
+        public ActionResult DetallesRegistrosEncuesta(int registro, int empresa, string tipo) {
+            if (Session["keyUser"] != null) {
+                RegistroBean regBean = new RegistroBean();
+                regBean.iIdRegistro = registro;
+                regBean.iIdEmpresa = empresa;
+                regBean.sTipoEncuesta = tipo;
+                return View(regBean);
+            } else {
+                return Redirect("../Home/Index");
+            }
         }
         
         [HttpPost]
@@ -283,7 +292,11 @@ namespace Encuesta.Controllers
 
         public ActionResult EncuestaEspecial()
         {
-            return View();
+            if (Session["keyUser"] != null) {
+                return View();
+            } else {
+                return Redirect("../Home/Login");
+            }
         }
 
         [HttpPost]
@@ -342,9 +355,12 @@ namespace Encuesta.Controllers
             return Json(data);
         }
 
-        public ActionResult Usuarios()
-        {
-            return View();
+        public ActionResult Usuarios() {
+            if (Session["keyUser"] != null) {
+                return View();
+            } else {
+                return Redirect("../Home/Login");
+            }
         }
 
         [HttpPost]
@@ -505,12 +521,15 @@ namespace Encuesta.Controllers
             return Json(empBe);
         }
 
-        public ActionResult CentroTrabajo(int registro, int empresa)
-        {
-            EmpresasBean empBean = new EmpresasBean();
-            EmpresasDao empDao = new EmpresasDao();
-            empBean = empDao.sp_Datos_Centro_Trabajo(registro);
-            return View(empBean);
+        public ActionResult CentroTrabajo(int registro, int empresa) {
+            if (Session["keyUser"] != null) {
+                EmpresasBean empBean = new EmpresasBean();
+                EmpresasDao empDao = new EmpresasDao();
+                empBean = empDao.sp_Datos_Centro_Trabajo(registro);
+                return View(empBean);
+            } else {
+                return Redirect("../Home/Login");
+            }
         }
 
         [HttpPost]
@@ -567,7 +586,11 @@ namespace Encuesta.Controllers
 
         public ActionResult Reportes()
         {
-            return View();
+            if (Session["keyUser"] != null) {
+                return View();
+            } else {
+                return Redirect("../Home/Login");
+            }
         }
 
         [HttpPost]
@@ -578,6 +601,44 @@ namespace Encuesta.Controllers
             repBean = repDao.sp_Actualizar_ReporteProblema_Notifica(clvreport, estado, msjreport);
             var data = new { resp = repBean.sMensaje };
             return Json(data);
+        }
+
+        public ActionResult Buzon() {
+            if (Session["keyUser"] != null) {
+                return View();
+            } else {
+                return Redirect("../Home/Index");
+            }
+        }
+
+        [HttpPost]
+        public JsonResult DataMailBox()
+        {
+            List<BuzonBean> listaBuzonBean = new List<BuzonBean>();
+            BuzonDao buzonDao = new BuzonDao();
+            int company = 0;
+            if (Session["keyEmpresa"] != null)
+            {
+                company = Convert.ToInt32(Session["keyEmpresa"].ToString());
+            }
+            listaBuzonBean = buzonDao.sp_Datos_Buzon_Retrieve_Datos(company);
+            return Json(listaBuzonBean);
+        }
+
+        [HttpPost]
+        public JsonResult ViewDataMail(int buzon) {
+            BuzonBean buzonBean = new BuzonBean();
+            BuzonDao buzonDao = new BuzonDao();
+            buzonBean = buzonDao.sp_Datos_Buzon_Dato(buzon);
+            return Json(buzonBean);
+        }
+
+        public ActionResult BuzonEmpresa() {
+            if (Session["keyUser"] != null) {
+                return View();
+            } else {
+                return Redirect("../Home/Index");
+            }
         }
 
     }

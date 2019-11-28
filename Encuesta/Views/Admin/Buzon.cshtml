@@ -1,0 +1,80 @@
+﻿
+@{
+    ViewBag.Title = "Buzon";
+}
+
+
+@{
+    if (Session["keyUser"] != null)
+    {
+
+        <div class="container-fluid" style="margin-top:2em !important; margin-bottom:5em !important;">
+            <div class="row">
+                <div class="col-md-3" style="margin-top:6.7em !important;">
+                    <div style="margin-bottom:2em !important;">
+                        <img class="img-responsive" src="~/Content/Img/mailbox.svg" />
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <h2><b> <i class="fas fa-mail-bulk color-primary" style="margin-right:0.5em !important;"></i> Buzón de sugerencias </b></h2>
+                    <hr />
+                    <div>
+                        <table class="display" id="tabmails">
+                            <thead>
+                                <tr>
+                                    <th>Empresa</th>
+                                    <th>Jefe</th>
+                                    <th>Fecha</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbodymails"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" data-backdrop="static" id="viewMail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-center" id="exampleModalLabel">
+                            <b> <i class="fas fa-book-open mr-05-ico"></i> Detalles de queja ó sugerencia</b>
+                        </h5>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-offset-2 col-lg-8" style="margin-top:1em !important;">
+                                <b> <i class="fas fa-user-tie mr-05-ico"></i> Jefe de área:</b>
+                                <p id="boss" class="text-capitalize" style="margin-top:1em !important;"></p>
+                                <hr />
+                                <b> <i class="fas fa-comments mr-05-ico"></i> Descripción:</b>
+                                <p id="description" style="margin-top:1em !important;"></p>
+                                <hr />
+                                <b> <i class="fas fa-location-arrow mr-05-ico"></i> Lugar:</b>
+                                <p id="location" style="margin-top:1em !important;"></p>
+                                <hr />
+                                <b> <i class="fas fa-calendar mr-05-ico"></i> Fecha:</b>
+                                <p id="dateevent" style="margin-top:1em !important;"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btncle">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript" src="~/Scripts/Admin/mailbox.js"></script>
+
+    }
+    else
+    {
+        <script type="text/javascript">
+            location.href = "/Home/Logout";
+        </script>
+    }
+}
+

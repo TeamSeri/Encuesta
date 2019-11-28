@@ -1,0 +1,63 @@
+﻿/* IMPORTANDO FUENTES */
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans&display=swap');
+
+/* COLORES ICONOS  */
+
+.col-ico {
+    color: #020F59 !important;
+}
+
+/* FUENTES TITULOS Y LABELS */
+
+.font-title {
+    font-family: 'Open Sans', sans-serif !important;
+}
+
+.lt-spacing-2 {
+    letter-spacing: 2px !important;
+}
+
+.txt-shadow-3 {
+    text-shadow: 3px 3px #eee;
+}
+
+.col-labels {
+    color: #03178C !important;
+}
+
+input, textarea {
+    caret-color: #020F59 !important;
+}
+
+.font-title-navbar {
+    font-family: 'Noto Sans', sans-serif !important;
+}
+
+.col-title {
+    color: #031CA6 !important;
+}
+
+.col-title-navbar {
+    color: #3DADF2 !important;
+}
+
+.col-footer {
+    color: #3DADF2 !important;
+}
+
+/* COLORES BOTONES */
+
+.col-btn-form1 {
+    color: white !important;
+    background: #020F59 !important;
+    box-shadow: 4px 0px 9px 4px #ddd !important;
+    transition: 0.9s !important;
+}
+
+    .col-btn-form1:hover {
+        color: #020F59 !important;
+        background: white !important;
+        box-shadow: 4px 5px 5px 4px #ddd !important;
+    }

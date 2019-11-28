@@ -128,6 +128,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Beans\BuzonBean.cs" />
     <Compile Include="Models\Beans\EmpresasBean.cs" />
     <Compile Include="Models\Beans\EncuestasBean.cs" />
     <Compile Include="Models\Beans\LoginBean.cs" />
@@ -138,6 +139,7 @@
     <Compile Include="Models\Beans\RegistroCategoriasBean.cs" />
     <Compile Include="Models\Beans\RegistroDominioBean.cs" />
     <Compile Include="Models\Beans\ReporteBean.cs" />
+    <Compile Include="Models\Daos\BuzonDao.cs" />
     <Compile Include="Models\Daos\EmpresasDao.cs" />
     <Compile Include="Models\Daos\EncuestasDao.cs" />
     <Compile Include="Models\Daos\EncuestaOpcDao.cs" />
@@ -151,11 +153,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\animate.css" />
+    <Content Include="Content\animate\animate.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Content\bootstrap\js\bootstrap.min.js" />
     <Content Include="Content\datatables.css" />
+    <Content Include="Content\Img\mailbox-ico.png" />
+    <Content Include="Content\Img\mailbox.svg" />
+    <Content Include="Content\Img\test-ico.png" />
     <Content Include="Content\Img\undraw_active_support_6rwo.svg" />
     <Content Include="Content\Img\undraw_Add_friends_wa2a.svg" />
     <Content Include="Content\Img\undraw_analyze_17kw.svg" />
@@ -171,6 +179,7 @@
     <Content Include="Content\Img\undraw_usability_testing_2xs4.svg" />
     <Content Include="Content\Img\undraw_Working_oh83.svg" />
     <Content Include="Content\Styles.css" />
+    <Content Include="Content\stylesbuzon.css" />
     <Content Include="Content\toast.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -184,6 +193,8 @@
     <Content Include="Scripts\Admin\graficatest1.js" />
     <Content Include="Scripts\Admin\index.js" />
     <Content Include="Scripts\Admin\indexusers.js" />
+    <Content Include="Scripts\Admin\mailbox.js" />
+    <Content Include="Scripts\Admin\mailboxcompany.js" />
     <Content Include="Scripts\Admin\registrocentros.js" />
     <Content Include="Scripts\Admin\registrosempresa.js" />
     <Content Include="Scripts\Admin\reportaprob.js" />
@@ -200,7 +211,9 @@
     <Content Include="Scripts\Encuestas\Encuesta2.js" />
     <Content Include="Scripts\Encuestas\EncuestaOpc.js" />
     <Content Include="Scripts\Encuestas\Index.js" />
+    <Content Include="Scripts\ferrors\ajaxerrors.js" />
     <Content Include="Scripts\fontawesome.js" />
+    <Content Include="Scripts\fontawesome\fontawesome.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
@@ -211,8 +224,10 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\login.js" />
+    <Content Include="Scripts\main.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\sweetalert.js" />
+    <Content Include="Scripts\sweetalert\sweetalert2.js" />
     <Content Include="Scripts\TestOpc.js" />
     <Content Include="Scripts\toastr.js" />
     <Content Include="Web.config" />
@@ -226,8 +241,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\EncuestaP\Index.cshtml" />
     <Content Include="Views\Registro\Index.cshtml" />
@@ -250,6 +263,10 @@
     <Content Include="Views\Admin\CentroTrabajo.cshtml" />
     <Content Include="Views\Admin\ReportarProblema.cshtml" />
     <Content Include="Views\Admin\Reportes.cshtml" />
+    <Content Include="Views\Admin\Buzon.cshtml" />
+    <Content Include="Views\Home\Buzon.cshtml" />
+    <Content Include="Views\Shared\_LayoutBuzon.cshtml" />
+    <Content Include="Views\Admin\BuzonEmpresa.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
