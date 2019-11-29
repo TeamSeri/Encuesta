@@ -47,6 +47,30 @@ input, textarea {
     color: #3DADF2 !important;
 }
 
+.font-size-navbar {
+    font-size: 14px !important;
+    transition: 0.8s !important;
+}
+
+.font-size-navbar:hover {
+    background: #3DADF2 !important;
+    color: white !important;
+    box-shadow: 4px 6px 8px 4px #eee !important;
+    border-radius: 10px !important;
+}
+
+.font-size-logout {
+    font-size: 14px !important;
+    transition: 0.8s !important;
+}
+
+.font-size-logout:hover {
+    background: red !important;
+    color: white !important;
+    box-shadow: 4px 6px 8px 4px #eee !important;
+    border-radius: 10px !important;
+}
+
 /* COLORES BOTONES */
 
 .col-btn-form1 {
@@ -56,8 +80,32 @@ input, textarea {
     transition: 0.9s !important;
 }
 
-    .col-btn-form1:hover {
-        color: #020F59 !important;
-        background: white !important;
-        box-shadow: 4px 5px 5px 4px #ddd !important;
-    }
+.col-btn-form1:hover {
+    color: #020F59 !important;
+    background: white !important;
+    box-shadow: 4px 5px 5px 4px #ddd !important;
+}
+
+.color-primary {
+    color: #337ab7 !important;
+}
+
+.color-info-s {
+    color: rgb(107, 219, 237) !important;
+}
+
+.color-primary-s {
+    color: rgb(51, 162, 255) !important;
+}
+
+.color-warning {
+    color: rgb(255, 204, 51) !important;
+}
+
+.color-danger {
+    color: red !important;
+}
+
+.color-danger-s {
+    color: #CC0E00 !important;
+}

@@ -28,7 +28,6 @@
                     const icodef = document.getElementById('icodef');
                     const txtpunt = document.getElementById('txtpunt');
                     if (data.mensaje == "success") {
-                        console.log(data.result);
                         const totres = parseFloat(data.result / data.realizadas).toFixed(2);
                         if (parseFloat(totres) < 50) {
                             icodef.classList.add('color-info-s');
@@ -72,37 +71,39 @@
                 type: "POST",
                 data: { registro: param },
                 success: function (data) {
-                    if (data.res == "correcto") {
-                        console.log(data.realizadas);
+                    const suma = parseInt(data.categoria1) + parseInt(data.categoria2) + parseInt(data.categoria3) + parseInt(data.categoria4) + parseInt(data.categoria5);
+                    //console.log(suma);
+                    if (suma > 0) {
+                        //console.log(data.realizadas);
                         cat1 = parseFloat(data.categoria1 / data.realizadas).toFixed(2);
-                        console.log('cat1 ' + cat1);
+                        //console.log('cat1 ' + cat1);
                         cat2 = parseFloat(data.categoria2 / data.realizadas).toFixed(2);
-                        console.log('cat2 ' + cat2);
+                        //console.log('cat2 ' + cat2);
                         cat3 = parseFloat(data.categoria3 / data.realizadas).toFixed(2);
-                        console.log('cat3 ' + cat3);
+                        //console.log('cat3 ' + cat3);
                         cat4 = parseFloat(data.categoria4 / data.realizadas).toFixed(2);
-                        console.log('cat4 ' + cat4);
+                        //console.log('cat4 ' + cat4);
                         cat5 = parseFloat(data.categoria5 / data.realizadas).toFixed(2);
-                        console.log('cat5 ' + cat5);
+                        //console.log('cat5 ' + cat5);
                         //Dominios
                         dom2 = parseFloat(data.dominio2 / data.realizadas).toFixed(2);
-                        console.log('dom2 ' + dom2);
+                        //console.log('dom2 ' + dom2);
                         dom3 = parseFloat(data.dominio3 / data.realizadas).toFixed(2);
-                        console.log('dom3 ' + dom3);
+                        //console.log('dom3 ' + dom3);
                         dom4 = parseFloat(data.dominio4 / data.realizadas).toFixed(2);
-                        console.log('dom4 ' + dom4);
+                        //console.log('dom4 ' + dom4);
                         dom5 = parseFloat(data.dominio5 / data.realizadas).toFixed(2);
-                        console.log('dom5 ' + dom5);
+                        //console.log('dom5 ' + dom5);
                         dom6 = parseFloat(data.dominio6 / data.realizadas).toFixed(2);
-                        console.log('dom6 ' + dom6);
+                        //console.log('dom6 ' + dom6);
                         dom7 = parseFloat(data.dominio7 / data.realizadas).toFixed(2);
-                        console.log('dom7 ' + dom7);
+                        //console.log('dom7 ' + dom7);
                         dom8 = parseFloat(data.dominio8 / data.realizadas).toFixed(2);
-                        console.log('dom8 ' + dom8);
+                        //console.log('dom8 ' + dom8);
                         dom9 = parseFloat(data.dominio9 / data.realizadas).toFixed(2);
-                        console.log('dom9 ' + dom9);
+                        //console.log('dom9 ' + dom9);
                         dom10 = parseFloat(data.dominio10 / data.realizadas).toFixed(2);
-                        console.log('dom10 ' + dom10);
+                        //console.log('dom10 ' + dom10);
                         //Resultados para la categoria 1 Ambiente de trabajo
                         if (parseFloat(cat1) < 5) {
                             rescat.textContent = "Nulo o despreciable";

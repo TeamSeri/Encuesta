@@ -9,33 +9,28 @@
     {
         if (Model.sMensaje == "success")
         {
-            <style>
-                /*body {
-                    background-color: #FAFFEB;
-                }*/
-            </style>
             <div style="margin-top:2em !important; margin-bottom:8em !important;">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-3 col-md-3 col-sm-12 animated fadeIn" style="margin-top:6.7em !important;">
                             <div style="margin-bottom:2em !important;">
-                                <img class="img-responsive" src="~/Content/Img/undraw_Working_oh83.svg" />
+                                <img class="img-fluid" src="~/Content/Img/undraw_Working_oh83.svg" />
                             </div>
-                            <a href="/Admin/Detalles?empresa=@Model.iIdEmpresa" class="btn btn-primary btn-block">
+                            <a href="/Admin/Detalles?empresa=@Model.iIdEmpresa" class="btn btn-block col-btn-form1">
                                 <i class="fas fa-arrow-left"></i> <span style="margin-left:1em;">Volver</span>
                             </a>
-                            <a href="#" data-toggle="modal" data-target="#regDatosEmpresa" class="btn btn-primary btn-block" style="margin-top:3em !important;" id="btnnewreg">
+                            <a href="#" data-toggle="modal" data-target="#regDatosEmpresa" class="btn btn-block col-btn-form1 mt-4" id="btnnewreg">
                                 <i class="fas fa-plus"></i> <span style="margin-left:0.5em;">Nuevo registro</span>
                             </a>
-                            <button class="btn btn-primary btn-block" style="margin-top:3em !important;" id="btndesc">
+                            <button class="btn btn-block col-btn-form1 mt-4" id="btndesc">
                                 <i class="fas fa-check"></i> <span style="margin-left:0.5em !important;">Continuar</span>
                             </button>
-                            <a href="#" data-toggle="modal" data-target="#info" class="btn btn-primary btn-block" style="margin-top:3em !important;" id="btninfo">
+                            <a href="#" data-toggle="modal" data-target="#info" class="btn btn-block col-btn-form1 mt-4" id="btninfo">
                                 <i class="fas fa-info"></i> <span style="margin-left:0.5em;">Ayuda</span>
                             </a>
                         </div>
                         <div class="col-lg-9 col-md-9 col-sm-12 animated fadeInLeft delay-1s">
-                            <h2><b> <i class="fas fa-building color-primary" style="margin-right:0.5em !important;"></i> Centro de trabajo @Model.sCentroTrabajo .</b></h2>
+                            <h2><b> <i class="fas fa-building col-ico mr-2"></i> Centro de trabajo @Model.sCentroTrabajo .</b></h2>
                             <hr />
                             <div class="row" id="contain_reg">
                             </div>

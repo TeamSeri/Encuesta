@@ -6,20 +6,14 @@
 @{
     if (@Session["keyUser"] != null)
     {
-        <style>
-            /*body {
-                background-color: #FAFFEB;
-            }*/
-        </style>
-
-        <div class="container-fluid" style="margin-top:2em !important;">
+        <div class="container-fluid mt-5 mb-5">
 
             <div class="row">
 
                 <div class="col-md-4 animated fadeIn">
                     <h2>
                         <b>
-                            <i class="fas fa-headset color-primary" style="margin-right:0.5em !important"></i>
+                            <i class="fas fa-headset col-ico mr-2"></i>
                             Soporte.
                         </b>
                     </h2>
@@ -37,38 +31,38 @@
                         </p>
                     </div>
                     <div style="margin-top:9em !important;">
-                        <img class="img-responsive" src="~/Content/Img/undraw_bug_fixing_oc7a.svg" />
+                        <img class="img-fluid" src="~/Content/Img/undraw_bug_fixing_oc7a.svg" />
                     </div>
                 </div>
                 <div class="col-md-8 animated fadeInLeft delay-1s">
-                    <h2><b> <i class="fas fa-bug color-primary" style="margin-right:0.5em !important;"></i> Reportar problema.</b></h2>
+                    <h2><b> <i class="fas fa-bug col-ico mr-2"></i> Reportar problema.</b></h2>
                     <hr />
                     <form class="row" style="padding:2em !important;">
-                        <div>
-                            <div class="form-group row">
-                                <label class="col-sm-4">Descripción del problema:</label>
-                                <div class="col-sm-8">
-                                    <textarea id="msjreport" placeholder="Describe el problema" rows="7" class="form-control"></textarea>
-                                </div>
+                        <div class="offset-1 col-md-10">
+                            <div class="form-group">
+                                <label class="col-form-label col-labels"> <i class="fas fa-comments mr-2 col-ico"></i> Descripción del problema:</label>
+                                <textarea id="msjreport" placeholder="Describe el problema" rows="7" class="form-control"></textarea>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-4">Reporta:</label>
+                                <label class="col-sm-4 col-form-label col-labels"> <i class="fas fa-user mr-2 col-ico"></i> Reporta:</label>
                                 <div class="col-sm-8">
                                     <input type="text" readonly class="form-control" value="@Session["nameUser"]" />
                                     <input type="hidden" id="clvrep" readonly class="form-control" value="@Session["keyUser"]" />
                                 </div>
                             </div>
-                            <div class="form-group text-center" style="margin-top:4em !important;">
-                                <button class="btn btn-sm btn-primary" type="button" id="btnreport">
-                                    Enviar reporte
-                                </button>
+                            <div class="form-group text-center row" style="margin-top:4em !important;">
+                                <div class="offset-2 col-md-8">
+                                    <button class="btn btn-block col-btn-form1" type="button" id="btnreport">
+                                        <i class="fas fa-check-circle mr-2"></i> Enviar reporte
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </form>
                     <hr />
-                    <h3><b> <i class="fas fa-list color-primary" style="margin-right:0.5em !important;"></i> Reportes enviados.</b></h3>
+                    <h3><b> <i class="fas fa-list col-ico mr-2"></i> Reportes enviados.</b></h3>
                     <hr />
-                    <div class="row" id="contrep">
+                    <div class="row card-columns" id="contrep">
                         
                     </div>
                 </div>

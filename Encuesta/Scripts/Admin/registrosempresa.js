@@ -29,7 +29,7 @@
                                             <form>
                                                 <div class="form-group">
                                                     <input class="margin-radio" type="checkbox" value="${data[i].iIdRegistroEmpresas}" id="desc" />
-                                                    <label class="form-check-label text-danger" style="margin-left:1em !important;">Desactivar</label>
+                                                    <label class="form-check-label text-danger" for="desc">Desactivar</label>
                                                 </div>
                                             </form>
                                         </div>
@@ -40,28 +40,27 @@
                             }
                             contain.innerHTML += `
                             <div class="col-lg-6 col-md-6 col-sm-6">
-                                <div class="card">
-                                    <h5 class="text-center">
-                                        <i class="fas fa-calendar fa-lg color-primary" style="margin-right:0.5em !important;"></i> <span><b>${data[i].sMes} - ${data[i].sFechaAnio}</b></span>
-                                    </h5>
+                                <div class="card p-2">
+                                    <h6 class="text-center mt-4">
+                                        <i class="fas fa-calendar fa-lg col-ico mr-2"></i> <span><b>${data[i].sMes} - ${data[i].sFechaAnio}</b></span>
+                                    </h6>
                                     <hr style="height:2px !important;" />
                                     <div class="card-body">
                                         <ul class="list-group">
-                                            <li class="list-group-item">Empleados: <span class="badge badge-primary" id="empleados">${data[i].iEmpleados}</span> </li>
-                                            <li class="list-group-item">Aplicaciones requeridas: <span class="badge badge-primary" id="requeridas">${data[i].iAplicacionesReq}</span> </li>
-                                            <li class="list-group-item">Aplicaciones restantes: <span class="badge badge-primary" id="restantes">${data[i].iAplicacionesReq - data[i].iAplicacionesRealizadas}</span> </li>
-                                            <li class="list-group-item">Tipo de encuesta: <span class="badge badge-primary" id="tipo">${tipoEnc}</span></li>
-                                            <li class="list-group-item">Codigo: <span class="badge badge-primary" id="codigo">${data[i].sCodigoEmpresa}</span> </li>
-                                             <li class="list-group-item">Estado: <span class="badge badge-primary" id="codigo">${estado}</span> </li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-center">Empleados: <span class="badge badge-primary" id="empleados">${data[i].iEmpleados}</span> </li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-center">Aplicaciones requeridas: <span class="badge badge-primary" id="requeridas">${data[i].iAplicacionesReq}</span> </li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-center">Aplicaciones restantes: <span class="badge badge-primary" id="restantes">${data[i].iAplicacionesReq - data[i].iAplicacionesRealizadas}</span> </li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-center">Tipo de encuesta: <span class="badge badge-primary" id="tipo">${tipoEnc}</span></li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-center">Codigo: <span class="badge badge-primary" id="codigo">${data[i].sCodigoEmpresa}</span> </li>
+                                             <li class="list-group-item d-flex justify-content-between align-items-center">Estado: <span class="badge badge-primary" id="codigo">${estado}</span> </li>
                                         </ul>
                                     </div>
                                     ${descdiv}
                                     <hr/>
                                     <div class="row text-center">
-                                        <div class="col-lg-12">
+                                        <div class="offset-2 col-lg-8">
                                             <b>
-                                                <i class="fas fa-external-link-alt color-primary" style="margin-right:0.5em;"></i>
-                                                <a href="/Admin/DetallesRegistrosEncuesta?registro=${data[i].iIdRegistroEmpresas}&empresa=${emp}&tipo=${data[i].sTipoEncuesta}">Detalles registro</a>
+                                                <a href="/Admin/DetallesRegistrosEncuesta?registro=${data[i].iIdRegistroEmpresas}&empresa=${emp}&tipo=${data[i].sTipoEncuesta}" class="btn btn-block col-btn-form1"> <i class="fas fa-external-link-alt mr-2"></i> Detalles</a>
                                             </b>
                                         </div>
                                      </div>

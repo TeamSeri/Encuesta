@@ -6,57 +6,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Encuestas.net</title>
     <link rel="icon" type="image/png" href="~/Content/img/test-ico.png" />
+    <link rel="stylesheet" href="~/Content/bootstrap/css/bootstrap.min.css" />
     <link href="../../Content/Styles.css" rel="stylesheet" />
     <script type="text/javascript" src="~/Scripts/sweetalert.js"></script>
     <link href="~/Content/toast.css" rel="stylesheet" />
     <link href="~/Content/animate.css" rel="stylesheet" />
-    @Styles.Render("~/Content/css")
+    <link rel="stylesheet" href="~/Content/stylesbuzon.css" />
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
 </head>
 <body>
-    <div class="navbar bg-navi navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <a href="/" style="color:white !important;" class="navbar-brand">
-                    <i class="fas fa-home" style="margin-right:0.5em;"></i> Inicio
-                </a>
-                @*@Html.ActionLink("Iniciar sesion", "Login", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav" style="margin-left: 1em !important;">
-                    <li>
-                        <a href="/Home/Login" style="color:white !important; background:none !important;">
-                            <i class="fas fa-sign-in-alt" style="margin-right:0.5em;"></i> Iniciar sesión
-                        </a>
-                    </li>
-                    <li>
-                        <a style="color:white !important; background:none !important;" href="/Home/Encuesta3">
-                            <i class="fas fa-user-edit" style="margin-right:0.5em;"></i> Encuesta especial
-                        </a>
-                    </li>
-                    <li>
-                        <a style="color:white !important; background:none !important;" href="/Home/Buzon">
-                            <i class="fas fa-mail-bulk" style="margin-right:0.5em;"></i> Buzón
-                        </a>
-                    </li>
-                </ul>
-            </div>
+    <nav class="navbar navbar-expand-lg navbar-white bg-white border-bottom shadow p-3 animated fadeIn">
+        <a class="navbar-brand col-title-navbar font-title-navbar font-weight-light lt-spacing-2" href="/Home/Index"> <i class="fas fa-home mr-3 ml-3 col-ico"></i> Inicio </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-3">
+                <li class="nav-item active">
+                    <a href="/Home/Login" class="nav-link col-title-navbar font-title-navbar">
+                        <i class="fas fa-sign-in-alt mr-2 col-ico"></i>
+                        Login
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link col-title-navbar font-title-navbar ml-3" href="/Home/Encuesta3">
+                        <i class="fas fa-user-edit mr-2 col-ico"></i>
+                        Encuesta especial
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link col-title-navbar font-title-navbar ml-3" href="/Home/Buzon"> <i class="fas fa-mail-bulk mr-2 col-ico"></i> Buzón </a>
+                </li>
+            </ul>
         </div>
-    </div>
+    </nav>
+
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer class="text-left">
-            <p> <i class="fas fa-copyright mr-05-ico ml-05-ico"></i>  @DateTime.Now.Year - Grupo Seri. Todos los derechos reservados. 
-                <i class="fas fa-image mr-05-ico ml-05-ico"></i> Images by <a href="https://undraw.co/"> undraw</a>. 
-                <i class="fas fa-flag mr-05-ico ml-05-ico"></i> Icons by <a href="https://fontawesome.com/"> FontAwesome</a>. </p>
+        <footer class="text-center col-footer p-3 animated fadeIn">
+            <p>
+                <i class="fas fa-copyright mr-05-ico ml-05-ico"></i>  @DateTime.Now.Year - <b>Grupo Seri.</b> Todos los derechos reservados .
+                <i class="fas fa-image mr-05-ico ml-05-ico"></i> Images by <a href="https://undraw.co/"> <b>undraw</b> </a>.
+                <i class="fas fa-flag mr-05-ico ml-05-ico"></i> Icons by <a href="https://fontawesome.com/"> <b>FontAwesome</b> </a>.
+            </p>
         </footer>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
-    <script type="text/javascript" src="~/Scripts/fontawesome.js"></script>
+    <script type="text/javascript" src="~/Content/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/fontawesome/fontawesome.js"></script>
+    <script type="text/javascript" src="~/Scripts/ferrors/ajaxerrors.js"></script>
     <script type="text/javascript" src="~/Scripts/toastr.js"></script>
 </body>
 </html>

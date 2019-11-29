@@ -152,7 +152,9 @@
                             }
                         }
                     } else {
-                        document.getElementById('repnotif').textContent = 0;
+                        if (document.getElementById('repnotif')) {
+                            document.getElementById('repnotif').textContent = 0;
+                        }
                     }
                 }, error: function (error) {
                     console.log(error);

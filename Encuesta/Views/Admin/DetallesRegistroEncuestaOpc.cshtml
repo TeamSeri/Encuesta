@@ -8,56 +8,56 @@
     if (Session["keyUser"] != null)
     {
 
-        <div class="container-fluid" style="margin-top:3em !important; margin-bottom:3em !important;">
+        <div class="container-fluid mt-5 mb-5">
             <div class="row">
-                <div class="col-lg-offset-2 col-lg-8">
+                <div class="offset-1 col-lg-10">
                     <h3 class="text-center">
                         <b>Detalles del cuestionario acontecimientos traumáticos severos.</b>
                     </h3>
                     <hr />
                     <div class="row">
-                        <div class="col-lg-offset-1 col-lg-10">
+                        <div class="offset-2 col-md-8">
                             <div class="card" style="padding:20px !important;" id="contprin">
                                 <div class="text-right" style="margin-bottom:2em !important;">
-                                    <a href="/Admin/EncuestaEspecial" class="btn btn-sm btn-primary">
-                                        <i class="fas fa-arrow-left" style="margin-right:0.5em;"></i>
+                                    <a href="/Admin/EncuestaEspecial" class="btn btn-sm col-btn-form1">
+                                        <i class="fas fa-arrow-left mr-2"></i>
                                         Volver
                                     </a>
-                                    <button class="btn btn-sm btn-primary" id="printdata">
-                                        <i class="fas fa-print" style="margin-right:0.5em;"></i> Imprimir
+                                    <button class="btn btn-sm col-btn-form1" id="printdata">
+                                        <i class="fas fa-print mr-2"></i> Imprimir
                                     </button>
                                 </div>
                                 <ul class="list-group">
                                     <li class="list-group-item">
-                                        <i class="fas fa-user color-primary" style="margin-right:0.5em;"></i> Aplico:
+                                        <i class="fas fa-user col-ico mr-2"></i> Aplico:
                                         <b id="nomem"></b>
                                     </li>
                                     <li class="list-group-item">
-                                        <i class="fas fa-industry color-primary" style="margin-right:0.5em;"></i> Empresa a la que pertenece:
+                                        <i class="fas fa-industry col-ico mr-2"></i> Empresa a la que pertenece:
                                         <b id="empre"></b>
                                     </li>
                                     <li class="list-group-item">
-                                        <i class="fas fa-industry color-primary" style="margin-right:0.5em;"></i> Centro de trabajo:
+                                        <i class="fas fa-industry col-ico mr-2"></i> Centro de trabajo:
                                         <b id="centempre"></b>
                                     </li>
                                     <li class="list-group-item">
-                                        <i class="fas fa-portrait color-primary" style="margin-right:0.5em;"></i> Puesto dentro de la empresa:
+                                        <i class="fas fa-portrait col-ico mr-2"></i> Puesto dentro de la empresa:
                                         <b id="puest"></b>
                                     </li>
                                     <li class="list-group-item">
-                                        <i class="fas fa-calendar-plus color-primary" style="margin-right:0.5em;"></i> Fecha de asignación:
+                                        <i class="fas fa-calendar-plus col-ico mr-2"></i> Fecha de asignación:
                                         <b id="fechasig"></b>
                                     </li>
                                     <li class="list-group-item">
-                                        <i class="fas fa-calendar-check color-primary" style="margin-right:0.5em;"></i> Fecha de realización:
+                                        <i class="fas fa-calendar-check col-ico mr-2"></i> Fecha de realización:
                                         <b id="fecharel"></b>
                                     </li>
                                     <li class="list-group-item">
-                                        <i class="fas fa-keyboard color-primary" style="margin-right:0.5em;"></i> Código de acceso:
+                                        <i class="fas fa-keyboard col-ico mr-2"></i> Código de acceso:
                                         <b id="code"></b>
                                     </li>
                                 </ul>
-                                <h4 class="text-center" style="margin-top:2em !important;"> <i class="fas fa-book-medical color-primary" style="margin-right:0.5em;"></i> Diagnostico: <b><span id="resdiag"></span></b> </h4>
+                                <h5 class="text-center" style="margin-top:2em !important;"> <i class="fas fa-book-medical col-ico" style="margin-right:0.5em;"></i> Diagnostico: <b><span id="resdiag"></span></b> </h5>
                                 <hr />
                                 <div class="">
                                     <p class="text-justify" id="diagdetalle1"></p>

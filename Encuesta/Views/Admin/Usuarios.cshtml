@@ -10,27 +10,27 @@
             cursor:pointer;
         }
     </style>
-    <div class="container-fluid" style="margin-top:2em !important; margin-bottom:5em !important;">
+    <div class="container-fluid mt-5 mb-5">
         <div class="row">
             <div class="col-md-3" style="margin-top:6.7em !important;">
                 <div style="margin-bottom:2em !important;">
-                    <img class="img-responsive" src="~/Content/Img/undraw_Add_friends_wa2a.svg" />
+                    <img class="img-fluid" src="~/Content/Img/undraw_Add_friends_wa2a.svg" />
                 </div>
-                <a href="/Admin/Index" class="btn btn-primary btn-block">
-                    <i class="fas fa-arrow-left"></i> <span style="margin-left:1em;">Volver</span>
+                <a href="/Admin/Index" class="btn btn-block col-btn-form1">
+                    <i class="fas fa-arrow-left mr-2"></i> <span>Volver</span>
                 </a>
-                <a class="btn btn-primary btn-block" style="margin-top:3em !important;" id="admins">
-                    <i class="fas fa-plus"></i> <span style="margin-left:0.5em;">Administradores</span>
+                <a class="btn btn-block col-btn-form1 mt-4" id="admins" href="#">
+                    <i class="fas fa-plus mr-2"></i> <span>Administradores</span>
                 </a>
-                <a href="#" data-toggle="modal" data-target="#newUserReg" class="btn btn-primary btn-block" style="margin-top:3em !important;" id="btnnewreguser">
-                    <i class="fas fa-plus"></i> <span style="margin-left:0.5em;">Nuevo usuario</span>
+                <a href="#" data-toggle="modal" data-target="#newUserReg" class="btn btn-block col-btn-form1 mt-4" id="btnnewreguser">
+                    <i class="fas fa-plus mr-2"></i> <span>Nuevo usuario</span>
                 </a>
-                <a href="#" data-toggle="modal" data-target="#newUser" class="btn btn-primary btn-block" style="margin-top:3em !important;" id="btnnewreg">
-                    <i class="fas fa-plus"></i> <span style="margin-left:0.5em;">Nuevo registro</span>
+                <a href="#" data-toggle="modal" data-target="#newUser" class="btn btn-block col-btn-form1 mt-4" id="btnnewreg">
+                    <i class="fas fa-plus mr-2"></i> <span>Nuevo registro</span>
                 </a>
             </div>
             <div class="col-md-9">
-                <h2><b> <i class="fas fa-users color-primary" style="margin-right:0.5em !important;"></i> Listado de usuarios </b></h2>
+                <h2><b> <i class="fas fa-users col-ico mr-2"></i> Listado de usuarios </b></h2>
                 <hr />
                 <div>
                     <table class="display" id="tabusers">
@@ -50,7 +50,7 @@
                     <div class="text-right">
                         <i class="fas fa-window-minimize fa-2x color-danger" id="minimizeadmin"></i>
                     </div>
-                    <h2><b> <i class="fas fa-user-tie color-primary" style="margin-right:0.5em !important;"></i> Listado de administradores </b></h2>
+                    <h2><b> <i class="fas fa-user-tie col-ico mr-2"></i> Listado de administradores </b></h2>
                     <hr />
                     <table class="display" id="tabadmin">
                         <thead>
@@ -72,27 +72,26 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title text-center" id="exampleModalLabel">
-                        <b> Agregar usuario </b>
+                        <b class="text-center col-labels"> <i class="fas fa-user mr-2 col-ico"></i>  Agregar usuario </b>
                     </h5>
                 </div>
                 <div class="modal-body">
                     <div class="row">
-                        <div class="col-lg-offset-3 col-lg-6">
+                        <div class="offset-1 col-md-10">
                             <div class="form-group">
-                                <label>Nombre de usuario: </label>
+                                <label for="newuserreg" class="col-labels col-form-label"> <i class="fas fa-user mr-2 col-ico"></i> Nombre de usuario: </label>
                                 <input type="text" id="newuserreg" name="newuserreg" class="form-control" />
-                                @*<button class="btn btn-link"> <i class="fas fa-search"></i> </button>*@
                             </div>
                             <div class="form-group">
-                                <label>Contraseña: </label>
+                                <label class="col-labels col-form-label" for="passuserreg"> <i class="fas fa-key mr-2 col-ico"></i> Contraseña: </label>
                                 <input type="password" id="passuserreg" name="passuserreg" class="form-control" />
                             </div>
                             <div class="form-group">
-                                <label>Repite la contraseña: </label>
+                                <label for="passrepreg" class="col-labels col-form-label"> <i class="fas fa-key mr-2 col-ico"></i> Repite la contraseña: </label>
                                 <input type="password" id="passrepreg" class="form-control" />
                             </div>
                             <div class="form-group">
-                                <label>Tipo de usuario: </label>
+                                <label class="col-labels col-form-label"> <i class="fas fa-id-card-alt mr-2 col-ico"></i> Tipo de usuario: </label>
                                 <select class="form-control" id="typeuser" name="typeuser">
                                     <option value="0">Selecciona</option>
                                     <option value="1">Administrador</option>
@@ -100,7 +99,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label>Es super administrador? </label>
+                                <label class="col-labels col-form-label" for="typeadmin"> <i class="fas fa-user-tie col-ico mr-2"></i> Es super administrador? </label>
                                 <select class="form-control" id="typeadmin" name="typeadmin">
                                     <option value="none">Selecciona</option>
                                     <option value="1">Si</option>
@@ -111,8 +110,12 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btncloseuserreg">Cerrar</button>
-                    <button type="button" class="btn btn-success" id="btnsaveuserreg">Agregar</button>
+                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal" id="btncloseuserreg">
+                        <i class="fas fa-times mr-2"></i> Cerrar
+                    </button>
+                    <button type="button" class="btn btn-sm col-btn-form1" id="btnsaveuserreg">
+                        <i class="fas fa-check-circle mr-2"></i> Aceptar
+                    </button>
                 </div>
             </div>
         </div>
@@ -123,20 +126,20 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title text-center" id="exampleModalLabel">
-                        <b> Agregar registro </b>
+                        <b class="text-center col-labels"> <i class="fas fa-plus mr-2 col-ico"></i> Agregar registro </b>
                     </h5>
                 </div>
                 <div class="modal-body">
                     <div class="row">
-                        <div class="col-lg-offset-3 col-lg-6">
+                        <div class="offset-1 col-md-10">
                             <div class="form-group">
-                                <label>Nombre de usuario: </label>
+                                <label for="newuser" class="col-form-label col-labels"> <i class="fas fa-user mr-2 col-ico"></i> Nombre de usuario: </label>
                                 <select type="text" id="newuser" name="newuser" class="form-control">
                                     <option value="0">Selecciona</option>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label>Empresa: </label>
+                                <label  class="col-form-label col-labels" for="empresa"> <i class="fas fa-building mr-2 col-ico"></i> Empresa: </label>
                                 <select class="form-control" id="empresa" name="empresa">
                                     <option value="0" selected>Selecciona</option>
                                 </select>
@@ -145,8 +148,12 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btncloseuser">Cerrar</button>
-                    <button type="button" class="btn btn-success" id="btnsaveuser">Agregar</button>
+                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal" id="btncloseuser">
+                        <i class="fas fa-times mr-2"></i> Cerrar 
+                    </button>
+                    <button type="button" class="btn btn-sm col-btn-form1" id="btnsaveuser">
+                        <i class="fas fa-check-circle mr-2"></i> Aceptar
+                    </button>
                 </div>
             </div>
         </div>
@@ -157,27 +164,31 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title text-center" id="exampleModalLabel">
-                        <b> Cambiar contraseña a <span id="userpass"></span> </b>
+                        <b class="text-center col-labels"> <i class="fas fa-key col-ico mr-2"></i> Cambiar contraseña a <span id="userpass"></span> </b>
                     </h5>
                 </div>
                 <div class="modal-body">
                     <div class="row">
-                        <div class="col-lg-offset-3 col-lg-6">
+                        <div class="offset-1 col-md-10">
                             <div class="form-group">
-                                <label>Ingresa la nueva contraseña:</label>
+                                <label for="newpassuser" class="col-form-label col-labels"> <i class="fas fa-key mr-2 col-ico"></i> Ingresa la nueva contraseña:</label>
                                 <input type="password" id="newpassuser" name="newpassuser" class="form-control" />
                                 <input type="hidden" id="clvpass" />
                             </div>
                             <div class="form-group">
-                                <label>Repite la nueva contraseña:</label>
+                                <label  class="col-form-label col-labels" for="passconfirm"> <i class="fas fa-key mr-2 col-ico"></i> Repite la nueva contraseña:</label>
                                 <input type="password" id="passconfirm" name="passconfirm" class="form-control" />
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btnclepass">Cerrar</button>
-                    <button type="button" class="btn btn-primary" id="btnupdatepass">Actualizar</button>
+                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal" id="btnclepass">
+                        <i class="fas fa-times mr-2"></i> Cerrar
+                    </button>
+                    <button type="button" class="btn btn-sm col-btn-form1" id="btnupdatepass">
+                        <i class="fas fa-check-circle mr-2"></i> Actualizar
+                    </button>
                 </div>
             </div>
         </div>
@@ -188,14 +199,14 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title text-center" id="exampleModalLabel">
-                        <b> ¿Esta seguro de bloquear a <span id="userblock"></span> ? </b>
+                        <b class="text-center col-labels"> <i class="fas fa-lock mr-2 col-ico"></i> ¿Esta seguro de bloquear a <span id="userblock"></span> ? </b>
                     </h5>
                 </div>
                 <div class="modal-body">
                     <div class="row">
-                        <div class="col-lg-offset-3 col-lg-6">
+                        <div class="offset-1 col-md-10">
                             <div class="form-group">
-                                <label>Escribe tu contraseña para confirmar:</label>
+                                <label for="passblock" class="col-form-label col-labels"> <i class="fas fa-key mr-2 col-ico"></i> Escribe tu contraseña para confirmar:</label>
                                 <input type="password" id="passblock" name="passblock" class="form-control" />
                                 <input type="hidden" id="clvblock" />
                             </div>
@@ -203,8 +214,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btncle">Cerrar</button>
-                    <button type="button" class="btn btn-danger" id="btnblock">Bloquear</button>
+                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal" id="btncle"> <i class="fas fa-times mr-2"></i> Cerrar </button>
+                    <button type="button" class="btn btn-sm col-btn-form1" id="btnblock"> <i class="fas fa-check-circle mr-2"></i> Aceptar </button>
                 </div>
             </div>
         </div>

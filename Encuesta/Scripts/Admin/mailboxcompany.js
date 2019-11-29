@@ -39,10 +39,10 @@
                     for (var i = 0; i < data.length; i++) {
                         tbodymails.innerHTML += `
                             <tr>
-                                <td><a href="/Admin/Detalles?empresa=${data[i].iIdEmpresa}">${data[i].sEmpresa}</a></td>
+                                <td><a href="/Admin/Detalles?empresa=${data[i].iIdEmpresa}" class="btn btn-sm btn-block col-btn-form1"> <i class="fas fa-building mr-2"></i> ${data[i].sEmpresa} </a></td>
                                 <td class="text-capitalize">${data[i].sJefeArea}</td>
                                 <td>${data[i].sFecha}</td>
-                                <td> <a href="#" onclick="fviewdata(${data[i].iIdBuzon})"> Detalles </a> </td>
+                                <td> <a href="#" onclick="fviewdata(${data[i].iIdBuzon})" class="btn btn-sm btn-block col-btn-form1"> <i class="fas fa-eye mr-2"></i> Detalles </a> </td>
                             </tr>
                         `;
                     }
@@ -56,7 +56,28 @@
     }
 
     setTimeout(() => {
-        $("#tabmails").DataTable();
+        $("#tabmails").DataTable({
+            language: {
+                "decimal": "",
+                "emptyTable": "No hay información",
+                "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+                "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+                "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                "infoPostFix": "",
+                "thousands": ",",
+                "lengthMenu": "Mostrar _MENU_ Entradas",
+                "loadingRecords": "Cargando...",
+                "processing": "Procesando...",
+                "search": "Buscar:",
+                "zeroRecords": "Sin resultados encontrados",
+                "paginate": {
+                    "first": "Primero",
+                    "last": "Ultimo",
+                    "next": "Siguiente",
+                    "previous": "Anterior"
+                }
+            },
+        });
         $("#tabmails").show('1000');
     }, 1000);
 

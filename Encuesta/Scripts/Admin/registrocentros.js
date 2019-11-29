@@ -16,17 +16,19 @@
                         for (var i = 0; i < data.length; i++) {
                             contain.innerHTML += `
                             <div class="col-lg-4 col-md-4 col-sm-6" style="margin-bottom:2em !important;">
-                                <div class="card">
+                                <div class="card p-2">
                                     <div class="text-right" style="padding-top:0em !important;">
                                         <button onclick="feditcentro(${data[i].iIdCentroTrabajo},'${data[i].sCentroTrabajo}','${data[i].sUbicacionCentro}')" class="btn btn-sm btn-primary"> <i class="fas fa-edit"></i> </button>
                                     </div>
-                                    <h5 class="text-center">
-                                        <i class="fas fa-building fa-lg color-primary" style="margin-right:0.5em !important;"></i> <span><b>${data[i].sCentroTrabajo}</b></span>
-                                    </h5>
+                                    <h6 class="text-center">
+                                        <i class="fas fa-building fa-lg col-ico mr-2"></i> <span><b>${data[i].sCentroTrabajo}</b></span>
+                                    </h6>
                                     <hr style="height:2px !important;" />
                                     <div class="card-body">
                                         <ul class="list-group">
-                                            <li class="list-group-item"> <i class="fas fa-map-marked-alt color-primary" style="margin-right:0.5em !important;"></i> ${data[i].sUbicacionCentro}</span>. </li>
+                                            <li class="list-group-item"> <i class="fas fa-map-marked-alt color-primary" style="margin-right:0.5em !important;"></i>
+                                                <small>${data[i].sUbicacionCentro}.</small>
+                                            </span></li>
                                         </ul>
                                     </div>
                                     <div class="text-center">
@@ -44,7 +46,7 @@
                                 <h3 class="text-center"><b> <i class="fas fa-info color-primary" style="margin-right:0.5em !important;"></i> Añada un nuevo registro para continuar</b></h3>
                                 <br/>
                                 <div style="padding:3em !important">
-                                    <p style="font-size:20px;" class="text-center"> Complete todos los campos del formulario <span class="color-primary">Nuevo Registro</span>,cualquier duda o problema <a href="/Admin/ReportarProblema">reportar</a> a sistemas <i class="fas fa-headset color-primary" style="margin-lef:0.5em !important;"></i>.</p>
+                                    <p style="font-size:20px;" class="text-center"> Complete todos los campos del formulario <span class="color-primary">Nuevo centro</span>,cualquier duda o problema <a href="/Admin/ReportarProblema">reportar</a> a sistemas <i class="fas fa-headset color-primary" style="margin-lef:0.5em !important;"></i>.</p>
                                 </div>
                             </div>
                        `;

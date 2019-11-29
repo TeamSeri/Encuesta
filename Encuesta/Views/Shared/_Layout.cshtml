@@ -6,117 +6,111 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Encuestas.net</title>
     <link rel="icon" type="image/png" href="~/Content/img/test-ico.png" />
-    <link href="../../Content/Styles.css" rel="stylesheet" media="all" />
+    <link rel="stylesheet" href="~/Content/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Content/datatables/jquery.dataTables.min.css" type="text/css" media="all" />
+    <link href="~/Content/stylesbuzon.css" rel="stylesheet" media="all" />
     <link rel="stylesheet" href="~/Content/animate.css" />
     <script type="text/javascript" src="~/Scripts/sweetalert.js"></script>
-    <link rel="stylesheet" href="~/Content/bootstrap.min.css" type="text/css" media="all" />
-    <link rel="stylesheet" href="~/Content/datatables.css" type="text/css" media="all" />
-    @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar bg-navi navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a style="color:white !important;" class="navbar-brand active" href="/Admin/Index"> <i class="fas fa-edit"></i> Encuestas </a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav" style="margin-left: 1em !important;">
-                    @if (Convert.ToInt32(Session["typeUser"]) == 1)
-                    {
-                        <li>
-                            <a style="color:white !important; background:none !important; font-size:13px !important;" data-toggle="modal" data-target="#regEmpresa" href="#">
-                                Registrar empresa <i class="fas fa-plus" style="margin-left:0.5em !important; color:greenyellow !important;"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a style="color:white !important; background:none !important; font-size:13px !important;" href="/Admin/Usuarios">
-                                Registrar usuario <i class="fas fa-plus" style="margin-left:0.5em !important; color:greenyellow !important;"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a style="color:white !important; background:none !important; font-size:13px !important;" href="/Admin/Reportes">
-                                Reportes <span style="margin-left:0.5em !important; color:greenyellow !important;" id="repnotif"></span>
-                            </a>
-                        </li>
-                    }
-                    @if (Convert.ToInt32(Session["typeUser"]) == 2)
-                    {
-                        <li class="dropdown">
-                            <a style="color:white !important; background:none !important; font-size:13px !important;" class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Notificaciones
-                                <span id="cantnotif" style="margin-left:0.5em !important; font-size:12px !important;"></span>
-                                <i class="fas fa-bell" style="color:greenyellow !important;"></i>
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <div id="notifreport" style="padding:0.5em !important;"></div>
-                            </div>
-                        </li>
-                        <li>
-                            <a href="/Admin/Detalles?empresa=@Session["keyEmpresa"]" style="color:white !important; background:none !important; font-size:13px !important;">
-                                Centros <i class="fas fa-building color-primary" style="margin-left:0.5em !important; color:greenyellow !important;"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" data-toggle="modal" data-target="#changePassUser" style="color:white !important; background:none !important; font-size:13px !important;">
-                                Contraseña
-                                <i class="fas fa-lock color-primary" style="margin-left:0.5em !important; color:greenyellow !important;"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/Admin/ReportarProblema" style="color:white !important; background:none !important; font-size:13px !important;">
-                                Reportar un problema
-                                <i class="fas fa-bug color-primary" style="margin-left:0.5em !important; color:greenyellow !important;"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/Admin/BuzonEmpresa" style="color:white !important; background:none !important; font-size:13px !important;">
-                                Buzón
-                                <i class="fas fa-mail-bulk color-primary" style="margin-left:0.5em !important; color:greenyellow !important;"></i>
-                            </a>
-                        </li>
-                    }
-                    <li>
-                        <a style="color:white !important; background:none !important; font-size:13px !important;" href="/Admin/EncuestaEspecial">
-                            Encuesta especial <i class="fas fa-plus" style="margin-left:0.5em !important; color:greenyellow !important;"></i>
+    <nav class="navbar navbar-expand-lg navbar-white bg-white border-bottom shadow p-3 animated fadeIn">
+        <a class="navbar-brand col-title-navbar font-title-navbar font-weight-light lt-spacing-2" href="/Admin/Index"> <i class="fas fa-file-alt mr-3 ml-3 col-ico"></i> Encuestas </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-3">
+                @if (Convert.ToInt32(Session["typeUser"]) == 1)
+                {
+                    <li class="nav-item active mr-2">
+                        <a class="nav-link col-title-navbar font-title-navbar font-size-navbar" data-toggle="modal" data-target="#regEmpresa" href="#">
+                            <i class="fas fa-plus mr-2"></i>
+                            Registrar empresa
                         </a>
                     </li>
-                    @if (Convert.ToInt32(Session["typeUser"]) == 1)
-                    {
-                        <li>
-                            <a data-toggle="modal" data-target="#changePass" href="#" style="color:white !important; background:none !important; font-size:13px !important;">
-                                Contraseña <i class="fas fa-key" style="margin-left:0.5em !important; color:greenyellow !important;"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/Admin/Buzon" style="color:white !important; background:none !important; font-size:13px !important;">
-                                Buzón <i class="fas fa-mail-bulk" style="margin-left:0.5em !important; color:greenyellow !important;"></i>
-                            </a>
-                        </li>
-                    }
-                    <li>
-                        <a style="color:white !important; background:none !important; font-size:13px !important;">
-                            @Session["nameUser"] <i class="fas fa-user" style="margin-left:0.5em !important; color:lawngreen !important;"></i>
+                    <li class="nav-item active mr-2">
+                        <a class="nav-link col-title-navbar font-title-navbar font-size-navbar" href="/Admin/Usuarios">
+                            <i class="fas fa-plus mr-2"></i>
+                            Registrar usuario
                         </a>
                     </li>
-                    <li><a style="color:white !important; background:none !important; font-size:13px !important;" href="/Home/Logout">Salir <i class="fas fa-sign-out-alt" style="margin-left:0.5em !important; color:red !important;"></i> </a></li>
-                </ul>
-            </div>
+                    <li class="nav-item active mr-2">
+                        <a class="nav-link col-title-navbar font-title-navbar font-size-navbar" href="/Admin/Reportes">
+                            <i class="fas fa-plus mr-2"></i>
+                            Reportes
+                        </a>
+                    </li>
+                }
+                @if (Convert.ToInt32(Session["typeUser"]) == 2)
+                {
+
+                    <li class="nav-item dropdown mr-2">
+                        <a class="nav-link dropdown-toggle col-title-navbar font-title-navbar font-size-navbar" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-bell mr-2"></i> <span id="cantnotif" class="mr-2"></span> Notificaciones
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" id="notifreport">
+                            
+                        </div>
+                    </li>
+
+                    <li class="nav-item active mr-2">
+                        <a class="nav-link col-title-navbar font-title-navbar font-size-navbar" href="/Admin/Detalles?empresa=@Session["keyEmpresa"]">
+                            <i class="fas fa-building mr-2"></i>
+                            Centros
+                        </a>
+                    </li>
+                    <li class="nav-item active mr-2">
+                        <a class="nav-link col-title-navbar font-title-navbar font-size-navbar" href="#" data-toggle="modal" data-target="#changePassUser">
+                            <i class="fas fa-lock mr-2"></i>
+                            Contraseña
+                        </a>
+                    </li>
+                    <li class="nav-item active mr-2">
+                        <a class="nav-link col-title-navbar font-title-navbar font-size-navbar" href="/Admin/ReportarProblema">
+                            <i class="fas fa-bug mr-2"></i>
+                            Reportar un problema
+                        </a>
+                    </li>
+                    <li class="nav-item active mr-2">
+                        <a class="nav-link col-title-navbar font-title-navbar font-size-navbar" href="/Admin/BuzonEmpresa">
+                            <i class="fas fa-mail-bulk mr-2"></i>
+                            Buzón
+                        </a>
+                    </li>
+                }
+                <li class="nav-item active mr-2">
+                    <a class="nav-link col-title-navbar font-title-navbar font-size-navbar" href="/Admin/EncuestaEspecial">
+                        <i class="fas fa-plus mr-2"></i>
+                        Encuesta especial
+                    </a>
+                </li>
+
+                <li class="nav-item active mr-2">
+                    <a class="nav-link col-title-navbar font-title-navbar font-size-navbar">
+                        <i class="fas fa-user mr-2"></i>
+                        @Session["nameUser"]
+                    </a>
+                </li>
+                <li class="nav-item active mr-2">
+                    <a class="nav-link col-title-navbar font-title-navbar font-size-logout" href="/Home/Logout">
+                        <i class="fas fa-sign-out-alt mr-2"></i>
+                        Salir
+                    </a>
+                </li>
+            </ul>
         </div>
-    </div>
+    </nav>
+
+
     <div class="container body-content">
         @RenderBody()
-        <div class="modal fade" id="regEmpresa" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" data-backdrop="static" id="regEmpresa" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">
-                            <b>Registrar nueva empresa</b>
+                            <b class="text-center col-labels"> <i class="fas fa-building mr-2 col-ico"></i> Registrar nueva empresa</b>
                         </h5>
                         <button id="icocle" type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
@@ -124,23 +118,25 @@
                     </div>
                     <div class="modal-body">
                         <div class="row">
-                            <div class="col-lg-offset-3 col-lg-6">
+                            <div class="offset-2 col-lg-8">
                                 <div class="form-group">
-                                    <label>Nombre de empresa:</label>
+                                    <label class="col-form-label col-labels" for="empresa"> <i class="fas fa-building mr-2 col-ico"></i> Nombre de empresa:</label>
                                     <input type="text" id="empresa" name="empresa" class="form-control" />
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btncle">Cerrar</button>
-                        <button type="button" class="btn btn-primary" id="btnsae">Guardar cambios</button>
+                        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal" id="btncle">
+                            <i class="fas fa-times mr-2"></i> Cerrar
+                        </button>
+                        <button type="button" class="btn btn-sm col-btn-form1" id="btnsae"> <i class="fas fa-check-circle mr-2"></i> Aceptar </button>
                     </div>
                 </div>
             </div>
         </div>
         <hr />
-        <div class="modal fade" id="changePass" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" data-backdrop="static" id="changePass" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -181,28 +177,30 @@
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title text-center" id="exampleModalLabel">
-                                    <b> Cambiar contraseña</b>
-                                </h5>
+                                <h6 class="modal-title text-center" id="exampleModalLabel">
+                                    <b class="text-center col-labels"> <i class="fas fa-key mr-2"></i> Cambiar contraseña </b>
+                                </h6>
                             </div>
                             <div class="modal-body">
                                 <div class="row">
-                                    <div class="col-lg-offset-3 col-lg-6">
+                                    <div class="offset-2 col-lg-8">
                                         <div class="form-group">
-                                            <label>Ingresa la nueva contraseña:</label>
+                                            <label class="col-labels col-form-label" for="newpassuserc"> <i class="fas fa-lock mr-2 col-ico"></i> Ingresa la nueva contraseña:</label>
                                             <input type="password" id="newpassuserc" name="newpassuser" class="form-control" />
                                             <input type="hidden" id="clvpassuser" value="@Session["keyUser"]" />
                                         </div>
                                         <div class="form-group">
-                                            <label>Repite la nueva contraseña:</label>
+                                            <label class="col-labels col-form-label" for="passconfirmc"> <i class="fas fa-lock mr-2 col-ico"></i> Repite la nueva contraseña:</label>
                                             <input type="password" id="passconfirmc" name="passconfirm" class="form-control" />
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btnclepassuserc">Cerrar</button>
-                                <button type="button" class="btn btn-primary" id="btnchangeuserpass">Actualizar</button>
+                                <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal" id="btnclepassuserc">
+                                    <i class="fas fa-times mr-2"></i> Cerrar
+                                </button>
+                                <button type="button" class="btn btn-sm col-btn-form1" id="btnchangeuserpass"> <i class="fas fa-check-circle mr-2"></i> Actualizar </button>
                             </div>
                         </div>
                     </div>
@@ -211,18 +209,20 @@
             }
         }
 
-        <footer class="text-left">
-            <p>
-                <i class="fas fa-copyright mr-05-ico ml-05-ico"></i>  @DateTime.Now.Year - Grupo Seri. Todos los derechos reservados.
-                <i class="fas fa-image mr-05-ico ml-05-ico"></i> Images by <a href="https://undraw.co/"> undraw</a>.
-                <i class="fas fa-flag mr-05-ico ml-05-ico"></i> Icons by <a href="https://fontawesome.com/"> FontAwesome</a>.
-            </p>
-        </footer>
+        <div class="text-center">
+            <footer class="col-footer p-3 animated fadeIn">
+                <p>
+                    <i class="fas fa-copyright mr-2 ml-2 col-ico"></i>  @DateTime.Now.Year - Grupo Seri. Todos los derechos reservados.
+                    <i class="fas fa-image mr-2 ml-2 col-ico"></i> Images by <a href="https://undraw.co/"> undraw</a>.
+                    <i class="fas fa-flag mr-2 ml-2 col-ico"></i> Icons by <a href="https://fontawesome.com/"> FontAwesome</a>.
+                </p>
+            </footer>
+        </div>
     </div>
 
     @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <script type="text/javascript" src="~/Content/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://kit.fontawesome.com/af5b80622e.js" crossorigin="anonymous"></script>
     @{
         if (Convert.ToInt32(Session["typeUser"]) == 1)
@@ -230,7 +230,7 @@
             <script type="text/javascript" src="~/Scripts/Admin/index.js"></script>
         }
     }
-    <script type="text/javascript" src="~/Scripts/datatables.js"></script>
+    <script type="text/javascript" src="~/Scripts/datatables/jquery.dataTables.min.js"></script>
     @{
         if (Convert.ToInt32(Session["typeUser"]) != 1)
         {
@@ -266,17 +266,17 @@
                                         if (data[i].sMensaje == "success") {
                                             document.getElementById('cantnotif').textContent = cant;
                                             document.getElementById('notifreport').innerHTML += `
-                                                <span>
-                                                    <a href="#" onclick="fviewnotif(${data[i].iIdReporte})" style="font-size:11px;"> <i class="fas fa-check"></i> El problema con código ${data[i].sCodigoReporte} que reportaste ha sido solucionado</a>
-                                                </span>
-                                                <br />
+                                               <a class="dropdown-item" href="#" onclick="fviewnotif(${data[i].iIdReporte})" style="font-size:13px !important;">
+                                                    <i class="fas fa-check"></i> El problema con código ${data[i].sCodigoReporte} que reportaste ha sido solucionado
+                                                </a>
+                                                <br/>
                                             `;
                                         }
                                     }
                                 } else {
                                     document.getElementById('cantnotif').textContent = 0;
                                     document.getElementById('notifreport').innerHTML += `
-                                        <div class="text-center"> <b class="text-primary">Todo correcto</b> </div>
+                                        <a class="dropdown-item text-info" href="#" style="font-size:13px !important;">Todo correcto</a>
                                     `;
                                 }
                             }, error: function (error) {

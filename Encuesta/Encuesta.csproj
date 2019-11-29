@@ -178,6 +178,7 @@
     <Content Include="Content\Img\undraw_team_work_k80m.svg" />
     <Content Include="Content\Img\undraw_usability_testing_2xs4.svg" />
     <Content Include="Content\Img\undraw_Working_oh83.svg" />
+    <Content Include="Content\datatables\jquery.dataTables.min.css" />
     <Content Include="Content\Styles.css" />
     <Content Include="Content\stylesbuzon.css" />
     <Content Include="Content\toast.css" />
@@ -205,6 +206,7 @@
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\charts.js" />
     <Content Include="Scripts\datatables.js" />
+    <Content Include="Scripts\datatables\jquery.dataTables.min.js" />
     <Content Include="Scripts\Encuestas\dataTests.js" />
     <Content Include="Scripts\Encuestas\dataIndex.js" />
     <Content Include="Scripts\Encuestas\Encuesta1.js" />

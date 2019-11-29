@@ -8,59 +8,32 @@
     if (Session["keyUser"] != null)
     {
         <script type="text/javascript" src="~/Scripts/charts.js"></script>
-        <style type="text/css">
-            /*body {
-                background-color: #FAFFEB;
-            }*/
-            th {
-                font-size: 13px;
-                font-weight: normal;
-                padding: 8px;
-                background: #337ab7;
-                color: white !important;
-                border-top: 4px solid #aabcfe;
-                border-bottom: 1px solid #fff;
-                color: #039;
-            }
 
-            td {
-                padding: 8px;
-                background: #e8edff;
-                border-bottom: 1px solid #fff;
-                color: #669;
-                border-top: 1px solid transparent;
-            }
-
-            tr:hover td {
-                background: #d0dafd;
-                color: #339;
-            }
-        </style>
-        <div style="margin-top:2em !important;">
-            <div class="container-fluid">
+        <div>
+            <div class="container-fluid mt-5 mb-5">
                 <div class="row">
                     <div class="col-lg-3 col-md-3 col-sm-10 animated fadeIn" style="margin-top:6.7em !important;">
                         <div style="margin-bottom:2em !important;">
-                            <img class="img-responsive" src="~/Content/Img/undraw_reading_list_4boi.svg" />
+                            <img class="img-fluid" src="~/Content/Img/undraw_reading_list_4boi.svg" />
                         </div>
-                        <a href="/Admin/Index" class="btn btn-primary btn-block">
-                            <i class="fas fa-arrow-left"></i> <span style="margin-left:1em;">Volver</span>
+                        <a href="/Admin/Index" class="btn btn-block col-btn-form1">
+                            <i class="fas fa-arrow-left"></i> <span class="ml-2">Volver</span>
                         </a>
-                        <a href="#" data-toggle="modal" data-target="#regDatosEmpresa" class="btn btn-primary btn-block" style="margin-top:3em !important;" id="btnnewreg">
-                            <i class="fas fa-plus"></i> <span style="margin-left:0.5em;">Nuevo registro</span>
+                        <a href="#" data-toggle="modal" data-target="#regDatosEmpresa" class="btn btn-block col-btn-form1 mt-4" id="btnnewreg">
+                            <i class="fas fa-plus"></i> <span class="ml-2">Nuevo registro</span>
                         </a>
-                        <button type="button" class="btn btn-primary btn-block" style="margin-top:3em !important;" id="btnprint">
-                            <i class="fas fa-print"></i> <span style="margin-left:0.5em;">Imprimir</span>
+                        <button type="button" class="btn btn-block col-btn-form1 mt-4" id="btnprint">
+                            <i class="fas fa-print"></i> <span class="ml-2">Imprimir</span>
                         </button>
-                        <a href="#" data-toggle="modal" data-target="#info" class="btn btn-primary btn-block" style="margin-top:3em !important;" id="btninfo">
-                            <i class="fas fa-info"></i> <span style="margin-left:0.5em;">Ayuda</span>
+                        <a href="#" data-toggle="modal" data-target="#info" class="btn btn-block col-btn-form1 mt-4" id="btninfo">
+                            <i class="fas fa-info"></i> <span class="ml-2">Ayuda</span>
                         </a>
                     </div>
                     <div class="col-lg-9 col-md-9 col-sm-12 animated fadeInLeft delay-1s" id="divtabla">
-                        <h2><b> <i class="fas fa-edit color-primary" style="margin-right:0.5em !important;"></i> Encuestas especiales</b></h2>
+                        <h2><b> <i class="fas fa-edit col-ico mr-2"></i> Encuestas especiales.</b></h2>
                         <hr />
                         <div class="row" style="padding:20px; margin-bottom:5em !important; margin-top:1em !important;">
-                            <div class="text-center card" style="margin-left:6em !important;">
+                            <div class="text-center" style="margin-left:6em !important;">
                                 <div id="piechart" style="width: 800px; height: 500px; padding:3px !important;"></div>
                             </div>
                         </div>
@@ -71,12 +44,12 @@
                     <div class="col-lg-12">
                         <h3 class="text-center" style="margin-bottom:3em;">Tabla de registros</h3>
                         <div class="table">
-                            <table id="tablaus" class="display">
+                            <table id="tablaus" class="display" style="width:100%;">
                                 <thead>
                                     <tr>
                                         <th>Nombre <i title="Presiona este icono para ordenar alfabeticamente" class="fas fa-sort" style="margin-left:0.5em !important;"></i></th>
                                         <th>Centro <i title="Presiona este icono para ordenar alfabeticamente" class="fas fa-sort" style="margin-left:0.5em !important;"></i></th>
-                                        <th>Puesto <i title="Presiona este icono para ordenar alfabeticamente" class="fas fa-sort" style="margin-left:0.5em !important;"></i></th>
+                                        @*<th>Puesto <i title="Presiona este icono para ordenar alfabeticamente" class="fas fa-sort" style="margin-left:0.5em !important;"></i></th>*@
                                         <th>Código <i title="Presiona este icono para ordenar alfabeticamente" class="fas fa-sort" style="margin-left:0.5em !important;"></i></th>
                                         <th>Estado <i title="Presiona este icono para ordenar alfabeticamente" class="fas fa-sort" style="margin-left:0.5em !important;"></i></th>
                                         <th>Diagnostico <i title="Presiona este icono para ordenar alfabeticamente" class="fas fa-sort" style="margin-left:0.5em !important;"></i></th>
@@ -93,11 +66,11 @@
         </div>
 
         <div class="modal fade" data-backdrop="static" id="regDatosEmpresa" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">
-                            <b>Registrar datos</b>
+                            <b> <i class="fas fa-edit mr-2 col-ico"></i> Registrar datos </b>
                         </h5>
                         <button id="icoclreg" type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
@@ -107,7 +80,9 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Empresa:</label>
+                                    <label class="col-form-label col-labels">
+                                        <i class="fas fa-building mr-2 col-ico"></i> Empresa:
+                                    </label>
                                     @{
                                         if (Convert.ToInt32(Session["typeUser"]) != 1)
                                         {
@@ -123,38 +98,33 @@
                                     }
                                 </div>
                                 <div class="form-group">
-                                    <label>Nombre completo de empleado:</label>
+                                    <label class="col-form-label col-labels"> <i class="fas fa-user mr-2 col-ico"></i> Nombre completo de empleado:</label>
                                     <input type="text" id="empleado" required name="empleado" class="form-control text-capitalize" />
                                 </div>
                                 <div class="form-group">
-                                    <label>Codigo de acceso:</label>
+                                    <label class="col-form-label col-labels"> <i class="fas fa-code mr-2 col-ico"></i> Codigo de acceso:</label>
                                     <input type="text" id="codigoasc" name="codigoasc" readonly class="form-control" />
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Centro de trabajo:</label>
+                                    <label class="col-form-label col-labels"> <i class="fas fa-briefcase mr-2 col-ico"></i> Centro de trabajo:</label>
                                     <select class="form-control" id="namcent">
                                         <option value="0">Selecciona</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label>Puesto:</label>
+                                    <label class="col-form-label col-labels"> <i class="fas fa-id-card mr-2 col-ico"></i> Puesto:</label>
                                     <input type="text" id="puesto" name="puesto" required class="form-control" />
                                 </div>
-                            </div>
-                            <div class="col-lg-12 text-center">
-                                <hr />
-                                <p>
-                                    <i class="fas fa-info color-primary" style="margin-right:0.5em !important"></i>
-                                    <b class="color-primary">Información importante</b>, si tiene duda sobre el registro consulte el apartado de ayuda para más información.
-                                </p>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btncloregopc">Cerrar</button>
-                        <button type="button" class="btn btn-primary" id="btnsaregopc">Guardar cambios</button>
+                        <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal" id="btncloregopc">
+                            <i class="fas fa-times mr-2"></i> Cerrar
+                        </button>
+                        <button type="button" class="btn btn-sm col-btn-form1" id="btnsaregopc"> <i class="fas fa-check-circle mr-2"></i> Aceptar </button>
                     </div>
                 </div>
             </div>
@@ -176,12 +146,12 @@
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-lg-12">
-                                <h4 class="text-center text-primary">
+                                <h5 class="text-center text-primary">
                                     <b>
                                         <i class="fas fa-info" style="margin-right:1em !important;"></i>
                                         Información importante
                                     </b>
-                                </h4>
+                                </h5>
                                 <hr />
                                 <ul class="list-group">
                                     <li class="list-group-item">
@@ -192,7 +162,9 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">
+                            <i class="fas fa-times mr-2"></i> Cerrar
+                        </button>
                     </div>
                 </div>
             </div>

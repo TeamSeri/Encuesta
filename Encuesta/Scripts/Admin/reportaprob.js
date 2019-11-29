@@ -95,21 +95,21 @@
                             if (data[i].iEstadoReporte == 0) {
                                 contrep.innerHTML += `
                                     <div class="col-md-6">
-                                        <div class="text-center card">
+                                        <div class="text-center card shadow rounded p-2">
                                             <b class="text-center"> Código: <span>${data[i].sCodigoReporte}</span> </b> <hr/>
-                                            <b> Estado: <i class="fas fa-check-circle" style="color:green !important;"></i> Resuelto </b>   <hr/>
-                                            <p style="margin-top:1em !important; font-size:12px;"> <i class="fas fa-comments"></i> <b> Problema: </b> ${data[i].sContenidoReporte}  </p>
-                                            <p style="margin-top:1em !important; font-size:12px;"> <i class="fas fa-comment"></i> <b> Mensaje: </b> ${data[i].sMensajeReporte}  </p>
+                                            <b> Estado: <i class="fas fa-check-circle" style="color:green !important;"></i> Resuelto. </b>   <hr/>
+                                            <p style="margin-top:1em !important; font-size:12px;"> <i class="fas fa-comments col-ico"></i> <b> Problema: </b> ${data[i].sContenidoReporte}  </p>
+                                            <p style="margin-top:1em !important; font-size:12px;"> <i class="fas fa-comment col-ico"></i> <b> Mensaje: </b> ${data[i].sMensajeReporte}  </p>
                                         </div>
                                     </div>
                                 `;
                             } else {
                                 contrep.innerHTML += `
                                     <div class="col-md-6">
-                                        <div class="text-center card">
+                                        <div class="text-center card shadow rounded p-2">
                                             <b class="text-center"> Código: <span>${data[i].sCodigoReporte}</span> </b> <hr/>
-                                            <b> Estado: <i class="fas fa-clock" style="color:yellow !important;"></i> Pendiente </b>   <hr/>
-                                            <p style="margin-top:1em !important; font-size:12px;"> <i class="fas fa-comments"></i> <b> Problema: </b> ${data[i].sContenidoReporte}  </p>
+                                            <b> Estado: <i class="fas fa-clock" style="color:yellow !important;"></i> Pendiente. </b>   <hr/>
+                                            <p style="margin-top:1em !important; font-size:12px;"> <i class="fas fa-comments col-ico"></i> <b> Problema: </b> ${data[i].sContenidoReporte}  </p>
                                         </div>
                                     </div>
                                 `;

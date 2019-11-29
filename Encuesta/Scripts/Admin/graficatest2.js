@@ -71,30 +71,31 @@
                 type: "POST",
                 data: { registro: param},
                 success: function (data) {
-                    if (data.res == "correcto") {
-                        console.log(data.categoria2);
+                    const suma = parseInt(data.categoria1) + parseInt(data.categoria2) + parseInt(data.categoria3) + parseInt(data.categoria4);
+                    if (suma > 0) {
+                        //console.log(data.categoria2);
                         cat1 = parseFloat(data.categoria1 / data.realizadas).toFixed(2);
-                        console.log('Cat1 ' + cat1);
+                        //console.log('Cat1 ' + cat1);
                         cat2 = parseFloat(data.categoria2 / data.realizadas).toFixed(2);
-                        console.log('Cat2 ' + cat2);
+                        //console.log('Cat2 ' + cat2);
                         cat3 = parseFloat(data.categoria3 / data.realizadas).toFixed(2);
-                        console.log('Cat3 ' + cat3);
+                        //console.log('Cat3 ' + cat3);
                         cat4 = parseFloat(data.categoria4 / data.realizadas).toFixed(2);
-                        console.log('Cat4 ' + cat4);
+                        //console.log('Cat4 ' + cat4);
                         dom2 = parseFloat(data.dominio2 / data.realizadas).toFixed(2);
-                        console.log('Dom2 ' + dom2);
+                        //console.log('Dom2 ' + dom2);
                         dom3 = parseFloat(data.dominio3 / data.realizadas).toFixed(2);
-                        console.log('Dom3 ' + dom3);
+                        //console.log('Dom3 ' + dom3);
                         dom4 = parseFloat(data.dominio4 / data.realizadas).toFixed(2);
-                        console.log('Dom4 ' + dom4);
+                        //console.log('Dom4 ' + dom4);
                         dom5 = parseFloat(data.dominio5 / data.realizadas).toFixed(2);
-                        console.log('Dom5 ' + dom5);
+                        //console.log('Dom5 ' + dom5);
                         dom6 = parseFloat(data.dominio6 / data.realizadas).toFixed(2);
-                        console.log('Dom6 ' + dom6);
+                        //console.log('Dom6 ' + dom6);
                         dom7 = parseFloat(data.dominio7 / data.realizadas).toFixed(2);
-                        console.log('Dom7 ' + dom7);
+                        //console.log('Dom7 ' + dom7);
                         dom8 = parseFloat(data.dominio8 / data.realizadas).toFixed(2);
-                        console.log('Dom8 ' + dom8);icodef
+                        //console.log('Dom8 ' + dom8);
                         //Resultados para la categoria 1 Ambiente de trabajo
                         if (parseFloat(cat1) < 3) {
                             rescat.textContent = "Nulo o despreciable";
@@ -309,6 +310,7 @@
                             </div>
                         `;
                     }
+                    
                 },
                 error: function (xhr, status) {
                     console.error(xhr.status);
