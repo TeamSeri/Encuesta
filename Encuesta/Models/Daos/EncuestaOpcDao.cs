@@ -90,6 +90,7 @@ namespace Encuesta.Models.Daos
                 {
                     encBean.sMensaje = "errorins";
                 }
+                cmd.Dispose(); cmd.Parameters.Clear(); conexion.Close();
             }
             catch (Exception exc)
             {
@@ -132,10 +133,7 @@ namespace Encuesta.Models.Daos
                 {
                     encBean.sMensaje = "error";
                 }
-                cmd.Dispose();
-                cmd.Parameters.Clear();
-                data.Close();
-                conexion.Close();
+                cmd.Dispose(); cmd.Parameters.Clear(); data.Close(); conexion.Close();
             }
             catch (Exception exc)
             {

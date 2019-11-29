@@ -32,9 +32,7 @@ namespace Encuesta.Models.Daos
                         listEmp.Add(empBean);
                     }
                 }
-                cmd.Dispose();
-                data.Close();
-                conexion.Close();
+                cmd.Dispose(); cmd.Parameters.Clear(); data.Close(); conexion.Close();
             }
             catch (Exception exc)
             {
@@ -46,8 +44,7 @@ namespace Encuesta.Models.Daos
         public List<EmpresasBean> sp_Empresas_CentroTrabajo(int empresa)
         {
             List<EmpresasBean> listEmp = new List<EmpresasBean>();
-            try
-            {
+            try {
                 this.Conectar();
                 SqlCommand cmd = new SqlCommand("sp_Empresas_CentroTrabajo", this.conexion)
                 {
@@ -55,21 +52,17 @@ namespace Encuesta.Models.Daos
                 };
                 cmd.Parameters.Add(new SqlParameter("@Empresa", empresa));
                 SqlDataReader data = cmd.ExecuteReader();
-                if (data.HasRows)
-                {
-                    while (data.Read())
-                    {
+                if (data.HasRows) {
+                    while (data.Read()) {
                         EmpresasBean empBean = new EmpresasBean();
                         empBean.iIdCentroTrabajo = Convert.ToInt32(data["IdCentroTrabajo"]);
                         empBean.sCentroTrabajo = data["CentroTrabajo"].ToString();
                         listEmp.Add(empBean);
                     }
                 }
-            }
-            catch (Exception)
-            {
-
-                throw;
+                cmd.Dispose(); cmd.Parameters.Clear(); data.Close(); conexion.Close();
+            } catch (Exception exc) {
+                Console.WriteLine(exc);
             }
             return listEmp;
         }
@@ -95,9 +88,7 @@ namespace Encuesta.Models.Daos
                         listEmp.Add(empBean);
                     }
                 }
-                cmd.Dispose();
-                data.Close();
-                conexion.Close();
+                cmd.Dispose(); cmd.Parameters.Clear(); data.Close(); conexion.Close();
             }
             catch (Exception exc)
             {
@@ -143,8 +134,7 @@ namespace Encuesta.Models.Daos
                         listEmpBean.Add(empBean);
                     }
                 }
-                data.Close();
-                conexion.Close();
+                cmd.Dispose(); cmd.Parameters.Clear(); data.Close(); conexion.Close();
             }
             catch (Exception exc)
             {
@@ -178,8 +168,7 @@ namespace Encuesta.Models.Daos
                         listEmpBean.Add(empBean);
                     }
                 }
-                data.Close();
-                conexion.Close();
+                cmd.Dispose(); cmd.Parameters.Clear(); data.Close(); conexion.Close();
             }
             catch (Exception exc)
             {
@@ -223,6 +212,7 @@ namespace Encuesta.Models.Daos
                 {
                     empBean.sMensaje = "error";
                 }
+                cmd.Dispose(); cmd.Parameters.Clear(); data.Close(); conexion.Close();
             }
             catch (Exception exc)
             {
@@ -253,9 +243,7 @@ namespace Encuesta.Models.Daos
                 {
                     empBean.sMensaje = "error";
                 }
-                cmd.Dispose();
-                data.Close();
-                conexion.Close();
+                cmd.Dispose(); cmd.Parameters.Clear(); data.Close(); conexion.Close();
             }
             catch (Exception exc)
             {
@@ -295,9 +283,7 @@ namespace Encuesta.Models.Daos
                 {
                     empBe.sMensaje = "error";
                 }
-                cmd.Dispose();
-                data.Close();
-                conexion.Close();
+                cmd.Dispose(); cmd.Parameters.Clear(); data.Close(); conexion.Close();
             }
             catch (Exception exc)
             {
@@ -331,9 +317,7 @@ namespace Encuesta.Models.Daos
                 {
                     empBean.sMensaje = "error";
                 }
-                cmd.Dispose();
-                cmd.Parameters.Clear();
-                conexion.Close();
+                cmd.Dispose(); cmd.Parameters.Clear(); cmd.Parameters.Clear(); conexion.Close();
             }
             catch (Exception exc)
             {
@@ -393,10 +377,7 @@ namespace Encuesta.Models.Daos
                 {
                     empBean.sMensaje = "erroremp";
                 }
-                cmd.Dispose();
-                cmd.Parameters.Clear();
-                data.Close();
-                conexion.Close();
+                cmd.Dispose(); cmd.Parameters.Clear(); data.Close(); conexion.Close();
             }
             catch (Exception exc)
             {
@@ -448,10 +429,7 @@ namespace Encuesta.Models.Daos
                 {
                     empBean.sMensaje = "errorval";
                 }
-                cmd.Dispose();
-                cmd.Parameters.Clear();
-                data.Close();
-                conexion.Close();
+                cmd.Dispose(); cmd.Parameters.Clear(); data.Close(); conexion.Close();
             }
             catch (Exception exc)
             {
@@ -481,9 +459,7 @@ namespace Encuesta.Models.Daos
                 {
                     empBean.sMensaje = "error";
                 }
-                cmd.Dispose();
-                cmd.Parameters.Clear();
-                conexion.Close();
+                cmd.Dispose(); cmd.Parameters.Clear(); conexion.Close();
             }
             catch (Exception exc) 
             {
@@ -516,6 +492,7 @@ namespace Encuesta.Models.Daos
                 {
                     empBean.sMensaje = "error";
                 }
+                cmd.Dispose(); cmd.Parameters.Clear(); data.Close(); conexion.Close();
             }
             catch (Exception exc)
             {
@@ -548,9 +525,7 @@ namespace Encuesta.Models.Daos
                 {
                     empBean.sMensaje = "error";
                 }
-                cmd.Dispose();
-                data.Close();
-                conexion.Close();
+                cmd.Dispose(); cmd.Parameters.Clear(); data.Close(); conexion.Close();
             }
             catch (Exception exc)
             {
@@ -580,8 +555,7 @@ namespace Encuesta.Models.Daos
                 {
                     empBean.sMensaje = "error";
                 }
-                cmd.Dispose();
-                conexion.Close();
+                cmd.Dispose(); cmd.Parameters.Clear(); conexion.Close();
             }
             catch (Exception exc)
             {

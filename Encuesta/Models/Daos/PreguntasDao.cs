@@ -34,9 +34,7 @@ namespace Encuesta.Models.Daos
                         listPre.Add(preBean);
                     }
                 }
-                cmd.Dispose();
-                data.Close();
-                conexion.Close();
+                cmd.Dispose(); cmd.Parameters.Clear(); data.Close(); conexion.Close();
             }
             catch (Exception exc)
             {

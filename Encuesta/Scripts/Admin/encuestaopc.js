@@ -69,10 +69,10 @@
                                 <td> ${data[i].sNombreEmpleadoOpc} </td>
                                 <td>
                                     <a class="btn btn-block btn-sm col-btn-form1" href="/Admin/CentroTrabajo?registro=${data[i].iIdCentroTrabajo}&empresa=${data[i].iIdEmpresaOpc}"> 
-                                        <i class="fas fa-external-link-alt" style="margin-right:0.5em !important;"></i>
                                         ${data[i].sCentroTrabajo} 
                                     </a>
                                 </td>
+                                <td> ${data[i].sPuestoEmOpc} </td>
                                 <td> ${data[i].sCodigoAcOpc} </td>
                                 <td> ${estado} </td>
                                 <td> ${resatencion} </td>
@@ -90,10 +90,10 @@
                                     <td>  ${data[i].sNombreEmpleadoOpc} </td>
                                     <td>
                                         <a class="btn btn-block btn-sm col-btn-form1" href="/Admin/CentroTrabajo?registro=${data[i].iIdCentroTrabajo}&empresa=${data[i].iIdEmpresaOpc}"> 
-                                            <i class="fas fa-external-link-alt" style="margin-right:0.5em !important;"></i>
                                             ${data[i].sCentroTrabajo} 
                                         </a>
                                     </td>
+                                    <td> ${data[i].sPuestoEmOpc} </td>
                                     <td> ${data[i].sCodigoAcOpc} </td>
                                     <td> ${estado} </td>
                                     <td> ${resatencion} </td>

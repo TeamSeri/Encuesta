@@ -30,7 +30,7 @@ namespace Encuesta.Models.Daos
                 cmd.Parameters.Add(new SqlParameter("@Centro", centro));
                 if (cmd.ExecuteNonQuery() > 0) 
                 {
-                    cmd.Dispose();
+                    cmd.Dispose(); cmd.Parameters.Clear();
                     SqlCommand dre = new SqlCommand("sp_Datos_Empresas_Retrieve_Empresa", this.conexion)
                     {
                         CommandType = CommandType.StoredProcedure
@@ -44,7 +44,7 @@ namespace Encuesta.Models.Daos
                     if (dataDre.Read())
                     {
                         int restantes = Convert.ToInt32(dataDre["AplicacionesRestantes"]);
-                        dataDre.Close();
+                        dre.Dispose(); dre.Parameters.Clear(); dataDre.Close();
                         SqlCommand sel = new SqlCommand("sp_Datos_RegistroEncuestas_Dato", this.conexion)
                         {
                             CommandType = CommandType.StoredProcedure
@@ -55,7 +55,7 @@ namespace Encuesta.Models.Daos
                         {
                             realizadas = Convert.ToInt32(dataSel["Cantidad"]);
                             int rest = restantes - realizadas;
-                            dataSel.Close();
+                            sel.Dispose(); sel.Parameters.Clear(); dataSel.Close();
                             SqlCommand upd = new SqlCommand("sp_Update_RealizadasEmpresas_Retrieve_RealizadasEmpresa", this.conexion)
                             {
                                 CommandType = CommandType.StoredProcedure
@@ -74,6 +74,7 @@ namespace Encuesta.Models.Daos
                             {
                                 regBean.sMensaje = "error update";
                             }
+                            upd.Dispose(); upd.Parameters.Clear();
                         }
                         else
                         {
@@ -119,6 +120,7 @@ namespace Encuesta.Models.Daos
                 {
                     catBean.sMensaje = "error";
                 }
+                cmd.Dispose(); cmd.Parameters.Clear(); conexion.Close();
             }
             catch (Exception exc)
             {
@@ -149,6 +151,7 @@ namespace Encuesta.Models.Daos
                 {
                     catBean.sMensaje = "error";
                 }
+                cmd.Dispose(); cmd.Parameters.Clear(); conexion.Close();
             }
             catch (Exception exc)
             {
@@ -178,9 +181,7 @@ namespace Encuesta.Models.Daos
                 {
                     catBean.sMensaje = "error";
                 }
-                cmd.Dispose();
-                conexion.Close();
-                data.Close();
+                cmd.Dispose(); cmd.Parameters.Clear(); conexion.Close(); data.Close();
             }
             catch (Exception exc)
             {
@@ -210,9 +211,7 @@ namespace Encuesta.Models.Daos
                 {
                     catBean.sMensaje = "error";
                 }
-                cmd.Dispose();
-                data.Close();
-                conexion.Close();                
+                cmd.Dispose(); cmd.Parameters.Clear(); data.Close(); conexion.Close();                
             }
             catch (Exception exc)
             {
@@ -243,9 +242,7 @@ namespace Encuesta.Models.Daos
                 {
                     catBean.sMensaje = "error";
                 }
-                cmd.Dispose();
-                data.Close();
-                conexion.Close();
+                cmd.Dispose(); cmd.Parameters.Clear(); data.Close(); conexion.Close();
             }
             catch (Exception exc)
             {

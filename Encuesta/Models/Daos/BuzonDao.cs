@@ -86,6 +86,7 @@ namespace Encuesta.Models.Daos
                 } else {
                     buzonBean.sMensaje = "error";
                 }
+                cmd.Dispose(); cmd.Parameters.Clear(); data.Close(); conexion.Close();
             } catch (Exception exc) {
                 Console.WriteLine(exc);
             }

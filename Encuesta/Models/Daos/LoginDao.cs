@@ -50,9 +50,7 @@ namespace Encuesta.Models.Daos
                 {
                     logBean.sMensaje = "error";
                 }
-                cmd.Dispose();
-                data.Close();
-                conexion.Close();
+                cmd.Dispose(); cmd.Parameters.Clear(); data.Close(); conexion.Close();
             }
             catch (Exception exc)
             {
@@ -88,9 +86,7 @@ namespace Encuesta.Models.Daos
                         listUsersBean.Add(logBean);
                     }
                 }
-                cmd.Dispose();
-                data.Close();
-                conexion.Close();
+                cmd.Dispose(); cmd.Parameters.Clear(); data.Close(); conexion.Close();
             }
             catch (Exception exc)
             {
@@ -122,9 +118,7 @@ namespace Encuesta.Models.Daos
                 {
                     logBean.sMensaje = "error";
                 }
-                cmd.Dispose();
-                data.Close();
-                conexion.Close();
+                cmd.Dispose(); cmd.Parameters.Clear(); data.Close(); conexion.Close();
             }
             catch (Exception exc)
             {
@@ -153,8 +147,7 @@ namespace Encuesta.Models.Daos
                 {
                     logBean.sMensaje = "error";
                 }
-                cmd.Dispose();
-                conexion.Close();
+                cmd.Dispose(); cmd.Parameters.Clear(); conexion.Close();
             }
             catch (Exception exc)
             {
@@ -184,9 +177,7 @@ namespace Encuesta.Models.Daos
                         listLogBean.Add(logBean);
                     }
                 }
-                cmd.Dispose();
-                data.Close();
-                conexion.Close();
+                cmd.Dispose(); cmd.Parameters.Clear(); data.Close(); conexion.Close();
             }
             catch (Exception exc)
             {
@@ -215,9 +206,7 @@ namespace Encuesta.Models.Daos
                 {
                     logBean.sMensaje = "notexists";
                 }
-                cmd.Dispose();
-                data.Close();
-                conexion.Close();
+                cmd.Dispose(); cmd.Parameters.Clear(); data.Close(); conexion.Close();
             }
             catch (Exception exc)
             {
@@ -249,8 +238,7 @@ namespace Encuesta.Models.Daos
                 {
                     logBean.sMensaje = "error";
                 }
-                cmd.Dispose();
-                conexion.Close();
+                cmd.Dispose(); cmd.Parameters.Clear(); conexion.Close();
             }
             catch (Exception exc)
             {
@@ -278,8 +266,7 @@ namespace Encuesta.Models.Daos
                 {
                     logBean.sMensaje = "error";
                 }
-                cmd.Dispose();
-                conexion.Close();
+                cmd.Dispose(); cmd.Parameters.Clear(); conexion.Close();
             }
             catch (Exception exc)
             {
@@ -309,8 +296,7 @@ namespace Encuesta.Models.Daos
                 {
                     logBean.sMensaje = "error";
                 }
-                cmd.Dispose();
-                conexion.Close();
+                cmd.Dispose(); cmd.Parameters.Clear(); conexion.Close();
             }
             catch (Exception exc)
             {
@@ -340,8 +326,7 @@ namespace Encuesta.Models.Daos
                 {
                     logBean.sMensaje = "error";
                 }
-                cmd.Dispose();
-                conexion.Close();
+                cmd.Dispose(); cmd.Parameters.Clear(); conexion.Close();
             }
             catch (Exception exc)
             {
